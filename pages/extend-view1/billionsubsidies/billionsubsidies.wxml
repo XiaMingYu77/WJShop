@@ -1,0 +1,62 @@
+<!-- 百亿补贴 -->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      百亿补贴
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="swiper" style="margin-top:{{height+10}}px">
+    <swiper interval="{{interval}}" duration="{{duration}}" circular="true">
+      <block wx:for="{{background}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{info.BanImageSrc}}" mode="aspectFit"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class="title">精选补贴</view>
+
+  <view class="goodsbox">
+    <block wx:for="{{goodlist}}" wx:key="index">
+      <view class="goods" style="border:{{index=='0'?'none':''}}"  data-id="{{item.id}}" catchtap="togoodsdetail">
+        <view>
+          <image src="{{item.img}}" mode="aspectFit"></image>
+        </view>
+        <view class="info">
+          <view class="name">{{item.name}}</view>
+          <view class="recash">
+            <text class="text">返现</text>
+            <text style="font-size:20rpx;">￥{{fn.tofixed(item.scorce*repercent)}}</text>
+          </view>
+          <view class="buy">
+            <view>
+              <text style="font-weight:600;font-size:20rpx;padding-bottom:5rpx;">￥</text>
+              <text style="font-weight:600;font-size:40rpx">{{item.markprice}}</text>
+            </view>
+            <view>立即购买</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <image class="botbanner" bindtap="botbannerclick" src="{{info.imgs.Value}}" data-id="{{info.imgs.ID}}" data-key="{{info.imgs.Key}}" mode="aspectFit"></image>
+
+  <view class="alarm" wx:if="{{countdownflag}}">
+    <image src="../../../static/iconfont/alarm.png" animation="{{animation}}"></image>
+    <view class="second" wx:if="{{alarmflag}}">{{second}}</view>
+    <view class="taskcomplete" wx:if="{{!alarmflag}}">任务完成</view>
+  </view>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

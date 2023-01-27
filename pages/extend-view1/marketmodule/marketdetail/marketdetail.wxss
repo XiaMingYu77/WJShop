@@ -1,0 +1,221 @@
+page {
+  background: #F0B553;
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  /* background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%); */
+  background: #fff;
+  overflow: hidden;
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.top{
+  margin-bottom: 30rpx;
+}
+
+.top .bg{
+  width: 100%;
+  height: 128rpx;
+}
+
+
+.top .topimg{
+  width: 94%;
+  margin: 0 3%;
+  margin-top: -128rpx;
+  border-radius: 14rpx;
+}
+
+.goodbox {
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 0 3%;
+  flex-wrap: wrap;
+}
+
+.goodbox .goods {
+  width: 340rpx;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  background: #fff;
+  overflow: hidden;
+}
+
+.goodbox .goods image {
+  width: 340rpx;
+  height: 340rpx;
+}
+
+.goodbox .goods .goodsname{
+  height: 80rpx;
+  font-size: 24rpx;
+  color: #333;
+  padding: 10rpx 6rpx 6rpx 14rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.goodbox .goods .goodsbot{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14rpx 30rpx;
+  font-size: 28rpx;
+  color: #2D5DF6;
+  margin-top: 10rpx;
+}
+
+.goodbox .goods .goodsbot{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14rpx 30rpx;
+  font-size: 28rpx;
+  color: #2D5DF6;
+}
+
+.goodbox .goods .goodsbot>view:first-child{
+  display: flex;
+  align-items: flex-end;
+  color: #000;
+}
+
+.container .goods .recash>view:first-child{
+  display: flex;
+  width: 134rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  border: 1rpx solid #2D5DF6;
+  border-radius: 14rpx;
+  font-size: 18rpx;
+  color: #2D5DF6;
+  box-sizing: border-box;
+}
+
+.container .goods .recash .text{
+  width: 60rpx;
+  height: 100%;
+  display: inline-block;
+  background: #2D5DF6;
+  color: #fff;
+  border-radius: 14rpx;
+  text-align: center;
+  margin-left: -2rpx;
+  margin-bottom: -1rpx;
+}
+
+.container .goods .recash>view:last-child{
+  background: #2D5DF6;
+  font-size: 24rpx;
+  margin-top: 20rpx;
+  color: #fff;
+  border-radius: 18rpx;
+  text-align: center;
+  padding: 3rpx 0;
+}
+
+.container .botbanner{
+  width: 94%;
+  height: 198rpx;
+  margin: 30rpx 3% 0;
+}
+
+/* 小闹钟弹框 */
+.container .alarm{
+  position: fixed;
+  width: 98rpx;
+  height: 108rpx;
+  right: 0;
+  bottom: 300rpx;
+}
+
+.container .alarm image{ 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.container .alarm .second{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 100;
+  top: 30rpx;
+  left: 20rpx;
+  text-align: center;
+}
+
+.container .alarm .taskcomplete{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 100;
+  top: 20rpx;
+  left: 25rpx;
+  font-size: 20rpx;
+  color: #FACA01;
+}
+/* 小闹钟弹框结束 */

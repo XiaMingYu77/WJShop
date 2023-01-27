@@ -1,0 +1,7 @@
+<!--pages/extend-view1//messagedetail/messagedetail.wxml-->
+<view class="container">
+  <view class="top"></view>
+  <view class="content">
+    <rich-text nodes="{{list.ADContent}}"></rich-text>
+  </view>
+</view>

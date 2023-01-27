@@ -1,0 +1,189 @@
+.container{
+  height: 100vh;
+  /* background: #E8E8E9; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background:linear-gradient(166deg,rgba(48,96,247,1) 0%,rgba(45,193,246,1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+
+.container .form{
+  width: 94%;
+  background: #fff;
+  margin: 0 3%;
+  border-radius: 10rpx;
+  margin-top: 150rpx;
+  display: flex;
+  flex-direction: column;
+  box-shadow:0px 4rpx 8rpx 0px rgba(0,0,0,0.16);
+}
+
+.container .form .line{
+  border-bottom: 1rpx solid #EEEEEE;
+  color: #666666;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+
+.container .form>view{
+  display: flex;
+  height: 86rpx;
+  padding: 0 20rpx;
+  align-items: center;
+}
+
+.container .form text{
+  font-size: 28rpx;
+  width: 120rpx;
+  margin-right: 30rpx;
+}
+
+.container .form input{
+  font-size: 24rpx;
+  width: 500rpx;
+}
+
+.place-holder{
+  color: #999;
+  font-size: 24rpx;
+}
+
+.col{
+  color: #999;
+  font-size: 24rpx;
+}
+
+.container .form .selectaddress{
+  color: #666;
+}
+
+.container .form .selectaddress .text{
+  width: 500rpx;
+  font-size: 24rpx;
+  color: #999;
+  /* margin-right: 200rpx; */
+}
+
+.container .form .selectaddress image{
+  width: 10rpx;
+  height: 18rpx;
+}
+
+.form .default{
+  display: flex;
+  justify-content: space-between;
+  color: #666;
+  border-top: 1rpx solid #EEEEEE
+}
+
+.container .form .default text{
+  width: 200rpx;
+}
+
+.container .form .default .switch-small {
+		transform: scale(0.6);
+		transform-origin: 100% center;
+	}
+
+.container .preserve{
+  height: 78rpx;
+  width: 568rpx;
+  background: #2D5DF6;
+  margin: 0 auto;
+  border-radius: 10rpx;
+  display: flex;
+  flex-direction: column;
+  margin-top: 70rpx;
+  color: white;
+  text-align: center;
+  line-height: 78rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+
+
+.picker-view {
+  width: 100%;
+  display: flex;
+  z-index:12;
+  background-color: #fff;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx;
+  left: 0rpx;
+  height: 40vh;
+}
+
+.picker-item {
+  line-height: 70rpx;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  text-align: center;
+}
+
+
+

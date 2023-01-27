@@ -1,0 +1,45 @@
+<!--pages/mycenter-extend//fillinnum/fillinnum.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;">
+      填写快递单号
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="box" style="margin-top:{{height+10}}px">
+    <view class="company">
+      物流公司:
+      <!-- <input placeholder="请填写物流公司" value="{{value1}}" bindinput="companychange"></input> -->
+      <picker bindchange="bindPickerChange" value="{{areaIndex}}" range="{{area}}" style="color:#999;width:400rpx">
+        {{area[areaIndex]}}
+      </picker>
+    </view>
+    <view class="kuaidinum">
+      快递单号:
+      <input placeholder="请填写正确的快递单号" value="{{value2}}" bindinput="numchange"></input>
+    </view>
+  </view>
+
+  <!-- <view class="message">
+    <view class="title">
+      <view>退货留言</view>
+      <view>您还可以输入170字</view>
+    </view>
+    <textarea placeholder="请详细填写您的退货留言"></textarea>
+  </view> -->
+
+  <view class="submit" bindtap="submit">确认提交</view>
+
+  <tui-modal1 show="{{modal}}" custom="{{true}}" class="clickaddress">
+    <view class="tips">
+      商家已收到您的已发货信息,商家确认收货后将退还您的付款,为了确保您的收益保障,请及时与商家协商,提供退货物流信息。
+    </view>
+    <view class="btn" bindtap="hide">
+      知道了
+    </view>
+  </tui-modal1>
+
+</view>

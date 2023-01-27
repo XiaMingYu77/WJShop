@@ -1,0 +1,10 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "评价详情",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon",
+    "tui-rate": "../../../components/rate/rate"
+  }
+}

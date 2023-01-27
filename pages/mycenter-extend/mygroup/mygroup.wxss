@@ -1,0 +1,146 @@
+/* pages/mycenter-extend//mygroup/mygroup.wxss */
+page{
+  /* background: #E8E8E9; */
+}
+
+.container{
+
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.groupbox{
+  width: 94%;
+  margin: 0 3%;
+  border-radius: 10rpx;
+  /* box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12); */
+}
+
+.groupbox .start{
+  background: #2D5DF6;
+  color: #fff;
+  padding: 0 20rpx;
+  border-radius: 30rpx;
+  font-size: 20rpx;
+}
+
+.container .grouptop{
+  background: #fff;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.container .grouptop view{
+  text-align: center;
+}
+
+.container .creategroup{
+  /* width: 202rpx; */
+  width: 94%;
+  margin: 0 3%;
+  height: 76rpx;
+  line-height: 76rpx;
+  background: #2D5DF6;
+  color: #fff;
+  font-size: 30rpx;
+  margin-top: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.groupbigbox{
+  box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12);
+  margin-bottom: 20rpx;
+}
+
+.group{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  /* margin-top: 20rpx; */
+  font-size: 24rpx;
+  /* border-radius: 10rpx; */
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.group image{
+  width: 10rpx;
+  height: 18rpx;
+  margin-left: 10rpx;
+}
+
+.group .applyassistant{
+  color: #2D5DF6;
+}
+
+.container .tips{
+  background: #fff;
+  font-size: 24rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+  box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .tips .profit{
+  margin-top: 20rpx;
+  height: 1000rpx;
+}

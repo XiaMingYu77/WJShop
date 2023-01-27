@@ -1,0 +1,132 @@
+.container {
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background-image: url(https://shop.we-time.net/images/icons/getphonebg.png);
+  background-size: 100% 100%;
+  overflow: hidden;
+  color: #333;
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-weight: 400;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .title {
+  margin: 0 auto;
+  margin-top: 20rpx;
+  letter-spacing: 24rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  text-align: center;
+}
+
+.container .logo {
+  text-align: center;
+}
+
+.container .logo image {
+  width: 232rpx;
+  height: 232rpx;
+}
+
+.container .submit {
+  width: 398rpx;
+  margin: auto;
+  height: 92rpx;
+  line-height: 92rpx;
+  background: #94aeff;
+  border-radius: 46px;
+  color: #fff;
+  margin-top: 980rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.container .tips {
+  font-size: 24rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  text-align: center;
+  color: #94aeff;
+}
+
+.container .tips .cls {
+  color: #333;
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 30rpx;
+  line-height: 18px;
+  font-weight: 500;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

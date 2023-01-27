@@ -1,0 +1,13 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "退款售后",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tui-bottom-popup": "../../../components/bottom-popup/bottom-popup",
+    "tui-modal1": "../../../components/modal1/modal1",
+    "tui-button": "../../../components/button/button",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

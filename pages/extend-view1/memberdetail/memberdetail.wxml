@@ -1,0 +1,30 @@
+<!--pages/extend-view1//memberdetail/memberdetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="padding-top:{{top*2}}rpx;height:{{height*2}}rpx;box-sizing:border-box">
+    <view class="tui-header">
+      {{name}}的推广收益
+    </view>
+    <view class="tui-header-icon" style="padding-top:{{top}}px">
+      <tui-icon name="arrowleft" bindtap="back" tui-icon-class="tui-icon-back" class="tui-icon" color="#fff"></tui-icon>
+    </view>
+  </view>
+
+  <!-- <view class="red"></view> -->
+
+  <view class="table" style="margin-top:{{height+10}}px">
+    <view class="tr bg-w">
+      <view class="th th1">日期</view>
+      <view class="th">订单量</view>
+      <!-- <view class="th">获得佣金</view> -->
+      <view class="th">平台奖励</view>
+    </view>
+    <block wx:for="{{list.Income}}" wx:key="index">
+      <view class="tr bg-g">
+        <view class="td td1">{{item.datetime}}</view>
+        <view class="td">{{item.count}}</view>
+        <!-- <view class="td" style="color:#2D5DF6">￥{{item.Money}}</view> -->
+        <view class="td" style="color:#D34545">￥{{item.Income}}</view>
+      </view>
+    </block>
+  </view>
+</view>

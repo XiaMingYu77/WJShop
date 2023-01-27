@@ -1,0 +1,62 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      收货地址
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="form" style="margin-top:{{height+10}}px">
+    <view class="line">
+      <text>收货人</text>
+      <input class="col" placeholder-class="place-holder" placeholder="姓名" bindinput="getInput" value="{{nameValue}}"></input>
+    </view>
+    <view class="line">
+      <text>联系方式</text>
+      <input class="col" placeholder-class="place-holder" bindinput="getInput1" value="{{telValue}}" placeholder="手机号码"></input>
+    </view>
+    <view class="line selectaddress" bindtap="showAddressMenu">
+      <text>所在地区</text>
+      <text class="text" wx:if="{{areaInfo==''}}">选择所在地址</text>
+      <text class="text" wx:if="{{areaInfo!=''}}">{{areaInfo}}</text>
+    </view>
+    <view>
+      <text style="color:#666;font-size:28rpx;">详细地址</text>
+      <input bindinput="getInput3" placeholder-class="place-holder" class="col" value="{{addressValue}}" placeholder="街道、楼牌号等"></input>
+    </view>
+    <view class="default">
+      <text>设为默认地址</text>
+      <switch bindchange="switchchange" checked="{{defalut==1}}" color="#2D5DF6" class="switch-small" />
+    </view>
+  </view>
+  <view class="preserve" bindtap="toaddress1" wx-if="{{btn=='new'}}">保存并使用该地址</view>
+  <view class="preserve" bindtap="toaddress2" wx-if="{{btn=='edit'}}">确定</view>
+
+
+  <!-- 地址选择框 -->
+  <view class="picker-view" animation="{{animationAddressMenu}}" style="visibility:{{addressMenuIsShow ? 'visible':'hidden'}}">
+    <view style="height:10% ;width:95%;margin-top:10rpx">
+      <text catchtap="cityCancel">取消</text>
+      <text style="float: right" catchtap="citySure">确定</text>
+    </view>
+    <!--"可以显示默认的城市，使用后级联选择城市反应很慢就不使用了-->
+    <picker-view style="width: 100%; height: 300px;" bindchange="cityChange" value="{{value}}">
+      <picker-view-column>
+        <view wx:for="{{provinces}}" class="picker-item" wx:key="index">
+          {{item.AreaName}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{citys}}" class="picker-item" wx:key="index">
+          {{item.AreaName}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{areas}}" class="picker-item" wx:key="index">
+          {{item.AreaName}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+
+  <!-- 地址选择框结束 -->
+</view>

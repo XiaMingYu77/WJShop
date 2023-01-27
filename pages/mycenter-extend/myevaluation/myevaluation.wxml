@@ -1,0 +1,118 @@
+<!--pages/mycenter-extend//myevaluation/myevaluation.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我的评价
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="tabs" style="top:{{height}}px">
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+    <view class="slider {{selected==1?'left1':''}} {{selected==2?'left2':''}}"></view>
+  </view>
+
+  <!-- <view class="red"></view> -->
+
+
+  <!-- 当没有相关订单时 -->
+  <view class="{{dataflag?'noorder':''}} kong">
+    <image src="../../../static/iconfont/none.png"></image>
+    <view>暂无更多数据</view>
+  </view>
+
+  <view class="box" style="margin-top:{{height+40}}px">
+    <!-- 待评价 -->
+    <block wx:if="{{selected=='0'}}" wx:for="{{waitevaluation}}" wx:key="index">
+      <view class="content">
+        <view class="shop">
+          <image src="{{item.ShopImg}}" mode="aspectFit"></image>
+          <text>{{item.ShopName}}</text>
+        </view>
+        <view class="content-mid">
+          <view>
+            <image src="{{item.FullImg}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="productname">{{item.ProductName}}</view>
+            <view class="model">{{item.ProductSpecs}}</view>
+            <view class="count">
+              <view>实付款 
+                <text style="color:#E64048;">￥{{item.MemberPrice}}</text>
+              </view>
+              <view class="rcash" data-current="{{item.OrderID}}" bindtap="topublishevaluation">立即评价</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 全部评价 -->
+    <block wx:if="{{selected=='1'}}">
+      <!-- <block wx:for="{{Product}}" wx:key="index">
+        <view class="content">
+          <view class="shop">
+            <image class="{{item.ShopImg}}"></image>
+            <text>{{item.ShopName}}</text>
+          </view>
+          <view class="content-mid">
+            <view>
+              <image src="{{item.FullImg}}"></image>
+            </view>
+            <view>
+              <view class="productname">{{item.ProductName}}</view>
+              <view class="model">{{item.ProductSpecs}}</view>
+              <view class="count">
+                <view>实付款 ￥{{item.MemberPrice}}</view>
+                <view class="rcash" data-current="{{item}}" bindtap="topublishevaluation">立即评价</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block> -->
+      <block wx:for="{{ProductComment}}" wx:key="index">
+        <view class="content content1" bindtap="tomyevaluationdetail" data-current="{{item.CommentID}}">
+          <view class="info">
+            <view>
+              <image src="{{item.MemImg}}" mode="aspectFit"></image>
+            </view>
+            <view>
+              <view>{{item.BuyerName}}</view>
+              <view class="data">{{item.AddDate}}</view>
+            </view>
+          </view>
+          <view class="content-mid" style="margin-top:20rpx;">
+            <view>
+              <image src="{{item.ProductImg}}" mode="aspectFit"></image>
+            </view>
+            <view>
+              <view class="productname">{{item.ProductName}}</view>
+              <view class="model">{{item.ProductSpecs}}</view>
+              <view class="count">
+                <view>￥{{item.SubPrice}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="content-bot">
+            <view>
+              描述属实
+              <tui-rate size="16" active="rgb(255,218,38)" current="{{item.CreditWorthiness}}" bind:change="change1"></tui-rate>
+            </view>
+            <view>
+              物流服务
+              <tui-rate size="16" active="rgb(255,218,38)" current="{{item.DeliverySpeed}}" bind:change="change1"></tui-rate>
+            </view>
+            <view>
+              服务态度
+              <tui-rate size="16" active="rgb(255,218,38)" current="{{item.ServiceAttitude}}" bind:change="change1"></tui-rate>
+            </view>
+          </view>
+        </view>
+      </block>
+    </block>
+  </view>
+</view>

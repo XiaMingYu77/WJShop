@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "交易物流通知",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../../components/icon/icon",
+    "nodata": "../../../../components/nodata/nodata"
+  }
+}

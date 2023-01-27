@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "消息",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../../components/icon/icon"
+  }
+}

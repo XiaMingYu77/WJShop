@@ -1,0 +1,34 @@
+<!--pages/extend-view1//activevalue/myselfpush/myselfpush.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      自己推广所得
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="profit" style="margin-top:{{height+10}}px">
+      <image src="../../../../static/iconfont/active.png"></image>
+      近30天自己推广产生活跃值:{{list.IncomeNumber}}
+  </view>
+
+  <view class="date">
+    <view class="title">
+      <view>日期</view>
+      <view>订单量</view>
+      <view>日推广收益</view>
+    </view>
+    <scroll-view scroll-y>
+      <view class="data" wx:for="{{list.Income}}" wx:key="index">
+        <view>{{item.datetime}}</view>
+        <view style="color:#2D5DF6;">{{item.count}}</view>
+        <view class="money">￥{{item.Money}}</view>
+      </view>
+    </scroll-view>
+    <view class="time">
+      数据为{{list.Startdatetime}}至{{list.Datetime}}推广收益
+    </view>
+  </view>
+</view>

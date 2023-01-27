@@ -1,0 +1,27 @@
+<!--pages/mycenter-extend//businesscooperation/businesscooperation.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      商务合作
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="contentbox" style="margin-top:{{height+10}}px">
+    <view class="title" >您好,为了双方合作愉快,沟通更加高效,请提供以下资料</view>
+    <view class="content">
+      <view style="font-size:24rpx;color:#333">【商务渠道合作】</view>
+      <view>编辑内容:1.产品介绍 2.资源类型描述 3.联系电话</view>
+      <view>邮箱发送至: <text selectable='true'>1145593056@qq.com</text></view>
+      <view>联系电话: <text selectable='true'>张经理: 18066797972</text> </view>
+    </view>
+    <view class="content">
+      <view style="font-size:24rpx;color:#333">【商务推广合作】</view>
+      <view>编辑内容:1.产品介绍 2.资源类型描述 3.联系电话</view>
+      <view>邮箱发送至: <text selectable='true'>1145593056@qq.com</text></view>
+      <view>联系电话: <text selectable='true'>张经理: 18066797972</text> </view>
+    </view>
+  </view>
+</view>

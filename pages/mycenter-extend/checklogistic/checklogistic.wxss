@@ -1,0 +1,205 @@
+/* pages/mycenter-extend//checklogistic/checklogistic.wxss */
+page{
+  /* background: #E8E8E9; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+
+.container .logistic{
+  width: 94%;
+  /* height: 244rpx; */
+  margin: 0 3%;
+  background: #fff;
+  margin-top: -70rpx;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .logistic .logistic-top{
+  height: 66rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #EEEEEE;
+  font-size: 24rpx
+}
+
+.container .logistic .logistic-top .logistic-top-left{
+  display: flex;
+  color: #666666;
+}
+
+.container .logistic .logistic-top .logistic-top-left image{
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+
+.container .logistic .logistic-top .logistic-top-left .name{
+  color: #2D5DF6;
+  font-size: 28rpx;
+}
+
+.container .logistic .logistic-top .logistic-top-left .number{
+  padding-bottom: 1rpx;
+}
+
+.container .logistic .logistic-top .logistic-top-left .copy{
+  display: inline-block;
+  font-size: 20rpx;
+  color: #999999;
+  border: 1rpx solid #999999;
+  padding: 0 10rpx;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+  margin-bottom: 1rpx;
+}
+
+.container .logistic .logistic-top .logistic-top-right image{
+  width: 33rpx;
+  height: 31rpx;
+  margin-bottom: -5rpx;
+}
+
+.container .logistic .logistic-top .logistic-top-right{
+  text-align: center;
+  color: #999999;
+  font-size: 20rpx;
+}
+
+.container .logistic .logistic-bot{
+  display: flex;
+  align-items: center;
+  margin: 0 20rpx;
+  padding: 20rpx 0;
+  font-size: 20rpx;
+  color: #666666;
+  border-bottom: 1rpx solid #EEEEEE;
+}
+
+.container .logistic .logistic-bot .address{
+  margin-top: 10rpx;
+}
+
+.container .logistic .logistic-bot image{
+  width: 54rpx;
+  height: 54rpx;
+  margin-right: 20rpx;
+}
+
+.container .logistic .personinfo{
+  padding: 20rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.container .logistic .personinfo text{
+  color: #666;
+}
+
+.container .content{
+  width: 94%;
+  /* height: 583rpx; */
+  margin: 0 3%;
+  background: #fff;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+  font-size: 22rpx;
+  box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .content .dot{
+  width: 16rpx;
+  height: 16rpx;
+  background: #9C9C9C;
+  border-radius: 50%;
+  margin-right: 10rpx;
+  margin-top: 7rpx;
+}
+
+.container .content .first{
+  color: rgb(245,123,123);
+}
+
+.container .content .active{
+  background: #2D5DF6;
+}
+
+.container .content .text{
+  flex: 9;
+}
+
+.container .content>view{
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  margin-top: 10rpx;
+}

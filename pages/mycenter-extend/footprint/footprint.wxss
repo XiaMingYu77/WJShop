@@ -1,0 +1,430 @@
+page {
+  /* background: #e8e8e9; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .wrap {
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  border-radius: 10rpx;
+  position: relative;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.date-show {
+  font-size: 24rpx;
+  color: #333;
+  text-align: center;
+  margin: 30rpx auto 26rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-show image{
+  width: 14rpx;
+  height: 24rpx;
+}
+
+.date-show view{
+  margin: 0 20rpx;
+}
+
+.jiao1 {
+  position: relative;
+  height: 0px;
+  width: 0px;
+  border-top: 15rpx solid transparent;
+  border-right: 15rpx solid black;
+  border-bottom: 15rpx solid transparent;
+  margin-right: 15rpx;
+}
+
+.jiao2 {
+  position: relative;
+  height: 0px;
+  width: 0px;
+  border-top: 15rpx solid transparent;
+  border-left: 15rpx solid black;
+  border-bottom: 15rpx solid transparent;
+  margin-left: 15rpx;
+}
+
+.selected1 {
+  border-right: 15rpx solid rgba(0, 0, 0, 0.2);
+}
+
+.selected2 {
+  border-left: 15rpx solid rgba(0, 0, 0, 0.2);
+}
+
+.header {
+  font-size: 28px;
+  color: #999999;
+  overflow: hidden;
+  font-weight: 400;
+}
+
+.header>view {
+  display: inline-block;
+  width: 14.285%;
+  color: #333;
+  font-size: 24rpx;
+  text-align: center;
+  /* border-bottom: 1px solid #D0D0D0; *//* padding: 39rpx 0; */
+}
+
+.weekMark {
+  position: relative;
+}
+
+.weekMark view {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #22a7f6;
+}
+
+.date-box {
+  font-size: 0;
+  padding: 20rpx 0;
+}
+
+.boxselecte{
+  /* margin-top: -200rpx; */
+  height: 80rpx;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+
+/* .boxselecte1{
+  margin-top: -220rpx;
+} */
+
+.date-box>view {
+  position: relative;
+  display: inline-block;
+  width: 14.285%;
+  color: #020202;
+  font-size: 24rpx;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.date-head {
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 24rpx;
+  color: #333;
+  font-weight: 400;
+}
+
+.datatime {
+  height: 80rpx;
+}
+
+.dot {
+  width: 8rpx;
+  height: 8rpx;
+  background: #2D5DF6;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  border-radius: 50%;
+}
+
+.up{
+  position: absolute;
+  font-size: 40rpx;
+  /* background: #E80202; */
+  color: #fff;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border-radius: 50%;
+  right: 40rpx;
+  bottom: -20rpx;
+}
+
+.up image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.nowDay .date-head {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 50%;
+  color: #fff;
+  background: #2D5DF6;
+  margin: 0 auto;
+}
+
+.today {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  /* text-align: center; */
+  color: #fff;
+  background-color: #8DA8FF;
+  margin: 0 auto;
+  /* border: 1rpx solid #2D5DF6; */
+}
+
+.date-weight {
+  font-size: 22rpx;
+  padding: 15rpx 0;
+}
+
+.nowDay .date-weight {
+  color: #22a7f6;
+}
+
+.one {
+  position: absolute;
+  bottom: 0;
+  right: 5rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.two {
+  position: absolute;
+  bottom: 30rpx;
+  right: 5rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: blue;
+}
+
+.container .goods{
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .goods .time{
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 24rpx;
+}
+
+.container .goods .time image{
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.productbox{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.productbox1{
+  margin-bottom: 80rpx;
+}
+
+.container .goods .product{
+  padding: 0 10rpx;
+  width: 226rpx;
+  margin-right: 13rpx;
+  margin-bottom: 15rpx;
+  box-sizing: border-box;
+}
+
+.container .goods .last{
+  margin-right: 0;
+}
+
+.container .goods .product image{
+  width: 206rpx;
+  height: 206rpx;
+}
+
+.container .goods .product .price{
+  font-size: 30rpx;
+  color: #2D5DF6;
+  font-weight: bold;
+  margin-left: 5rpx;
+  margin-right: 20rpx;
+}
+
+.container .goods .product .product-bot{
+  display: flex;
+  align-items: center;
+}
+
+.tui-checkbox {
+  /* width: 40rpx; */
+  padding-right: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.tui-checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.tui-checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #2D5DF6;
+  width: 30rpx;
+  height: 30rpx;
+  border: none;
+}
+
+.botdelete{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 80rpx;
+  background: #fff;
+}
+
+.deletetext{
+  width: 140rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #2D5DF6;
+  text-align: center;
+  color: #fff;
+  margin-top: 10rpx;
+  float:right;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+}
+
+/* 弹框 */
+
+.container .clickaddress {
+  position: relative;
+}
+
+.container .clickaddress .jz {
+  width: 72rpx;
+  height: 72rpx;
+  padding-left: 220rpx;
+}
+
+.container .clickaddress .tips {
+  width: 311rpx;
+  margin: 0 auto;
+  font-size: 30rpx;
+  text-align: center;
+  margin-top: 60rpx;
+  line-height: 40rpx;
+  color: #333;
+}
+
+.container .clickaddress .btn {
+  display: flex;
+  margin-top: 60rpx;
+  height: 80rpx;
+}
+
+.container .clickaddress .btn .cancel {
+  width: 50%;
+  background: #fff;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 0 0 0 10rpx;
+  border-top: 1rpx solid #F5F5F5;
+  font-size: 30rpx;
+}
+
+.container .clickaddress .btn .addaddress {
+  width: 50%;
+  color: #fff;
+  background: #2D5DF6;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 0 0 10rpx 0;
+  font-size: 30rpx;
+}
+
+.container .clickaddress .close {
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+}
+
+/* 弹框结束 */

@@ -1,0 +1,33 @@
+/* pages/extend-view1//createposter/createposter.wxss */
+page{
+  background: #E8E8E9;
+}
+
+.container{
+
+}
+
+.container .poster{
+  text-align: center;
+}
+
+.container .poster image{
+  width: 80%;
+  height: 889rpx;
+  margin-top: 62rpx;
+}
+
+.container .btn{
+  width: 80%;
+  height: 80rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background: #2D5DF6;
+  color: #fff;
+  border-radius: 50rpx;
+  margin: 0 10%;
+}
+
+.container .mr{
+  margin-top: 20rpx;
+}

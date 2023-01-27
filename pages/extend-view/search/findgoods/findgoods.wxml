@@ -1,0 +1,64 @@
+<!--pages/extend-view//search/findgoods/findgoods.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:500rpx;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      帮你找
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#ffffff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="color"></view>
+  <view class="content">
+    <view class="title">输入以下信息,帮您找到心仪的商品</view>
+    <view class="name">
+      <view>
+        <text class="block"></text>
+        <text>商品名称</text>
+      </view>
+      <input placeholder="商品的名称" value="{{name}}" bindinput="nameinput"></input>
+    </view>
+    <view class="name">
+      <view>
+        <text class="block"></text>
+        <text>型号/规格</text>
+      </view>
+      <input placeholder="商品的型号/规格" value="{{modal}}" bindinput="modalinput"></input>
+    </view>
+    <view class="name upload">
+      <view>
+        <text class="block"></text>
+        <text>上传图片</text>
+      </view>
+      <view>
+        <view>
+          <view bindtap="chooseImage">
+            <image class="uploadimg" src="../../../../static/center/upload.png"></image>
+          </view>
+          <view>最多3张,每张5M以内</view>
+        </view>
+        <view class="question-images">
+          <block wx:for="{{images}}" wx:key="*this">
+            <view class="q-image-wrap">
+              <!-- 图片缩略图  -->
+              <image class="q-image" src="{{item}}" mode="aspectFit" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+              <!-- 移除图片的按钮  -->
+              <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="name" style="border-top:none">
+      <view>
+        <text class="block"></text>
+        <text>手机号码</text>
+      </view>
+      <input placeholder="可以联系到您的手机号码" value="{{phone}}" bindinput="phoneinput"></input>
+    </view>
+  </view>
+  <view class="record" bindtap="tofindgoodsrecord">帮找纪录</view>
+
+  <view class="submit {{flag?'submitactive':''}}" bindtap="submit">提交反馈</view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTitleText": "超级会员的权益",
+  "navigationBarTextStyle": "black",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

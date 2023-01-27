@@ -1,0 +1,401 @@
+<!--pages/mycenter-extend//myorder/myorder.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我的订单
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="tabs" style="top:{{height}}px">
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+    <view class="slider {{selected==1?'left1':''}} {{selected==2?'left2':''}} {{selected==3?'left3':''}} {{selected==4?'left4':''}} {{selected==5?'left5':''}}"></view>
+  </view>
+  <!-- <view class="red"></view> -->
+
+  <!-- 当没有相关订单时 -->
+  <view class="{{flag?'noorder':''}} kong">
+    <image src="../../../static/iconfont/none.png"></image>
+    <view>您还没有相关订单</view>
+  </view>
+
+  <!-- 全部 -->
+  <view class="contentbox" style="margin-top:{{height+40}}px" wx:if="{{selected==0}}">
+    <view class="content" wx:for="{{alllist}}" wx:key="index" wx:for-item="item">
+      <view class="shop">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          <text>{{item.ShopName}}</text>
+        </view>
+        <view>
+          <text wx:if="{{item.Status=='1'}}">待付款</text>
+          <text wx:if="{{item.Status=='2'}}">待分享</text>
+          <text wx:if="{{item.Status=='3'}}">待发货</text>
+          <text wx:if="{{item.Status=='4'}}">待收货</text>
+          <text wx:if="{{item.Status=='5'}}">待评价</text>
+          <text wx:if="{{item.Status=='6'}}">交易关闭</text>
+          <text wx:if="{{item.Status=='7'}}">交易成功</text>
+        </view>
+      </view>
+      <view bindtap="alllistclick" data-current="{{item.OrderID}}" data-index="{{index}}" data-status="{{item.Status}}" wx:for="{{item.OrderProduct}}" wx:key="index1" wx:for-item="item1" wx:for-index="index1">
+        <view class="content-mid">
+          <view>
+            <image src="{{item1.ThumbnailImg}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="productname">{{item1.ProductName}}</view>
+            <view class="model">{{item1.ProductSpecs}}</view>
+            <view class="count">
+              <view>数量：x{{item1.Quantity}}</view>
+              <view class="rcash">返现{{fn.tofixed(item1.Score)}}元</view>
+            </view>
+          </view>
+        </view>
+        <view class="assemble">
+          <view style="color:#E80202;font-size:24rpx;">
+            <view  wx:if="{{item.Status=='2'}}">待分享·差一人</view>
+          </view>
+          <view>
+            <text class="paytext">实付款:</text>
+            <text class="price">{{item1.SubPrice}}</text>(免运费)
+          </view>
+        </view>
+
+        <view class="btn" wx:if="{{item.Status=='1'}}">
+          <view data-current="{{item.OrderID}}" data-index="{{index}}" data-attr="{{index1}}" data-content="{{alllist}}" catchtap="cancleorder">取消订单</view>
+          <view class="confirm"  catchtap="topay" data-current="{{item.OrderNo}}" data-proid="{{item1.ProductID}}" data-score="{{item1.Score}}">去支付</view>
+        </view>
+
+        <view class="btn" wx:if="{{item.Status=='2'}}">
+          <!-- <view data-current="{{item.OrderID}}" data-index="{{index}}" data-attr="{{index1}}" data-content="{{alllist}}" catchtap="cancleorder">取消订单</view> -->
+          <view catchtap="showmodal">取消订单</view>
+          <view class="confirm" catchtap="toinviteassemble" data-orderno="{{item.OrderNo}}" data-memberid="{{item.MemberID}}">邀请拼单</view>
+        </view>
+
+        <view class="btn" wx:if="{{item.Status=='3'}}">
+          <!-- <view catchtap="applyrefund" data-orderid="{{item.OrderID}}" data-price="{{item1.SubPrice}}">
+            <text>申请退款</text>
+          </view> -->
+          <view catchtap="urgedeliver" data-current="{{item.OrderID}}">催发货</view>
+          <view class="confirm" data-id="{{item1.ProductID}}" catchtap="togoodsdetail">再次购买</view>
+        </view>
+
+        <view class="btn" wx:if="{{item.Status=='4'}}">
+          <view>
+            <text>延长收货</text>
+          </view>
+          <view bindtap="checklogistic"  data-logisticno="{{item.LogisticsNo}}" data-trackingno="{{item.TrackingNumber}}" data-address="{{item.ReceiverAddress}}" data-orderid="{{item.OrderID}}" data-name="{{item.LogisticsFirm}}">查看物流</view>
+          <view class="confirm" data-current="{{item.OrderID}}" bindtap="confirmdeliver">确认收货</view>
+        </view>
+
+        <view class="btn" wx:if="{{item.Status=='5'}}">
+          <view class="delete" catchtap="deleteorder" data-current="{{item.OrderID}}">删除订单</view>
+          <!-- <view catchtap="applyrefund" data-orderid="{{item1.OrderID}}" data-price="{{item1.SubPrice}}">
+            <text>申请退款</text>
+          </view> -->
+          <!-- <view class="confirm" data-id="{{item1.ProductID}}" catchtap="togoodsdetail">再次购买</view> -->
+          <view class="confirm">立即评价</view>
+        </view>
+
+        <view class="btn" wx:if="{{item.Status=='6'}}">
+          <view class="delete" catchtap="deleteorder" data-current="{{item.OrderID}}">删除订单</view>
+          <view class="confirm" data-id="{{item1.ProductID}}" catchtap="togoodsdetail">再次购买</view>
+        </view>
+
+        <view class="btn" wx:if="{{item.Status=='7'}}">
+          <view class="delete" catchtap="deleteorder" data-current="{{item.OrderID}}">删除订单</view>
+          <view class="confirm" data-id="{{item1.ProductID}}" catchtap="togoodsdetail">再次购买</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 全部 -->
+
+
+  <!-- 待付款 -->
+  <view class="contentbox" style="margin-top:{{height+40}}px" wx:if="{{selected==1}}">
+    <view class="content" wx:for="{{waitingpay}}" wx:key="index" wx:for-item="item">
+      <view class="shop">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          <text>{{item.ShopName}}</text>
+        </view>
+        <view>
+        </view>
+      </view>
+      <view bindtap="towaitingpaymentdetail" data-current="{{item.OrderID}}" data-content="{{waitingpay}}" data-selecte="{{2}}" data-index="{{index}}" wx:for="{{item.OrderProduct}}" wx:key="index1" wx:for-item="item1" wx:for-index="index1">
+        <view class="content-mid">
+          <view>
+            <image src="{{item1.ThumbnailImg}}" mode="aspectFit"></image>
+          </view>
+          <view class="proinfo">
+            <view class="productname">{{item1.ProductName}}</view>
+            <view class="model">{{item1.ProductSpecs}}</view>
+            <view class="count">
+              <view>数量：x{{item1.Quantity}}</view>
+              <view class="rcash">返现{{fn.tofixed(item1.Score)}}元</view>
+            </view>
+          </view>
+        </view>
+        <view class="assemble">
+          <view style="color:#E80202;font-size:24rpx;">
+          </view>
+          <view>
+            <text class="paytext">实付款:</text>
+            <text class="price">￥{{item.TotalPrice}}</text>(免运费)
+          </view>
+        </view>
+        <view class="btn">
+          <view data-current="{{item.OrderID}}" data-index="{{index}}" data-content="{{waitingpay}}" data-attr="{{index1}}" catchtap="cancleorder">取消订单</view>
+          <view class="confirm" catchtap="topay" data-current="{{item.OrderNo}}" data-proid="{{item1.ProductID}}" data-score="{{item1.Score}}">去支付</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 待付款结束 -->
+
+  <!--取消订单-->
+  <tui-bottom-popup show="{{popupShow}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+    <view class="title">请选择原因</view>
+    <view class="tips">订单一旦取消,无法恢复</view>
+    <view wx:for="{{reason}}" wx:key="index" class="reason {{activeindex==index?'active':''}}" data-current="{{item.Key}}" bindtap="choosereason">{{item.Value}}</view>
+    <button class="submit" bindtap="submit">提交申请</button>
+  </tui-bottom-popup>
+  <!--取消订单-->
+
+  <!-- 待分享 -->
+  <view class="contentbox" style="margin-top:{{height+40}}px" wx:if="{{selected==2}}">
+    <view wx:for="{{waitingshare}}" wx:key="index" wx:for-index="index" class="content">
+      <view class="shop">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          <text>{{item.ShopName}}</text>
+        </view>
+        <view>
+        </view>
+      </view>
+      <view wx:for="{{item.OrderProduct}}" bindtap="towaitingleaguedetail" data-selecte="{{2}}" data-content="{{waitingshare}}" data-current="{{item.OrderID}}" data-index="{{index}}" wx:key="index" wx:for-item="item1" wx:for-index="index1">
+        <view class="content-mid">
+          <view>
+            <image src="{{item1.ThumbnailImg}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="productname">{{item1.ProductName}}</view>
+            <view class="model">{{item1.ProductSpecs}}</view>
+            <view class="count">
+              <view>数量：x{{item1.Quantity}}</view>
+              <view class="rcash">返现{{fn.tofixed(item1.Score)}}元</view>
+            </view>
+          </view>
+        </view>
+        <view class="assemble">
+          <view style="color:#2D5DF6;font-size:24rpx;">
+            待分享·差一人
+          </view>
+          <view>
+            <text class="paytext">实付款</text>
+            <text class="price">￥{{item1.SubPrice}}</text>(免运费)
+          </view>
+        </view>
+
+        <view class="btn">
+          <view data-current="{{item.OrderID}}" data-index="{{index}}" data-content="{{waitingshare}}" data-attr="{{index1}}" catchtap="cancleorder">取消订单</view>
+          <!-- <view catchtap="showmodal">取消订单</view> -->
+          <view class="confirm" catchtap="toinviteassemble" data-orderno="{{item.OrderNo}}" data-memberid="{{item.MemberID}}">邀请拼单</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 取消订单弹框 -->
+  <!-- <tui-modal show="{{ordermodal}}" bind:cancel="hide" custom="{{true}}" class="ordercancle">
+    <view class="tips">提示</view>
+    <view class="content">发起拼单24小时后,若未拼单成功将自动取消订单并退款哦</view>
+    <view class="btn" bindtap="hide">
+      知道了
+    </view>
+  </tui-modal> -->
+  <!-- 待分享结束 -->
+
+  <!-- 待发货 -->
+  <view class="contentbox" style="margin-top:{{height+40}}px" wx:if="{{selected==3}}">
+    <view wx:for="{{waitingdeliver}}" wx:key="index" class="content">
+      <view class="shop">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          <text>{{item.ShopName}}</text>
+        </view>
+        <view>
+        </view>
+      </view>
+      <view wx:for="{{item.OrderProduct}}" bindtap="towaitingdelivergoodsdetail" data-current="{{item.OrderID}}" data-index="{{index}}" wx:key="index" wx:for-item="item1">
+        <view class="content-mid">
+          <view>
+            <image src="{{item1.ThumbnailImg}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="productname">{{item1.ProductName}}</view>
+            <view class="model">{{item1.ProductSpecs}}</view>
+            <view class="count">
+              <view>数量：x{{item1.Quantity}}</view>
+              <view class="rcash">返现{{fn.tofixed(item1.Score)}}元</view>
+            </view>
+          </view>
+        </view>
+        <view class="assemble">
+          <view>
+            <image></image>
+            <!-- <text style="font-weight:bold">发起拼团</text> -->
+          </view>
+          <view>
+            <text class="paytext">实付款</text>
+            <text class="price">￥{{item1.SubPrice}}</text>(免运费)
+          </view>
+        </view>
+
+        <view class="btn">
+          <!-- <view catchtap="applyrefund" data-orderid="{{item.OrderID}}" data-price="{{item1.SubPrice}}">
+            <text>申请退款</text>
+          </view> -->
+          <view catchtap="urgedeliver" data-current="{{item.OrderID}}">催发货</view>
+          <view class="confirm" data-id="{{item1.ProductID}}" catchtap="togoodsdetail">再次购买</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 待发货结束 -->
+
+  <!-- 待收货 -->
+  <view class="contentbox" style="margin-top:{{height+40}}px" wx:if="{{selected==4}}">
+    <view wx:for="{{waitingreceving}}" wx:key="index" class="content">
+      <view class="shop">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          <text>{{item.ShopName}}</text>
+        </view>
+        <view>
+        </view>
+      </view>
+      <view wx:for="{{item.OrderProduct}}" data-content="{{waitingreceving}}" data-index="{{index}}" data-current="{{item.OrderID}}" data-index="{{index}}" bindtap="towaitinggoodsdetail" wx:key="index" wx:for-item="item1">
+        <view class="content-mid">
+          <view>
+            <image src="{{item1.ThumbnailImg}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="productname">{{item1.ProductName}}</view>
+            <view class="model">{{item1.ProductSpecs}}</view>
+            <view class="count">
+              <view>数量：x{{item1.Quantity}}</view>
+              <view class="rcash">返现{{fn.tofixed(item1.Score)}}元</view>
+            </view>
+          </view>
+        </view>
+        <view class="assemble">
+          <view>
+            <image></image>
+            <!-- <text style="font-weight:bold">发起拼团</text> -->
+          </view>
+          <view>
+            <text class="paytext">实付款</text>
+            <text class="price">￥{{item1.SubPrice}}</text>(免运费)
+          </view>
+        </view>
+      </view>
+
+      <view class="btn" style="margin-bottom:20rpx;">
+        <view bindtap="delayreceipt" data-current="{{item.OrderID}}">
+          <text>延长收货</text>
+        </view>
+        <view bindtap="checklogistic" data-logisticno="{{item.LogisticsNo}}" data-trackingno="{{item.TrackingNumber}}" data-address="{{item.ReceiverAddress}}" data-orderid="{{item.OrderID}}" data-name="{{item.LogisticsFirm}}">查看物流</view>
+        <view class="confirm" data-current="{{item.OrderID}}" bindtap="confirmdeliver">确认收货</view>
+      </view>
+
+
+
+      <!-- <view class="logistic" bindtap="checklogistic">
+        <text>韵达快递:</text>
+        <text>【长沙市】你的快递已经签收，签收人：阿斯达 </text>
+      </view> -->
+    </view>
+  </view>
+  <!-- 待收货结束 -->
+
+  <!-- <tui-modal show="{{modal}}" bind:click="confirm" bind:cancel="hide" content="确定收货吗？" color="#333" size="32" shape="circle"></tui-modal> -->
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hidemodal" custom="{{true}}" class="clickaddress">
+    <view class="tips">确认收货吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hidemodal">取消</button>
+      <button class="addaddress" bindtap="confirm">确认</button>
+    </view>
+    <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+
+  <!-- 待评价 -->
+  <view class="contentbox" style="margin-top:{{height+40}}px" wx:if="{{selected==5}}">
+    <view wx:for="{{waitingevaluate}}" wx:key="index" class="content">
+      <view class="shop">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          <text>{{item.ShopName}}</text>
+        </view>
+        <view>
+        </view>
+      </view>
+      <view wx:for="{{item.OrderProduct}}" wx:key="index" bindtap="toevaluatedetail" wx:for-item="item1" data-current="{{item.OrderID}}" data-index="{{index}}">
+        <view class="content-mid">
+          <view>
+            <image src="{{item1.ThumbnailImg}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="productname">{{item1.ProductName}}</view>
+            <view class="model">{{item1.ProductSpecs}}</view>
+            <view class="count">
+              <view>数量：x{{item1.Quantity}}</view>
+              <view class="rcash">返现{{fn.tofixed(item1.Score)}}元</view>
+            </view>
+          </view>
+        </view>
+        <view class="assemble">
+          <view>
+            <image></image>
+            <!-- <text style="font-weight:bold">发起拼团</text> -->
+          </view>
+          <view>
+            <text class="paytext">实付款</text>
+            <text class="price">￥{{item1.SubPrice}}</text>(免运费)
+          </view>
+        </view>
+        <view class="btn">
+          <view class="delete" catchtap="deleteorder" data-current="{{item.OrderID}}">删除订单</view>
+          <!-- <view catchtap="applyrefund" data-orderid="{{item.OrderID}}" data-price="{{item1.SubPrice}}">
+            <text>申请退款</text>
+          </view> -->
+          <!-- <view data-id="{{item1.OrderProID}}" catchtap="togoodsdetail">再次购买</view> -->
+          <view class="confirm" data-current="{{item.OrderID}}" catchtap="topublishevaluation">立即评价</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <tui-modal1 show="{{deletemodal}}" bind:cancel="hidemodal1" custom="{{true}}" class="clickaddress">
+    <view class="tips">确认要删除订单吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hidemodal1">取消</button>
+      <button class="addaddress" bindtap="confirm1">确认</button>
+    </view>
+    <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+  <!-- 待评价结束 -->
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

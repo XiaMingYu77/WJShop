@@ -1,0 +1,263 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      购物车
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="{{flag?'noorder':''}} kong" style="margin-top:{{height+20}}px">
+    <image src="../../../../static/iconfont/none.png"></image>
+    <view>购物车是空的</view>
+  </view>
+
+  <view class="goodsbox" wx:if="{{carts.length!=0}}" style="margin-top:{{height+10}}px">
+    <view class="goods" wx:for="{{carts}}" wx:key="index1" wx:for-index="index1">
+      <view class="shopname">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          {{item.ShopName}}
+        </view>
+        <view>
+          <view class="manage" bindtap="manage" wx:if="{{!deleteflag}}">管理</view>
+          <view class="manage" bindtap="manage" wx:if="{{deleteflag}}">完成</view>
+        </view>
+      </view>
+      <view>
+        <view class="goodsinfo" wx:for="{{item.Cartlist}}" wx:key="index" data-id="{{item.ID}}">
+          <view>
+            <!-- <label class="tui-checkbox" wx:if="{{item.AndStorage>0&&item.Storage>0}}">
+              <checkbox color="#fff" bindtap="checkboxChange" checked="{{item.selected}}" data-attr="{{index1}}" data-index="{{index}}"></checkbox>
+            </label> -->
+            <view class="item-select" wx:if="{{item.AndStorage>0&&item.Storage>0}}">
+              <icon wx:if="{{item.selected}}" type="success" color="#2D5DF6" bindtap="checkboxChange" data-index="{{index}}" />
+              <icon wx:else type="circle" bindtap="checkboxChange" data-index="{{index}}" />
+            </view>
+            <image wx:if="{{item.AndStorage>0&&item.Storage<=0}}" class="graydot" src="../../../../static/iconfont/graydot.png" mode="aspectFit"></image>
+          </view>
+          <view data-productid="{{item.ProductID}}" bindtap="getproductid" data-goodsid="{{item.GoodsID}}">
+            <image src="{{item.FullImg}}" mode="aspectFit"></image>
+          </view>
+          <view class="goodinfo-right">
+            <view data-productid="{{item.ProductID}}" bindtap="getproductid" data-goodsid="{{item.GoodsID}}" class="name">{{item.ProductName}}</view>
+            <view class="norms" data-productid="{{item.ProductID}}" bindtap="getproductid" data-goodsid="{{item.GoodsID}}" wx:if="{{item.AndStorage>0&&item.Storage>0}}">
+              <view class="guige">
+                <view wx:for="{{item.ProductSpec}}" wx:key="index">
+                  {{item}}
+                </view>
+              </view>
+            </view>
+            <view class="money" wx:if="{{item.AndStorage>0&&item.Storage>0}}">
+              <view data-productid="{{item.ProductID}}" bindtap="getproductid" data-goodsid="{{item.GoodsID}}">
+                <view class="price">￥{{item.MarketPrice}}</view>
+                <view class="recash">返现{{fn.tofixed(item.Score*repercent*item.Quantity)}}元</view>
+              </view>
+              <view>
+                <tui-numberbox  height="22" min="1" width="63" max="{{item.Storage}}" data-productid="{{item.ProductID}}" data-goodsid="{{item.GoodsID}}" value="{{item.Quantity}}" bind:change="change" data-attr="{{index1}}" data-index="{{index}}"></tui-numberbox>
+              </view>
+            </view>
+            <view class="chooseother" wx:if="{{item.AndStorage>0&&item.Storage<=0}}">
+              <view>请重新选择商品规格</view>
+              <view bindtap="reselect" data-info="{{item.ProductRule}}" data-storage="{{item.AndStorage}}" data-current="{{item.ProductID}}" data-price="{{item.MarketPrice}}" data-cartid="{{item.ID}}" data-img="{{item.FullImg}}">重选</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="invalid" wx:if="{{InvalidCount!=0}}">
+    <view class="invalid-top">
+      <view>失效商品{{InvalidCount}}件</view>
+      <view class="clear" bindtap="showmodal2">清空所有失效商品</view>
+    </view>
+    <view class="goodsinfo" wx:for="{{invalid}}" wx:key="index">
+      <view class="shixiao">
+        失效
+      </view>
+      <view class="imgbox">
+        <image class="proimg" src="{{item.FullImg}}" mode="aspectFit"></image>
+        <image class="nogood" src="../../../../static/iconfont/nogood.png"></image>
+      </view>
+      <view class="goodinfo-right">
+        <view class="name">{{item.ProductName}}</view>
+        <view class="price">￥{{item.MarketPrice}}</view>
+        <view class="content">
+          <view wx:if="{{item.ProductStatus==1}}">此商品已售罄</view>
+          <view wx:if="{{item.ProductStatus==0}}">该商品已下架,如有问题请联系客服</view>
+          <view class="findalike">找相似</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="tui-product-box">
+      <view class="tui-group-name">
+        <text>更多推荐</text>
+      </view>
+      <view class="prolist">
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+            <view class="goods1" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble">
+                  <view class="spellback">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <!-- <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view> -->
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+            <view class="goods1" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble">
+                  <view class="spellback">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <!-- <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view> -->
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+  <view class="botbox" wx:if="{{carts.length!=0}}">
+    <view class="bot">
+      <view>
+        <!-- <label class="tui-checkbox" style="line-height:30rpx;" bindtap="selectall">
+          <checkbox color="#fff" checked="{{selectAllStatus}}" style="margin-right:10rpx;"></checkbox>全选
+        </label> -->
+        <view class="item-allselect">
+          <icon wx:if="{{selectAllStatus}}" type="success" color="#2D5DF6" bindtap="selectall" />
+          <icon wx:else type="circle" bindtap="selectall"/>
+          <text class="small_text">全选</text> 
+        </view>
+        
+
+      </view>
+      <view class="bot-right" wx:if="{{!deleteflag}}">
+        <view class="money">
+          <view class="amount">合计
+            <text style="color:#E64048;font-size:24rpx">￥</text>
+            <text class="price">{{totalPrice}}</text>
+          </view>
+          <view>
+            预估返现
+            <text class="price" style="color:#2D5DF6;font-size:20rpx">￥{{fn.tofixed(Score)}}</text> </view>
+        </view>
+        <view class="tosettlement" bindtap="toshopcartsettlement">去结算
+          <text style="font-size:24rpx;">({{totalNum}})</text> </view>
+      </view>
+      <view class="bot-right" wx:if="{{deleteflag}}">
+        <view class="tosettlement" bindtap="showmodal1">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <tui-modal1 show="{{modal1}}" bind:cancel="hidemodal1" custom="{{true}}" class="deleteaddress">
+    <!-- <image class="close" src="../../../../static/iconfont/close.png" bindtap="hidemodal1"></image> -->
+    <view class="title">
+      你确定要删除该商品吗?
+    </view>
+    <view class="bot">
+      <view bindtap="hidemodal1">取消</view>
+      <view bindtap="delete">确定</view>
+    </view>
+  </tui-modal1>
+
+  <tui-modal1 show="{{modal2}}" bind:cancel="hidemodal2" custom="{{true}}" class="deleteaddress">
+    <!-- <image class="close" src="../../../../static/iconfont/close.png" bindtap="hidemodal2"></image> -->
+    <view class="title">
+      你确定要清空所有商品吗?
+    </view>
+    <view class="bot">
+      <view bindtap="hidemodal2">取消</view>
+      <view bindtap="clearpro">确定</view>
+    </view>
+  </tui-modal1>
+
+  <!-- 重选规格弹框 -->
+  <tui-bottom-popup show="{{choosemodelflag}}" tui-popup-class="tui-popup" bind:close="hide">
+    <view class="pro-popbox">
+      <image class="x" src="../../../../static/iconfont/close.png" bindtap="hide"></image>
+      <view class="popbox">
+        <image src="{{img}}" class="popup-img" mode="aspectFit"></image>
+        <view class="popup-price">
+          <view class="price">
+            <text class="money">￥</text>{{marketPrice}}元</view>
+          <view class="number">库存量：{{storage}}件</view>
+          <view class="model">已选: {{modalstr}}</view>
+        </view>
+      </view>
+      <view class="choosemodel" wx:for="{{productrule}}" wx:for-index="index1" wx:key="index1">
+        <view class="choose">{{item.specName}}</view>
+        <view class="content">
+          <view wx:for="{{item.specVal}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
+            <view class="model  {{(selectedCurrent[index1]==index1+1 &&selectedAttr[index1]==index2)?'selected':''}}" data-current="{{index1+1}}" data-select-index="{{id}}" data-name="{{item2.val}}" data-attr-index="{{index2}}" data-content="{{properties}}" bindtap="choosemodel">{{item2.val}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="amount1">
+      <view>数量</view>
+      <tui-numberbox max="{{storage}}" min="1" value="{{value}}" bind:change="change1"></tui-numberbox>
+    </view>
+    <view class="addcart-determine {{storage<=0?'nostorage':''}}" catchtap="choosemodalsubmit">
+      确定
+    </view>
+  </tui-bottom-popup>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

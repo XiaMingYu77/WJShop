@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "商家信息",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../../components/icon/icon"
+  }
+}

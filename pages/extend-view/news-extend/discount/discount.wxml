@@ -1,0 +1,53 @@
+<!--pages/extend-view//news-extend/discount/discount.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      优惠活动
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+  <view class="none" wx:if="{{activitylist.length==0}}" style="margin-top:{{height+10}}px">
+    <nodata text="暂无优惠活动"></nodata>
+  </view>
+  <view style="margin-top:{{height+10}}px">
+    <block wx:for="{{activitylist}}" wx:key="index">
+      <view class="box" wx:if="{{item.MessageType==1}}">
+        <view class="topic">
+          <view>
+            <image src="../../../../static/iconfont/diamond.png"></image>
+            <text class="title">{{item.title}}</text>
+          </view>
+          <view class="time">{{item.createdate}}</view>
+        </view>
+        <!-- <block wx:for="{{item.list}}" wx:key="index"> -->
+        <view class="imgbox">
+          <image class="img" src="{{item.list.imgsrc}}" bindtap="toproductdetail" data-current="{{item.list.productid}}"></image>
+        </view>
+        <!-- <view class="content" wx:if="{{index!=0}}" bindtap="toproductdetail" data-current="{{item.productid}}">
+        <view class="contentright">{{item.title}}</view>
+        <image src="{{item.imgsrc}}"></image>
+      </view> -->
+        <!-- </block> -->
+      </view>
+      <view class="box findgoodsmessage" wx:if="{{item.MessageType==2}}" bindtap="findgoods" data-id="{{item.list.productid}}" data-index="{{item.MessageType}}">
+        <view class="topic">
+          <view>
+            <image src="../../../../static/center/shandian.png"></image>
+            <text class="title">{{item.title}}</text>
+          </view>
+          <view class="time">{{item.createdate}}</view>
+        </view>
+        <view class="boxbot">
+          <image src="../../../../static/center/findgoods.png"></image>
+          <view class="content">
+            <view wx:if="{{item.MessageType==2}}">找货申请已成功提交</view>
+            <view wx:else>已成功找到商品，请点击查看</view>
+            <view>{{item.TitleMsg}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

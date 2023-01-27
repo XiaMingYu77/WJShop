@@ -1,0 +1,5 @@
+<!--components/nodata/nodata.wxml-->
+<view class="none">
+  <image src="../../static/iconfont/none.png"></image>
+  <view>{{text}}</view>
+</view>

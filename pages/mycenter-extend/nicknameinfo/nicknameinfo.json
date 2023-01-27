@@ -1,0 +1,12 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "昵称信息",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-bottom-popup": "../../../components/bottom-popup/bottom-popup",
+    "tui-modal1": "../../../components/modal1/modal1",
+    "tui-button": "../../../components/button/button",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

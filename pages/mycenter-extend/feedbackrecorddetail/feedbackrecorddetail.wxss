@@ -1,0 +1,134 @@
+/* pages/mycenter-extend//feedbackrecorddetail/feedbackrecorddetail.wxss */
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .question {
+  width: 94%;
+  margin: 0 3%;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.container .question text{
+  font-size: 28rpx;
+}
+
+.container .question .imgs{
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  margin: 20rpx 0;
+}
+
+.container .question .imgs image{
+  width: 208rpx;
+  height: 208rpx;
+  margin-right: 18rpx;
+}
+
+.container .question .imgs .last{
+  margin-right: 0;
+}
+
+.container .answer{
+  width: 94%;
+  margin: 20rpx 3%;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.container .answer image{
+  width: 46rpx;
+  height:46rpx;
+  margin-left: 10rpx;
+  color: #666666;
+  border-radius: 50%;
+}
+
+.container .answer .name{
+  display: flex;
+  align-items: center;
+  margin: 18rpx 0;
+}
+
+.container .answer .replay{
+  margin-left: 56rpx;
+  /* margin-bottom: 12rpx; */
+}
+
+.container .answer .time{
+  margin-left: 56rpx;
+  margin-bottom: 12rpx;
+  color: #999999;
+}

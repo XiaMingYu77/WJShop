@@ -1,0 +1,52 @@
+<!--pages/extend-view1//activevalue/index/index.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      活跃值
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="activevalue" style="margin-top:{{height+10}}px">
+    <image src="../../../../static/iconfont/active.png"></image>
+    您近30天的活跃值:
+    <text class="value">{{value}}</text>
+  </view>
+
+  <view class="topbox">
+    <view class="bt" bindtap="tomyselfpush">
+      <view>自己推广所得</view>
+      <view>
+        <image src="../../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <view class="bt" bindtap="tomymemberpush">
+      <view>我的会员推广所得</view>
+      <view>
+        <image src="../../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <view class="bt">
+      <view>我的活跃会员人数</view>
+      <view>
+        {{num}}
+      </view>
+    </view>
+    <view class="tips">
+      注:每天上午10点左右更新截止至昨天的近30天日活跃值情况 每日更新一次
+    </view>
+  </view>
+
+
+
+  <view class="rules">
+    <view class="mr">【活跃值详细规则说明】</view>
+    <view>1.活跃值由近30天自己推广产生</view>
+    <view style="margin-top:10rpx;">2.佣金1元=1分，累计不满1元的部分不计入</view>
+    <view class="mr mt">【活跃会员说明】</view>
+    <view>1.配置智能助理且近30天推广收益大于0元的会员</view>
+    <view style="margin-top:10rpx;">2.活跃值大于200的会员</view>
+  </view>
+</view>

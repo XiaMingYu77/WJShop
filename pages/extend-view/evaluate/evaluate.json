@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "商品评价",
+  "usingComponents": {
+    "tui-rate": "../../../components/rate/rate"
+  }
+}

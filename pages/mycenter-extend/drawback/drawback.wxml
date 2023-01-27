@@ -1,0 +1,141 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;">
+      退款售后
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="tabs" style="top:{{height}}px">
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+    <view class="slider {{selected==0?'left1':''}} {{selected==1?'left2':''}}"></view>
+  </view>
+
+  <!-- 当没有相关订单时 -->
+  <view class="{{flag?'noorder':''}} kong">
+    <image src="../../../static/iconfont/none.png"></image>
+    <view>暂无更多数据</view>
+  </view>
+
+
+  <view class="goodsbox" wx:if="{{selected==0}}" style="margin-top:{{height+42}}px">
+    <view class="goods" wx:for="{{alllist}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+      <view class="shopname">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          {{item.ShopName}}
+        </view>
+        <!-- <view class="staus">退款成功</view> -->
+      </view>
+      <view class="goodsinfo" bindtap="togoodsdetail" data-id="{{item.ProductID}}">
+        <view>
+          <image src="{{item.GoodImg}}" mode="aspectFit"></image>
+        </view>
+        <view>
+          <view class="name">{{item.ProductName}}</view>
+          <view class="norms">{{item.GoodRule}}</view>
+          <view class="money">
+            <view>
+              <view class="price">实付款:
+                <text style="color:#2D5DF6;">￥{{item.TotalPrice}}</text>
+              </view>
+              <view class="price">
+                <text wx:if="{{item.GoodsRejected!='2'}}">退款金额</text>
+                <!-- <text wx:if="{{item.GoodsRejected=='2'}}">换货金额</text> -->
+                <text class="recash" wx:if="{{item.GoodsRejected!='2'}}"> ￥{{item.RefundAmount}}</text> </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 0 撤销申请 1.正在处理，2.完成，3.商家拒绝，4.商家同意,待用户发货，5.商家同意,待商家收货，6.商家同意,待用户收货 -->
+      <view class="btn">
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==0}}">撤销申请</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==1}}">正在处理</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==2}}">完成</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==3}}">商家拒绝</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==4}}">商家同意,待用户发货</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==5}}">商家同意,待商家收货</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==6}}">商家同意,待用户收货</view>
+        <view>
+          <view class="deleteorder" wx:if="{{item.Status==2}}" data-current="{{item.ChargebackId}}" bindtap="showmodal">删除订单</view>
+          <view class="detail" bindtap="todrawbackdetail" data-status="{{item.Status}}" data-current="{{item.ChargebackId}}">售后详情</view>
+        </view>
+      </view>
+      <!-- <view class="btn">
+        <view style="color:#E64048">待用户发货</view>
+        <view>
+          <view class="deleteorder">删除订单</view>
+          <view class="detail">售后详情</view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+
+  <view class="goodsbox" wx:if="{{selected==1}}" style="margin-top:{{height+42}}px">
+    <view class="goods" wx:for="{{handlelist}}" wx:key="index" wx:for-index="index" wx:for-item="item">
+      <view class="shopname">
+        <view>
+          <image src="{{item.ShopPhoto}}" mode="aspectFit"></image>
+          {{item.ShopName}}
+        </view>
+        <!-- <view class="staus">退款成功</view> -->
+      </view>
+      <view class="goodsinfo">
+        <view>
+          <image src="{{item.GoodImg}}" mode="aspectFit"></image>
+        </view>
+        <view>
+          <view class="name">{{item.ProductName}}</view>
+          <view class="norms">{{item.GoodRule}}</view>
+          <view class="money">
+            <view>
+              <view class="price">实付款:
+                <text style="color:#2D5DF6;">￥{{item.TotalPrice}}</text>
+              </view>
+              <view class="price">
+                <text wx:if="{{item.GoodsRejected!='2'}}">退款金额</text>
+                <text wx:if="{{item.GoodsRejected=='2'}}">换货金额</text>
+                <text class="recash"> ￥{{item.RefundAmount}}</text> </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="btn">
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==0}}">撤销申请</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==1}}">正在处理</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==2}}">完成</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==3}}">商家拒绝</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==4}}">商家同意,待用户发货</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==5}}">商家同意,待商家收货</view>
+        <view style="color:#2D5DF6;" wx:if="{{item.Status==6}}">商家同意,待用户收货</view>
+        <view>
+          <view class="deleteorder" wx:if="{{item.Status==2}}" data-current="{{item.OrderID}}" bindtap="deleteorder">删除订单</view>
+          <view class="detail" bindtap="todrawbackdetail" data-status="{{item.Status}}" data-current="{{item.ChargebackId}}">售后详情</view>
+        </view>
+      </view>
+      <!-- <view class="btn">
+        <view style="color:#E64048">待用户发货</view>
+        <view>
+          <view class="deleteorder">删除订单</view>
+          <view class="detail">售后详情</view>
+        </view>
+      </view> -->
+    </view>
+  </view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips">提示</view>
+    <view class="content">删除订单之后此售后单无法恢复，请慎重考虑再选择是否删除</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="deleteorder">确认</button>
+    </view>
+    <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+
+
+</view>

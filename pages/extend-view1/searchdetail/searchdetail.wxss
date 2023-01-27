@@ -1,0 +1,444 @@
+/* pages/extend-view1//searchdetail/searchdetail.wxss */
+page {
+  /* background: #E8E8E9; */
+}
+
+.container {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 隐藏scroll-view滚动条*/
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.tui-header-box {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  z-index: 99998;
+  left: 0;
+  top: 0;
+}
+
+.tui-header {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tui-back {
+  margin-left: 8rpx;
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.tui-searchbox {
+  width: 100%;
+  height: 30px;
+  margin-right: 20rpx;
+  border-radius: 15px;
+  font-size: 12px;
+  background: #f7f7f7;
+  padding: 3px 10px;
+  box-sizing: border-box;
+  color: #999;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border:2rpx solid rgba(45,93,246,1);
+}
+
+.tui-search-text {
+  padding-left: 16rpx;
+}
+
+.tui-search-key {
+  max-width: 80%;
+  height: 100%;
+  padding: 0 16rpx;
+  margin-left: 12rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  background: rgba(141,168,255,1);
+  color: #fff;
+  /* transform: scale(0.9);
+  transform-origin: 0 center; */
+}
+
+.tui-key-text {
+  box-sizing: border-box;
+  padding-right: 12rpx;
+  font-size: 12px;
+  line-height: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background:rgba(141,168,255,1);
+}
+
+/*screen*/
+
+.tui-header-screen {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  position: fixed;
+  z-index: 1000;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+}
+
+.tui-screen-top, .tui-screen-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.tui-screen-top {
+  height: 88rpx;
+  position: relative;
+  background: #fff;
+}
+
+.tui-top-item {
+  height: 28rpx;
+  line-height: 28rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tui-top-item image{
+  width: 17rpx;
+  height: 25rpx;
+}
+
+.tui-topitem-active {
+  color: #e41f19;
+}
+
+.tui-active {
+  color: #2D5DF6;
+}
+
+.pricetagbox{
+
+}
+
+.pricetagbox .pricetag{
+  display: block !important;
+}
+
+.pricetagbox>tui-icon:first-child{
+  margin-bottom: -10rpx !important;
+}
+
+/* .pricebtn{
+  height: 20rpx;
+  display: flex;
+  flex-direction: column;
+} */
+
+/* .tui-screen-bottom {
+  height: 100rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tui-bottom-text {
+  line-height: 24rpx;
+  max-width: 82%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tui-bottom-item {
+  flex: 1;
+  width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12rpx;
+  box-sizing: border-box;
+  background: #f7f7f7;
+  margin-right: 20rpx;
+  white-space: nowrap;
+  height: 60rpx;
+  border-radius: 40rpx;
+}
+
+.tui-bottom-item:last-child {
+  margin-right: 0;
+}
+
+.tui-btmItem-active {
+  background: #fcedea !important;
+  color: #e41f19;
+  font-weight: bold;
+  position: relative;
+}
+
+.tui-btmItem-active::after {
+  content: "";
+  position: absolute;
+  border: 1rpx solid #e41f19;
+  width: 100%;
+  height: 100%;
+  border-radius: 40rpx;
+  left: 0;
+  top: 0;
+}
+
+.tui-btmItem-tap {
+  position: relative;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tui-btmItem-tap::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 22rpx;
+  background: #f7f7f7;
+  left: 0;
+  top: 58rpx;
+}
+
+.tui-bold {
+  font-weight: bold;
+}
+
+
+
+.tui-ml {
+  margin-left: 6rpx;
+}
+
+.tui-seizeaseat-20 {
+  height: 20rpx;
+}
+
+.tui-seizeaseat-30 {
+  height: 30rpx;
+}
+
+.tui-middle {
+  vertical-align: middle;
+} */
+
+/*screen*/
+
+/* goods */
+
+.container .prolist {
+  display: flex;
+  width: 94%;
+  margin: 0 3%;
+  /* flex-direction: row; */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+  /* margin-top: 240rpx; */
+}
+
+.container .prolist .goods {
+  position: relative;
+  width: 344rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+}
+
+.container .prolist .goods .imgbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 340rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.container .prolist .goods image {
+  /* width: 134rpx;
+  height: 209rpx; */
+  width: 100%;
+  height: 100%;
+}
+
+.container .prolist .goods .content {
+  padding: 20rpx;
+  font-size: 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.container .prolist .goods .content .name {
+  height: 64rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.container .prolist .goods .content .evaluate {
+  margin: 19rpx 0;
+  color: #666;
+}
+
+.container .prolist .goods .content .assemble {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+  font-size: 20rpx;
+  color: #333;
+}
+
+.container .prolist .goods .content .assemble .spellback {
+  border: 1rpx solid rgba(45, 93, 246, 1);
+  color: #333;
+  border-radius: 20rpx;
+  padding-right: 10rpx;
+}
+
+.container .prolist .goods .content .assemble .spellback text {
+  color: #fff;
+  background: rgba(45, 93, 246, 1);
+  border-radius: 20rpx;
+  padding: 0 7rpx;
+}
+
+.container .prolist .goods .content .assemble .pushprofit {
+  border: 1rpx solid rgba(45, 93, 246, 1);
+  color: #333;
+  border-radius: 20rpx;
+  padding: 0 10rpx;
+}
+
+.container .prolist .goods .content .price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.container .prolist .goods .content .money {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.container .prolist .goods .content .price .price-left {
+  display: flex;
+  align-items: center;
+}
+
+.container .prolist .goods .content .zhu {
+  width: 32rpx;
+  height: 32rpx;
+  color: #fff;
+  background: #2d5df6;
+  border-radius: 50%;
+  font-size: 20rpx;
+  margin-left: 10rpx;
+  text-align: center;
+  line-height: 32rpx;
+}
+
+.container .prolist .goods .content .price .price-right {
+  color: #fff;
+  height: 38rpx;
+  line-height: 38rpx;
+  background: rgba(45, 93, 246, 1);
+  padding: 0 15rpx;
+  font-size: 24rpx;
+  border-radius: 20rpx;
+}
+
+.container .prolist .goods .push {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 74rpx;
+  height: 28rpx;
+  background: rgba(141, 168, 255, 1);
+  border-radius: 0rpx 10rpx 0rpx 10rpx;
+  font-size: 18rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.container .prolist .goods .nopush {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 74rpx;
+  height: 28rpx;
+  background: rgba(45, 93, 246, 1);
+  border-radius: 0rpx 10rpx 0rpx 10rpx;
+  font-size: 18rpx;
+  text-align: center;
+  color: #fff;
+}
+
+/* goods结束 */
+
+.container .kong {
+  margin-top: 50rpx;
+  /* padding: 200rpx 0; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999999;
+  font-weight: 400;
+}
+
+.container .kong image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 20rpx;
+}
+
+.container .nogoods .tofindgoods{
+  display: block;
+  width: 94%;
+  height: 120rpx;
+  margin: 48rpx auto;
+}
+
+.container .nogoods .title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 94%;
+  margin: 0 3%;
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: 500;
+  margin-bottom: 24rpx;
+}
+
+.container .nogoods .title .line{
+  width: 212rpx;
+  height: 2rpx;
+  background: #EEEEEE;
+}

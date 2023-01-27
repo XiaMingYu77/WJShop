@@ -1,0 +1,127 @@
+<!--pages/extend-view//bargaining/bargaininglist/bargaininglist.wxml-->
+<!-- 砍价列表 -->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      好物免费拿
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="bargining" style="margin-top:{{height}}px">
+    <image class="firstimg" src="https://shop.we-time.net/images/kanjiabg.png"></image>
+    <view class="rule" bindtap="showrulemodal" style="top:{{height+37}}px">规则</view>
+    <view class="record" bindtap="tobargingrecord" style="top:{{height+63}}px">砍成纪录</view>
+    <view class="goingproduct" wx:if="{{flag}}">
+      <image class="going" src="../../../../static/iconfont/going.png"></image>
+      <view class="barginingpro">
+        <view class="barginingproleft">
+          <image src="{{FullImg}}" mode="aspectFit"></image>
+          <view class="name">{{ProductName}}</view>
+        </view>
+        <view class="barginingproright">
+          <view>已砍
+            <text style="color:#F21414">{{F_NegotiatedAmount}}元</text>, 还剩
+            <text style="color:#F21414">{{RemainingAmount}}元</text>
+          </view>
+          <view class="line" id="line">
+            <view class="inline" style="width:{{F_NegotiatedAmount/totalamount*100}}%"></view>
+          </view>
+          <view class="count">
+            <tui-countdown time="{{timeList}}" scale="{{true}}" color="#fff" size="{{20}}" bcolor="#020202" bgcolor="#020202" isColon="{{false}}"></tui-countdown>后砍价结束
+          </view>
+          <view class="continue" bindtap="tobargainingunderway">继续砍价</view>
+        </view>
+      </view>
+    </view>
+    <view class="productbox {{flag?'otherproductbox':''}}">
+      <image class="jinxuan" src="../../../../static/iconfont/barging.png"></image>
+      <view class="goodsbox">
+        <block wx:for="{{barginglist}}" wx:key="ID">
+          <view class="goods" data-id="{{item.ID}}" data-img="{{item.FullImg}}" data-storage="{{item.Storage}}" data-productrule="{{item.ProductRule}}" data-name="{{item.ProductName}}" bindtap="startbarging">
+            <view class="storage">仅剩
+              <text>{{item.Storage}}</text> 件</view>
+            <image src="{{item.FullImg}}" mode="aspectFit"></image>
+            <view class="name">{{item.ProductName}}</view>
+            <view class="nowbarging">立即砍价</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <!-- 活动规则 -->
+  <tui-modal1 show="{{rulemodal}}" bind:cancel="hiderulemodal" custom="{{true}}" class="clickaddress">
+    <view class="tips">活动规则</view>
+    <scroll-view scroll-y>
+      <view class="rulecontent">
+        <rich-text nodes="{{rulecontent}}"></rich-text>
+      </view>
+    </scroll-view>
+    <view class="btn" bindtap="hiderulemodal">
+      知道了
+    </view>
+  </tui-modal1>
+
+  <!-- 选择规格弹框 -->
+  <tui-bottom-popup show="{{choosemodelflag}}" tui-popup-class="tui-popup" bind:close="hidemodelflag">
+    <view class="pro-popbox">
+      <image class="x" src="../../../../static/iconfont/close.png" bindtap="hidemodelflag"></image>
+      <view class="popbox">
+        <image src="{{modalimg}}" class="popup-img" bindtap="handleImagePreview" data-idx="{{modalimg}}" mode="aspectFit"></image>
+        <view class="popup-price">
+          <view class="price">
+            <text class="money">￥</text>0元</view>
+          <view class="number">库存量：{{storage}}件</view>
+          <view class="model">已选: {{modalstr}}</view>
+        </view>
+      </view>
+      <view class="choosemodel" wx:for="{{productrule}}" wx:for-index="index1" wx:key="index1">
+        <view class="choose">{{item.specName}}</view>
+        <view class="content">
+          <view wx:for="{{item.specVal}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
+            <view class="model  {{(selectedCurrent[index1]==index1+1 &&selectedAttr[index1]==index2)?'selected':''}}" data-current="{{index1+1}}" data-select-index="{{id}}" data-name="{{item2.val}}" data-attr-index="{{index2}}" data-content="{{properties}}" bindtap="choosemodel">{{item2.val}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="amount1">
+      <view>数量</view>
+      <tui-numberbox max="{{storage}}" min="1" value="{{value}}" bind:change="change1"></tui-numberbox>
+    </view> -->
+    <view class="addcart-determine {{storage<=0?'nostorage':''}}" catchtap="choosemodalsubmit">
+      确定
+    </view>
+  </tui-bottom-popup>
+  <!--选择规格弹框结束 -->
+
+  <!-- 收获地址弹框  当有地址时 -->
+  <tui-bottom-popup show="{{hasaddress}}" tui-popup-class="tui-popup" bind:close="hidehasaddress" class="hasaddress">
+    <view class="hasaddress-top">选择地址</view>
+    <scroll-view scroll-y class="addresslist">
+      <view class="personifo" wx:for="{{addresslist}}" wx:key="index" data-current="{{item}}" bindtap="clickaddress">
+        <view class="personifo-left">
+          <image src="../../../../static/iconfont/dingwei.png" class="dingwei"></image>
+          <view class="infomation">
+            <view class="name">{{item.ReceiverName}}
+              <text class="phone">{{item.ReceiverPhone}}</text> </view>
+            <view class="address">{{item.ReceiverAddress}}</view>
+          </view>
+        </view>
+        <view>
+          <image src="../../../../static/iconfont/gou.png" class="rightarrow" wx:if="{{item.ReceiverAddressID==address.ReceiverAddressID}}"></image>
+          <view class="circle" wx:if="{{item.ReceiverAddressID!=address.ReceiverAddressID}}"></view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="addaddress" bindtap="toaddress">
+      <view>新增收货地址</view>
+      <image src="../../../../static/iconfont/right.png"></image>
+    </view>
+    <view class="preserve" bindtap="tobarginggetgoods">恭喜选到心仪的宝贝，点击砍价</view>
+    <image src="../../../../static/iconfont/close.png" class="x" bindtap="hidehasaddress"></image>
+  </tui-bottom-popup>
+  <!-- 收获地址弹框结束  当有地址时 -->
+</view>

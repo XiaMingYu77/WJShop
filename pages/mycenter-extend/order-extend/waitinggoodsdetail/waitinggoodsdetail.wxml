@@ -1,0 +1,145 @@
+<!--pages/mycenter-extend//order-extend/evaluatedetail/evaluatedetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      待收货
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="proinfo" style="margin-top:{{height+10}}px;">
+    <view class="content" wx:for="{{orderproduct}}" wx:key="index">
+      <view class="shop">
+        <image src="{{order.ShopPhoto}}" mode="aspectFit"></image>
+        <text>{{order.ShopName}}</text>
+      </view>
+      <view class="content-mid" data-id="{{item.ProductID}}" bindtap="togoodsdetail">
+        <view>
+          <image src="{{item.ThumbnailImg}}" mode="aspectFit"></image>
+        </view>
+        <view class="info">
+          <view class="name">{{item.ProductName}}</view>
+          <view class="model">{{item.ProductSpecs}}</view>
+          <view class="count">
+            <view>数量：x{{item.Quantity}}</view>
+          </view>
+          <view class="price">
+            <view>￥{{item.UnitPrice}}</view>
+            <view>
+              <view class="recash">返现{{fn.tofixed(item.Score)}}元</view>
+              <view class="returnmoney" catchtap="applyrefund" data-orderid="{{order.OrderID}}" data-price="{{order.TotalPrice}}">申请退款</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="assemble">
+        <view>
+          <text class="paytext">实付款:</text>
+          <text class="price">￥{{item.SubPrice}}</text>(免运费)
+        </view>
+        <view>
+          <!-- <text class="recash" bindtap="applyrefund" data-orderid="{{item.OrderProID}}" data-price="{{order.TotalPrice}}">申请退款</text> -->
+        </view>
+      </view>
+    </view>
+    <view class="address">
+      <view>
+        <image src="../../../../static/iconfont/wuliu.png"></image>
+      </view>
+      <view>
+        <view style="font-size:28rpx"><text style="color:#333">{{order.ReceiverName}}</text> <text>{{order.ReceiverPhone}}</text></view>
+        <view style="margin-top:10rpx;">收货地址: {{order.ReceiverAddress}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="logistics">
+    <view class="logistics-top">
+      <view class="detail" wx:if="{{logisticflag}}" bindtap="checklogistic" data-logisticno="{{order.LogisticsNo}}" data-trackingno="{{order.TrackingNumber}}" data-address="{{order.ReceiverAddress}}" data-orderid="{{order.OrderID}}">
+        <view>
+          <image src="../../../../static/iconfont/qianshou.png"></image>
+        </view>
+        <view>
+          <view class="text">
+            {{list.content}}
+          </view>
+          <view class="time">{{list.time}}</view>
+        </view>
+      </view>
+      <view wx:else style="text-align:center;width:100%">
+        暂无物流消息
+      </view>
+      <!-- <view class="right">
+        <image src="../../../../static/iconfont/right.png"></image>
+      </view> -->
+    </view>
+  </view>
+
+  <view class="orderinfo">
+    <view class="orderinfo-top">
+      <view class="ordernum">
+        <view>订单编号:{{order.OrderNo}}</view>
+        <view class="copy" bindtap="copy" data-current="{{order.OrderNo}}">复制</view>
+      </view>
+      <view wx:if="{{order.Remark!=''}}">订单备注:{{order.Remark}}</view>
+      <view>
+        <view>快递单号: {{order.TrackingNumber}}</view>
+        <view class="bor" bindtap="copy" data-current="{{order.TrackingNumber}}">复制</view>
+      </view>
+      <view style="margin:4rpx 0" wx:if="{{order.Type==1}}">支付方式:微信</view>
+      <view style="margin:4rpx 0" wx:if="{{order.Type==2}}">支付方式:支付宝</view>
+      <!-- <view>
+        <view>商品快照:和对交易细节时,可作为判断依据</view>
+        <view class="bor">查看</view>
+      </view> -->
+      <view>下单时间: {{time}}</view>
+      <view>发货时间: {{shiptime}}</view>
+      <view>物流公司: {{order.LogisticsFirm}}</view>
+    </view>
+    <view class="orderinfo-bot">
+      <view bindtap="tocustomerservice">
+        <image src="../../../../static/iconfont/shangjia.png"></image>联系商家
+      </view>
+      <view style="width:2rpx;height:60rpx;background:#EEEEEE"></view>
+      <view bindtap="showphone">
+        <image src="../../../../static/iconfont/phone.png"></image>拨打电话
+      </view>
+    </view>
+  </view>
+
+  <!-- <view>
+    <view class="tuijian">购买过产品的人还浏览了</view>
+  </view> -->
+
+  <view class="bot">
+    <view class="see" bindtap="delayreceipt" data-orderid="{{order.OrderID}}">延长收货</view>
+    <view class="again" bindtap="checklogistic" data-logisticno="{{order.LogisticsNo}}" data-trackingno="{{order.TrackingNumber}}" data-address="{{order.ReceiverAddress}}" data-orderid="{{order.OrderID}}">查看物流</view>
+    <view class="evaluate" bindtap="confirmdeliver">确认收货</view>
+  </view>
+
+  <tui-modal1 show="{{modal1}}" bind:cancel="hidemodal" custom="{{true}}" class="clickaddress">
+    <view class="tips">确认收货吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hidemodal">取消</button>
+      <button class="addaddress" bindtap="confirm">确认</button>
+    </view>
+    <!-- <image src="../../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+
+  <tui-modal show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="phone">
+    <view class="content">0731-85330017</view>
+    <view class="btn" bindtap="copy" data-current="0731-85330017">
+      复制
+    </view>
+  </tui-modal>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

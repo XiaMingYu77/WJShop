@@ -1,0 +1,99 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我的足迹
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class='wrap' style="margin-top:{{height+10}}px">
+    <view>
+      <view class='date-show'>
+        <!-- <view class='jiao1' wx:if="{{jiaoflag}}" bindtap='lastMonth'></view>
+        <view class='jiao1 selected1' wx:if="{{!jiaoflag}}"></view> -->
+        <image src="../../../static/iconfont/last.png" bindtap='lastMonth'></image>
+        <view>{{year}}年{{month}}月</view>
+        <!-- <view class='jiao2' wx:if="{{!jiaoflag}}" bindtap='nextMonth'></view>
+        <view class='jiao2 selected2' wx:if="{{jiaoflag}}"></view> -->
+        <image src="../../../static/iconfont/next.png" bindtap='nextMonth'></image>
+      </view>
+    </view>
+    <view class='header'>
+      <view wx:for='{{date}}' wx:key="index">{{item}}
+        <view></view>
+      </view>
+    </view>
+    <view wx:if="{{!upflag}}">
+      <view class='date-box {{upflag?"boxselecte1":""}}'>
+        <view wx:for='{{dateArr}}' wx:key="index" id="{{isToday == item.isToday ? 'nowDay' : ''}}" class='datatime   {{isToday == item.isToday ? "nowDay" : ""}}' bindtap="clicktime" data-date='{{item.isToday}}' data-select="{{item.selected}}">
+          <view class="date-head {{item.today?'today':''}}">
+            <view>{{item.dateNum}}</view>
+          </view>
+          <view class="dot" wx:if="{{item.selected}}"></view>
+          <!-- <view class='date-weight'>{{item.weight}}</view> -->
+        </view>
+      </view>
+      <view class="up" bindtap="up">
+        <image src="../../../static/logo/up.png"></image>
+      </view>
+    </view>
+    <view wx:if="{{upflag}}" class="boxselecte" style="padding-bottom:20rpx;">
+      <view class='date-box' style="margin-top:{{tabtop}}px">
+        <view wx:for='{{dateArr}}' wx:key="index" id="{{isToday == item.isToday ? 'nowDay' : ''}}" class='datatime   {{isToday == item.isToday ? "nowDay" : ""}}' bindtap="clicktime" data-date='{{item.isToday}}' data-select="{{item.selected}}">
+          <view class="date-head {{item.today?'today':''}}">
+            <view>{{item.dateNum}}</view>
+          </view>
+          <view class="dot" wx:if="{{item.selected}}"></view>
+          <!-- <view class='date-weight'>{{item.weight}}</view> -->
+        </view>
+      </view>
+      <view class="up" bindtap="down">
+        <image src="../../../static/logo/down.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="goods" wx:if="{{footmark!=''}}">
+    <view class="time">
+      <view>{{isToday}}</view>
+      <view bindtap="delete">
+        <image  wx:if="{{deleteflag}}" src="../../../static/iconfont/delete.png"></image>
+        <!-- <tui-icon wx:if="{{deleteflag}}" name="delete" size="20"></tui-icon> -->
+        <text wx:if="{{!deleteflag}}">完成</text>
+      </view>
+    </view>
+    <view class="productbox {{!deleteflag?'productbox1':''}}">
+      <block wx:for="{{footmark}}" wx:key="index">
+        <view class="product {{(index+1)%3==0?'last':''}}" data-current="{{item.ID}}" bindtap="toproductdetail">
+          <image src="{{item.FullImg}}" mode="aspectFit"></image>
+          <view class="product-bot">
+            <view class="price">￥{{item.MarketPrice}}</view>
+            <view wx:if="{{!deleteflag}}">
+              <label class="tui-checkbox">
+                <checkbox color="#fff" catchtap="checkboxChange" checked="{{item.checked}}" data-index="{{index}}"></checkbox>
+              </label>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="botdelete" wx:if="{{!deleteflag&&footmark!=''}}">
+    <view class="deletetext" bindtap="submitdelete">
+      删除
+    </view>
+  </view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips">确认要删除足迹吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="submit">确认</button>
+    </view>
+    <!-- <image src="../../../static/logo/guanbi.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+
+</view>

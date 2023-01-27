@@ -1,0 +1,90 @@
+<!--pages/mycenter-extend//publishevaluation/publishevaluation.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      发表评论
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="evaluation" style="margin-top:{{height+10}}px">
+    <view class="content">
+      <view class="shop">
+        <image src="{{info.ShopPhoto}}" mode="aspectFit"></image>
+        <text>{{info.ShopName}}</text>
+      </view>
+      <view class="content-mid" wx:for="{{info.OrderProduct}}" wx:key="index">
+        <view>
+          <image src="{{item.ThumbnailImg}}" mode="aspectFit"></image>
+        </view>
+        <view>
+          <view class="productname">{{item.ProductName}}</view>
+          <view class="model">{{item.ProductSpecs}}</view>
+          <view class="count">
+            <view>实付款:
+              <text style="color:#E64048;">￥{{item.SubPrice}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="evaluation-top">
+      <view>
+        描述属实
+        <tui-rate size="18" current="{{current1}}" bind:change="change1" active="#2D5DF6"></tui-rate>
+      </view>
+      <view>
+        物流服务
+        <tui-rate size="18" current="{{current2}}" bind:change="change2" active="#2D5DF6"></tui-rate>
+      </view>
+      <view>
+        服务态度
+        <tui-rate size="18" current="{{current3}}" bind:change="change3" active="#2D5DF6"></tui-rate>
+      </view>
+    </view>
+  </view>
+
+  <view class="evaluation-bot">
+    <textarea style="width:100%;" placeholder="亲,我们需要您宝贵的评价~" bindinput="inputcontent"></textarea>
+    <view class="upload">
+      <view class="question-images">
+        <block wx:for="{{images}}" wx:key="*this">
+          <view class="q-image-wrap">
+            <!-- 图片缩略图  -->
+            <image class="q-image" src="{{item}}" mode="aspectFit" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+            <!-- 移除图片的按钮  -->
+            <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+          </view>
+        </block>
+      </view>
+      <view class="myvideo">
+        <video wx:if="{{src!=''}}" src="{{src}}"></video>
+        <view wx:if="{{src!=''}}" style="padding-left:80rpx;" bindtap="removevideo">删除</view>
+      </view>
+      <view style="display:flex;">
+        <view class="uploadbtn" bindtap="chooseImage">
+          <image src="../../../static/iconfont/photo.png"></image>
+          <!-- <view>上传图片</view> -->
+        </view>
+        <view class="uploadbtn" bindtap="chooseVideo">
+          <image src="../../../static/iconfont/shipin.png"></image>
+          <!-- <view>上传视频</view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="submit" bindtap="submit">提交</view>
+
+  <!-- <tui-modal show="{{modal}}" bind:cancel="hideinfo" custom="{{true}}" class="modal">
+    <view class="title1">退出评价</view>
+    <view class="content1">此次评价为完成,是否确定退出</view>
+    <view class="btn">
+      <button class="cancle" bindtap="hideinfo">取消</button>
+      <button class="submit1" bindtap="submit1">确定</button>
+    </view>
+    <image class="x" src="../../../static/iconfont/close.png" bindtap="hideinfo"></image>
+  </tui-modal> -->
+</view>

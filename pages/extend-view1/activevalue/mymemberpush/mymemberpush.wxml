@@ -1,0 +1,51 @@
+<!--pages/extend-view1//activevalue/mymemberpush/mymemberpush.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      {{name}}
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+  <view class="profit" style="margin-top:{{height+10}}px">
+      <image src="../../../../static/iconfont/active.png"></image>
+      近30天我的会员推广产生活跃值:{{list.Reward}}
+  </view>
+
+  <view class="detail" wx:if="{{list.rewards.length!=0}}">
+    <view class="item {{index!=0?'bt':''}}" wx:for="{{list.rewards}}" wx:key="index">
+      <view>
+        <image src="../../../../static/logo/moren.png"></image>
+        {{item.NickName}}
+      </view>
+      <view>为我带来 <text style="color:#999999;font-weight:bold">{{item.Money}}</text> 活跃值</view>
+    </view>
+    <view class="time">
+      数据为{{list.Startdatetime}}至{{list.Enddatetime}}推广收益
+    </view>
+  </view>
+
+  <!-- <view class="detail">
+    <view class="item">
+      <view>
+        <image src="../../../../static/logo/moren.png"></image>
+        NickName
+      </view>
+      <view>为我带来
+        <text style="color:#E80202;font-weight:bold">{{item.Money}}</text> 活跃值</view>
+    </view>
+     <view class="item">
+      <view>
+        <image src="../../../../static/logo/moren.png"></image>
+        NickName
+      </view>
+      <view>为我带来
+        <text style="color:#E80202;font-weight:bold">{{item.Money}}</text> 活跃值</view>
+    </view>
+    <view class="time">
+      数据为{{list.Startdatetime}}至{{list.Enddatetime}}(昨天) 推广收益
+    </view>
+  </view> -->
+
+</view>

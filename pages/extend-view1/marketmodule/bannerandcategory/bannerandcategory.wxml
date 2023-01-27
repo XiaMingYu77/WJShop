@@ -1,0 +1,60 @@
+<!-- 轻奢范儿 -->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      轻奢范er
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="top" style="margin-top:{{height}}px">
+    <image class="bg" src="../../../../static/iconfont/circle.png"></image>
+    <image class="topimg" src="{{info.BanImageSrc}}" mode="aspectFit"></image>
+  </view>
+
+  <view class="hot">精品专辑</view>
+
+  <view class="categorybox">
+    <!-- 九宫格 -->
+    <scroll-view scroll-x scroll-y="true" bindscroll="categoryscoll" class="tui-product-category">
+      <view class="tui-category-item" id="category" wx:for="{{category}}" wx:key="index" data-key="{{item.ProName}}" data-id="{{item.ProCategroyID}}" bindtap="tomoreclasic">
+        <image src="{{item.CateImage}}" class="tui-category-img" mode="aspectFit"></image>
+        <view class="tui-category-name">{{item.ProName}}</view>
+      </view>
+    </scroll-view>
+    <view class="scollline">
+      <view class="innerline" style="width:{{innerwidth}}rpx;left: {{left}}rpx;"></view>
+    </view>
+  </view>
+
+  <image class="newpeople" bindtap="tonewpeople" src="{{info.imgs.Value}}" data-id="{{info.imgs.ID}}" data-key="{{info.imgs.Key}}" mode="aspectFit"></image>
+
+  <view class="hot">热门推荐</view>
+  <view class="goodbox">
+    <block wx:for="{{goodlist}}" wx:key="index">
+      <view class="goods" data-id="{{item.id}}" catchtap="togoodsdetail">
+        <image src="{{item.img}}" mode="aspectFit"></image>
+        <view class="goodsname">
+          {{item.name}}
+        </view>
+        <view class="goodsbot">
+          <view>
+            <text style="font-weight:600;font-size:20rpx;padding-bottom:7rpx;">￥</text>
+            <text style="font-weight:600;font-size:40rpx">{{item.markprice}}</text>
+          </view>
+          <view class="recash">
+            <view>立即购买</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="alarm" wx:if="{{countdownflag}}">
+    <image src="../../../../static/iconfont/alarm.png" animation="{{animation}}"></image>
+    <view class="second" wx:if="{{alarmflag}}">{{second}}</view>
+    <view class="taskcomplete" wx:if="{{!alarmflag}}">任务完成</view>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+/* pages/extend-view1//messagedetail/messagedetail.wxss */
+
+.container .top {
+  height: 1rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 4rpx 12rpx 0rpx rgba(0, 0, 0, 0.12);
+}
+
+.container .content {
+  width: 702rpx;
+  /* height: 676rpx; */
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  margin: 20rpx auto;
+}

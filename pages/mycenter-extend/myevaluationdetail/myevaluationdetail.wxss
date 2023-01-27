@@ -1,0 +1,124 @@
+/* pages/mycenter-extend//myevaluationdetail/myevaluationdetail.wxss */
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: #fff;
+  box-shadow:0px 4rpx 8rpx 0px rgba(0,0,0,0.12);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .box {
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 20rpx 0;
+  box-shadow:0px 4rpx 8rpx 0px rgba(0,0,0,0.16);
+}
+
+.container .box .name {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+  padding: 0 20rpx;
+}
+
+.container .box .name .name-left {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.container .box .name .name-left>view{
+  display: flex;
+  align-items: center;
+}
+
+.container .box .name image {
+  width: 56rpx;
+  height: 56rpx;
+  margin-right: 10rpx;
+}
+
+.container .box .name .time {
+  color: #626367;
+  line-height: 70rpx;
+  font-size: 20rpx;
+}
+
+.container .box .content {
+  padding: 0 20rpx;
+  font-size: 24rpx;
+  margin-bottom: 74rpx;
+  color: #666666;
+}
+
+.container .box .norms {
+  padding: 0 20rpx;
+  font-size: 24rpx;
+}
+
+.container .box .norms .text1 {
+  margin-right: 20rpx;
+  color: #828181;
+  font-size: 20rpx;
+}
+
+.container .box .proevaluate-img {
+  padding: 0 20rpx;
+}
+
+.container .box .proevaluate-img image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 20rpx;
+}

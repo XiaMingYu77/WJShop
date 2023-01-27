@@ -1,0 +1,462 @@
+/* pages/extend-view1//successorder/successorder.wxss */
+
+page {
+  /* background: #e8e8e9; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container {
+}
+
+.container .red {
+  height: 50rpx;
+  background: #e80202;
+}
+
+.container .assemble {
+  width: 93%;
+  /* height: 410rpx; */
+  margin: 0 3%;
+  background: #fff;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-top: 150rpx;
+  border-radius: 20rpx;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .assemble .assemble-top {
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 400;
+}
+
+.container .assemble .assemble-top image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+  vertical-align: -5rpx;
+}
+
+.container .assemble .assemble-mid {
+  position: relative;
+  text-align: center;
+}
+
+.container .assemble .assemble-mid .add {
+  width: 42rpx;
+  height: 42rpx;
+  margin: 0 20rpx;
+  vertical-align: 20rpx;
+}
+
+.container .assemble .assemble-mid image {
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 50%;
+}
+
+.container .assemble .assemble-mid .assemblepeople {
+  position: absolute;
+  top: 0;
+  left: 280rpx;
+  width: 51rpx;
+  height: 25rpx;
+  background: #2d5df6;
+  border-radius: 10rpx;
+  font-size: 18rpx;
+  color: #fff;
+}
+
+.container .assemble .assemble-mid .recash {
+  position: absolute;
+  height: 36rpx;
+  line-height: 36rpx;
+  font-size: 20rpx;
+  bottom: 0rpx;
+  right: -25rpx;
+  color: #fff;
+  background: #2d5df6;
+  padding: 0 30rpx 0 10rpx;
+  border-radius: 30rpx;
+  font-weight: 400;
+}
+
+.container .assemble .tofirst {
+  width: 94%;
+  margin: 0 3%;
+  height: 71rpx;
+  border: 1rpx solid #2d5df6;
+  border-radius: 18rpx;
+  line-height: 71rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #2d5df6;
+  margin-bottom: 30rpx;
+  margin-top: 48rpx;
+  font-weight: 400;
+}
+
+.container .assemble .tomakemoney {
+  display: flex;
+  align-items: center;
+  width: 94%;
+  margin: 0 3%;
+  height: 71rpx;
+  border: 1rpx solid #2d5df6;
+  border-radius: 18rpx;
+  font-size: 28rpx;
+  color: #fff;
+  margin-bottom: 30rpx;
+  background: #2d5df6;
+  font-weight: 400;
+  padding-left: 150rpx;
+  box-sizing: border-box;
+}
+
+.container .assemble .tomakemoney .money {
+  height: 30rpx;
+  font-size: 20rpx;
+  border: 1rpx solid #fff;
+  padding: 0 10rpx;
+  border-radius: 20rpx;
+  margin-left: 20rpx;
+  margin-top: 5rpx;
+}
+
+.container .toorderdetail {
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.container .toorderdetail image {
+  width: 10rpx;
+  height: 18rpx;
+  margin-left: 10rpx;
+}
+
+.container .toapp {
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  color: #999;
+}
+
+.container .toapp image {
+  width: 10rpx;
+  height: 18rpx;
+  margin-left: 10rpx;
+}
+
+.container .logo {
+  width: 699rpx;
+  height: 174rpx;
+  margin: 0 auto;
+}
+
+.container .buy {
+  margin: 20rpx 0;
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 弹框 */
+
+.successassemble {
+  position: relative;
+}
+
+.successassemble .close {
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  right: 10rpx;
+}
+
+.successassemble .title {
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+
+.successassemble image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 20rpx;
+}
+
+.successassemble .return {
+  width: 154rpx;
+  height: 28rpx;
+  line-height: 28rpx;
+  border: 1rpx solid #e64048;
+  border-radius: 14rpx;
+  font-size: 20rpx;
+  margin: 24rpx auto;
+  text-align: center;
+  color: #e64048;
+  font-weight: 400;
+}
+
+.successassemble .bot {
+  display: flex;
+  justify-content: space-around;
+  font-size: 24rpx;
+  text-align: center;
+  color: #666;
+  margin-top: 60rpx;
+}
+
+.successassemble .bot view {
+  width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  
+}
+
+.successassemble .bot view:first-child {
+  color: #333333;
+  border-radius: 0 0 0 10rpx;
+  border-top: 1rpx solid #F5F5F5;
+}
+
+.successassemble .bot view:last-child {
+  background: #2d5df6;
+  border-radius: 0 0 10rpx 0;
+  color: #fff;
+}
+
+/* goods */
+
+.container .prolist {
+  display: flex;
+  width: 94%;
+  margin: 0 3%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.container .prolist .goods {
+  position: relative;
+  width: 344rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+}
+
+.container .prolist .goods .imgbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 340rpx;
+}
+
+.container .prolist .goods image {
+  /* width: 134rpx;
+  height: 209rpx; */
+  width: 100%;
+  height: 100%;
+}
+
+.container .prolist .goods .content {
+  padding: 20rpx;
+  font-size: 20rpx;
+  box-sizing: border-box;
+  color: #333;
+}
+
+.container .prolist .goods .content .name {
+  height: 64rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.container .prolist .goods .content .evaluate {
+  margin: 19rpx 0;
+  color: #666;
+}
+
+.container .prolist .goods .content .assemble1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+  font-size: 20rpx;
+  color: #333;
+}
+
+.container .prolist .goods .content .assemble1 .spellback1 {
+  border: 1rpx solid rgba(45, 93, 246, 1);
+  color: #333;
+  border-radius: 20rpx;
+  padding-right: 10rpx;
+}
+
+.container .prolist .goods .content .assemble1 .spellback1 text {
+  color: #fff;
+  background: rgba(45, 93, 246, 1);
+  border-radius: 20rpx;
+  padding: 0 7rpx;
+}
+
+.container .prolist .goods .content .assemble1 .pushprofit1 {
+  border: 1rpx solid rgba(45, 93, 246, 1);
+  color: #333;
+  border-radius: 20rpx;
+  padding: 0 10rpx;
+}
+
+.container .prolist .goods .content .price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.container .prolist .goods .content .money {
+  color: #333;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.container .prolist .goods .content .price .price-left {
+  display: flex;
+  align-items: center;
+}
+
+.container .prolist .goods .content .zhu {
+  width: 32rpx;
+  height: 32rpx;
+  color: #fff;
+  background: #2d5df6;
+  border-radius: 50%;
+  font-size: 20rpx;
+  margin-left: 10rpx;
+  text-align: center;
+  line-height: 32rpx;
+}
+
+.container .prolist .goods .content .price .price-right {
+  color: #fff;
+  height: 38rpx;
+  line-height: 38rpx;
+  background: rgba(45, 93, 246, 1);
+  padding: 0 15rpx;
+  font-size: 24rpx;
+  border-radius: 20rpx;
+}
+
+.container .prolist .goods .push {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 74rpx;
+  height: 28rpx;
+  background: rgba(141, 168, 255, 1);
+  border-radius: 0rpx 10rpx 0rpx 10rpx;
+  font-size: 18rpx;
+  text-align: center;
+  color: #fff;
+}
+
+.container .prolist .goods .nopush {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 74rpx;
+  height: 28rpx;
+  background: rgba(45, 93, 246, 1);
+  border-radius: 0rpx 10rpx 0rpx 10rpx;
+  font-size: 18rpx;
+  text-align: center;
+  color: #fff;
+}
+
+/* goods结束 */

@@ -1,0 +1,19 @@
+{
+  "name": "wjshop",
+  "version": "1.4.0",
+  "description": "<font color=#ff7900>通用商城</font>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cos-js-sdk-v5": "^0.5.26",
+    "cos-wx-sdk-v5": "^0.7.10",
+    "echarts": "^4.7.0",
+    "tim-js-sdk": "^2.6.3",
+    "tim-wx-sdk": "^2.6.3"
+  },
+  "devDependencies": {}
+}

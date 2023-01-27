@@ -1,0 +1,22 @@
+/* pages/extend-view//search/successmodal/successmodal.wxss */
+.container image{
+  width: 284rpx;
+  height: 284rpx;
+  margin: 0 auto;
+  margin-top: 178rpx;
+}
+
+.container .firsttips{
+  color: #333333;
+  text-align: center;
+  font-size: 36rpx;
+  margin-bottom: 28rpx;
+}
+
+.container .secondtips{
+  width: 476rpx;
+  margin: 0 auto;
+  color: #999999;
+  text-align: center;
+  font-size: 36rpx;
+}

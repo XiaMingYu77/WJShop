@@ -1,0 +1,48 @@
+<!--pages/extend-view1//shopdetail/shopdetail.wxml-->
+<view class="container">
+  <view class="shop">
+    <view class="shopimg">
+      <image src="../../../static/logo/moren.png"></image>
+    </view>
+    <view class="shopname">
+      <view class="name">商城旗舰店</view>
+      <view class="count">
+        <text class="wujie">商城自营</text>
+        <text class="num">粉丝人数:36.2万</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="rate">
+    <view>评价:
+      <text class="color">9.53</text>
+    </view>
+    <view>物流:
+      <text class="color">9.53</text>
+    </view>
+    <view>售后:
+      <text class="color">9.53</text>
+    </view>
+  </view>
+
+  <view class="kefu">
+    <view class="kefu-top">
+      <view>联系客服</view>
+      <view>
+        <image src="../../../static/logo/客服.png"></image>
+      </view>
+    </view>
+    <view class="kefu-bot">
+      <view>店铺简介: <text class="gray">商城自营</text></view>
+    </view>
+  </view>
+
+   <view class="kefu">
+    <view class="kefu-top">
+      <view>所在地区: <text class="gray">上海闵行</text></view>
+    </view>
+    <view class="kefu-bot">
+      <view>所销售品牌: <text class="gray">伊利,蒙牛</text> </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,90 @@
+<!--pages/extend-view1//marketmodule/limited/limited.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      限时秒杀
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="swiper" style="margin-top:{{height+10}}px">
+    <swiper indicator-dots="{{false}}" interval="{{interval}}" duration="{{duration}}">
+      <block>
+        <swiper-item>
+          <image src="{{info.BanImageSrc}}" mode="aspectFit"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- <view class="tabs" style="position:none"> -->
+  <view class="tab tab1">
+    <view wx:for="{{tab}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+  </view>
+  <!-- </view> -->
+
+  <view class="goodbox" wx:if="{{selected==0}}">
+    <block wx:for="{{goodlist}}" wx:key="index">
+      <view class="goods" data-id="{{item.id}}" catchtap="togoodsdetail">
+        <view>
+          <image src="{{item.img}}" mode="aspectFit"></image>
+        </view>
+        <view class="info">
+          <view class="proname">{{item.name}}</view>
+          <view class="infomid">
+            <view class="pronum">
+              <view class="inner" style="width:{{2.66*item.RobScoreRatio}}rpx"></view>
+              <view class="percent">已售{{item.RobScoreRatio}}%</view>
+            </view>
+            <view>已抢{{item.RobScore}}件</view>
+          </view>
+          <view class="infobot">
+            <view class="price">
+              <text style="font-size:16rpx;padding-bottom: 7rpx;font-weight: 600;">￥</text>{{item.markprice}}
+              <text class="deleteprice">￥{{item.price}}</text>
+            </view>
+            <view class="buy">立即秒</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="goodbox" wx:if="{{selected==1}}">
+    <block wx:for="{{goodlist1}}" wx:key="id">
+      <view class="goods">
+        <view>
+          <image src="{{item.img}}" mode="aspectFit"></image>
+        </view>
+        <view class="info">
+          <view class="proname">{{item.name}}</view>
+          <!-- <view class="infomid">
+            <view class="pronum">
+              <view class="inner"></view>
+              <view class="percent">已售{{item.RobScoreRatio}}%</view>
+            </view>
+            <view>已抢{{item.RobScore}}件</view>
+          </view> -->
+          <view class="infobot">
+            <view class="price">
+              <text style="font-size:16rpx;padding-bottom: 7rpx;font-weight: 600;">￥</text>{{item.markprice}}
+              <text class="deleteprice">￥{{item.price}}</text>
+            </view>
+            <view class="buy" bindtap="callme" data-index="{{index}}" data-current="{{item.id}}" wx:if="{{item.IsReminders=='0'}}">提醒我</view>
+            <view class="buy" bindtap="callme" data-index="{{index}}" data-current="{{item.id}}" wx:if="{{item.IsReminders=='1'}}">取消提醒</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <image class="botbanner" bindtap="botbannerclick" src="{{info.imgs.Value}}" data-id="{{info.imgs.ID}}" data-key="{{info.imgs.Key}}" mode="aspectFit"></image>
+
+  <view class="alarm" wx:if="{{countdownflag}}">
+    <image src="../../../../static/iconfont/alarm.png" animation="{{animation}}"></image>
+    <view class="second" wx:if="{{alarmflag}}">{{second}}</view>
+    <view class="taskcomplete" wx:if="{{!alarmflag}}">任务完成</view>
+  </view>
+</view>

@@ -1,0 +1,84 @@
+<!--pages/extend-view1//marketmodule/hotlist/hotlist.wxml-->
+<!-- 商城榜单 -->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      商城榜单
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- <view class="tabs" style="top:{{height}}px">
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+  </view> -->
+
+  <view class="swiper" style="margin-top:{{height+10}}px">
+    <swiper indicator-dots="{{false}}" interval="{{interval}}" duration="{{duration}}">
+      <block>
+        <swiper-item>
+          <image src="{{info.BanImageSrc}}" mode="aspectFit"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- <view class="tabs" style="position:none"> -->
+  <!-- <view class="tab tab1">
+    <view wx:for="{{tabs1}}" class="{{selected1==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change1">{{item.name}}</view>
+  </view> -->
+  <!-- </view> -->
+
+  <view class="hot">爆款推荐</view>
+
+  <view class="goodsbox">
+    <block wx:for="{{goodlist}}" wx:key="index">
+      <view class="goods" style="border:{{index=='0'?'none':''}}" data-id="{{item.id}}" catchtap="togoodsdetail">
+        <view class="imgbox">
+          <image class="goodimg" src="{{item.img}}" mode="aspectFit"></image>
+          <image wx:if="{{index=='0'}}" class="icon" src="../../../../static/iconfont/first.png"></image>
+          <image wx:if="{{index=='1'}}" class="icon" src="../../../../static/iconfont/second.png"></image>
+          <image wx:if="{{index=='2'}}" class="icon" src="../../../../static/iconfont/third.png"></image>
+          <view class="icontext" wx:if="{{index=='0'||index=='1'||index=='2'}}">热销NO.{{index+1}}</view>
+        </view>
+        <view class="info">
+          <view class="name">{{item.name}}</view>
+          <view class="recash">
+            <view>
+              <text class="text">返现</text>
+              <text style="font-size:16rpx">￥</text>{{fn.tofixed(item.Score*repercent)}}
+            </view>
+            <view style="color:#333">
+              爆卖{{item.sell_number}}件
+            </view>
+          </view>
+          <view class="buy">
+            <view>
+              <text style="font-size:20rpx;padding-bottom:7rpx;">￥</text>{{item.price}}</view>
+            <view class="qiang">马上抢</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <image class="botbanner" bindtap="botbannerclick" src="{{info.imgs.Value}}" data-id="{{info.imgs.ID}}" data-key="{{info.imgs.Key}}" mode="aspectFit"></image>
+
+  <view class="alarm" wx:if="{{countdownflag}}">
+    <image src="../../../../static/iconfont/alarm.png" animation="{{animation}}"></image>
+    <view class="second" wx:if="{{alarmflag}}">{{second}}</view>
+    <view class="taskcomplete" wx:if="{{!alarmflag}}">任务完成</view>
+  </view>
+</view>
+
+
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

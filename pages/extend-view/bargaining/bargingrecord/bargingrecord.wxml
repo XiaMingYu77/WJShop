@@ -1,0 +1,42 @@
+<!--pages/extend-view//bargaining/bargingrecord/bargingrecord.wxml-->
+<!-- 砍价纪录 -->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      砍成纪录
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 暂无中奖纪录 -->
+  <view class="{{dataflag?'noorder':''}} kong">
+    <image src="../../../../static/iconfont/none.png"></image>
+    <view>暂无砍价纪录</view>
+  </view>
+
+  <view class="goodbox" style="margin-top:{{height+10}}px">
+    <block wx:for="{{info}}" wx:key="index">
+      <view class="goods">
+        <view>
+          <image src="{{item.FullImg}}" mode="aspectFit"></image>
+          <view class="info">
+            <view>{{item.ProductName}}</view>
+            <view class="goodrule">{{item.GoodRule}}</view>
+            <view class="infobot">
+              <view class="time">
+                砍成时间:{{item.CuttingTime}}
+              </view>
+              <view>
+                <!-- <view class="btn" wx:if="{{item.Status=='1'}}" bindtap="tofillinrecordaddress" data-current="{{item.ID}}">填写地址</view> -->
+                <view class="btn" wx:if="{{item.Status=='2'}}" style="border:none;color:#2D5DF6">待发货</view>
+                <view class="btn" wx:if="{{item.Status=='3'}}" bindtap="tochecklogistic" data-current="{{item}}">查询物流</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

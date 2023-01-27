@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#E8E8E9",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "商城榜单",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-tabs": "../../../../components/tui-tabs/tui-tabs",
+    "tui-icon": "../../../../components/icon/icon"
+  }
+}

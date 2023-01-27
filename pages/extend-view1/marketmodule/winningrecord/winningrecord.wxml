@@ -1,0 +1,40 @@
+<!--pages/extend-view1//marketmodule/winningrecord/winningrecord.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      中奖纪录
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 暂无中奖纪录 -->
+  <view class="{{dataflag?'noorder':''}} kong">
+    <image src="../../../../static/iconfont/none.png"></image>
+    <view>暂无中奖纪录</view>
+  </view>
+
+  <view class="goodbox" style="margin-top:{{height+10}}px">
+    <block wx:for="{{info}}" wx:key="index">
+      <view class="goods">
+        <view>
+          <image src="{{item.F_ProductImg}}" mode="aspectFit"></image>
+          <view class="info">
+            <view class="name">{{item.F_ProductName}}</view>
+            <view class="infobot">
+              <view class="time">
+                中奖时间 {{item.F_DrawTime}}
+              </view>
+              <view>
+                <view class="btn" wx:if="{{item.F_Status=='1'}}" bindtap="tofillinrecordaddress" data-current="{{item.ID}}">填写地址</view>
+                <view class="btn" wx:if="{{item.F_Status=='2'}}" style="border:none;color:#2D5DF6">待发货</view>
+                <view class="btn" wx:if="{{item.F_Status=='3'}}" bindtap="tochecklogistic" data-current="{{item}}">查询物流</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

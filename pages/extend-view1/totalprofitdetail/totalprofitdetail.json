@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTitleText": "我的总收益详情",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

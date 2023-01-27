@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="manage">
+    <view wx:if="{{flag}}" bindtap="manage">管理</view>
+    <view wx:if="{{!flag}}" bindtap="complete">完成</view>
+  </view>
+  <view class="red"></view>
+
+  <view class="shopbox">
+    <view class="shop" wx:for="{{shoplist}}" wx:key="index">
+      <label class="tui-checkbox" wx:if="{{!flag}}">
+        <checkbox color="#fff" checked="{{item.selected}}" bindtap="checkboxChange" data-current="{{index}}"></checkbox>
+      </label>
+      <image src="{{item.ShopPhoto}}"></image>
+      <view>
+        <view>
+          <view class="shopname">{{item.ShopName}}</view>
+          <view class="number">{{item.Count}}人关注</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <tui-modal show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <image src="../../../static/logo/!.png" class="jz"></image>
+    <view class="tips">确认要取消收藏吗</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="submit">确认</button>
+    </view>
+    <image src="../../../static/logo/guanbi.png" class="close" bindtap="hide"></image>
+  </tui-modal>
+
+  <view class="botbox" wx:if="{{!flag}}">
+    <view class="bot">
+      <view class="input">
+        <label class="tui-checkbox" bindtap="selectall">
+          <checkbox color="#fff" checked="{{selectAllStatus}}"></checkbox>全选
+        </label>
+      </view>
+      <view class="cancle" bindtap="canclecollect">取消关注</view>
+    </view>
+  </view>
+</view>

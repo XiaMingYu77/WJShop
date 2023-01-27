@@ -1,0 +1,129 @@
+<!--pages/mycenter-extend//order-extend/evaluatedetail/evaluatedetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      待分享
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="proinfo" style="margin-top:{{height+10}}px;">
+    <view class="content" wx:for="{{orderproduct}}" wx:key="index">
+      <view class="shop">
+        <image src="{{order.ShopPhoto}}" mode="aspectFit"></image>
+        <text>{{order.ShopName}}</text>
+      </view>
+      <view class="content-mid" data-id="{{item.ProductID}}" bindtap="togoodsdetail">
+        <view>
+          <image src="{{item.ThumbnailImg}}" mode="aspectFit"></image>
+        </view>
+        <view class="info">
+          <view class="name">{{item.ProductName}}</view>
+          <view class="model">{{item.ProductSpecs}}</view>
+          <view class="count">
+            <view>数量：x{{item.Quantity}}</view>
+          </view>
+          <view class="price">
+            <view>￥{{item.UnitPrice}}</view>
+            <view>返现{{fn.tofixed(item.Score)}}元</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="assemble">
+      <text class="paytext">实付款:</text>
+      <text class="price">￥{{order.TotalPrice}}</text>(免运费)
+    </view>
+    <view class="address">
+      <view class="address-top">
+        <view>
+          <image src="../../../../static/iconfont/wuliu.png"></image>
+        </view>
+        <view>
+          <view style="font-size:28rpx"><text style="color:#333">{{order.ReceiverName}}</text> <text>{{order.ReceiverPhone}}</text></view>
+          <!-- <view class="ordernum">
+            <view>订单编号:{{order.OrderNo}}</view>
+            <view class="copy" bindtap="copy" data-current="{{order.OrderNo}}">复制</view>
+          </view> -->
+          <view style="margin-top:6rpx;">收货地址: {{order.ReceiverAddress}}</view>
+        </view>
+      </view>
+      <view>
+        <!-- <view class="modify">修改</view> -->
+      </view>
+    </view>
+  </view>
+
+  <view class="orderinfo">
+    <view class="orderinfo-top">
+      <view class="ordernum">
+        <view>订单编号:{{order.OrderNo}}</view>
+        <view class="copy" bindtap="copy" data-current="{{order.OrderNo}}">复制</view>
+      </view>
+      <!-- <view>支付方式:微信</view> -->
+      <!-- <view>
+        <view>商品快照:和对交易细节时,可作为判断依据</view>
+        <view class="bor">查看</view>
+      </view> -->
+      <view wx:if="{{order.Remark!=''}}">订单备注:{{order.Remark}}</view>
+      <view>下单时间:{{time}}</view>
+      <view style="margin:4rpx 0" wx:if="{{order.Type==1}}">支付方式:微信</view>
+      <view style="margin:4rpx 0" wx:if="{{order.Type==2}}">支付方式:支付宝</view>
+      <view style="color:#E64048">还差一人拼团成功</view>
+    </view>
+    <view class="orderinfo-bot">
+      <view bindtap="tocustomerservice">
+        <image src="../../../../static/iconfont/shangjia.png"></image>联系商家
+      </view>
+      <view style="width:2rpx;height:60rpx;background:#EEEEEE"></view>
+      <view bindtap="showphone">
+        <image src="../../../../static/iconfont/phone.png"></image>拨打电话
+      </view>
+    </view>
+  </view>
+
+  <!-- <view>
+    <view class="tuijian">购买过产品的人还浏览了</view>
+  </view> -->
+
+  <view class="bot">
+    <view class="hurry" bindtap="showmodal">取消订单</view>
+    <view class="evaluate" bindtap="toinviteassemble" data-orderno="{{order.OrderNo}}" data-memberid="{{order.MemberID}}">邀请拼单</view>
+  </view>
+
+  <!-- 取消订单弹框 -->
+  <!-- <tui-modal show="{{ordermodal}}" bind:cancel="hide" custom="{{true}}" class="ordercancle">
+    <view class="tips">提示</view>
+    <view class="content">发起拼单24小时后,若未拼单成功将自动取消订单并退款哦</view>
+    <view class="btn" bindtap="hide">
+      我知道了
+    </view>
+  </tui-modal> -->
+  <!-- 待分享结束 -->
+
+  <!--取消订单-->
+  <tui-bottom-popup show="{{popupShow}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+    <view class="title">请选择原因</view>
+    <view class="tips">订单一旦取消,无法恢复</view>
+    <view wx:for="{{reason}}" wx:key="index" class="reason {{activeindex==item.Key?'active':''}}" data-current="{{item.Key}}" bindtap="choosereason">{{item.Value}}</view>
+    <button class="submit" bindtap="submit">提交申请</button>
+  </tui-bottom-popup>
+  <!--取消订单-->
+
+  <tui-modal show="{{modal}}" bind:cancel="hide1" custom="{{true}}" class="phone">
+    <view class="content">0731-85330017</view>
+    <view class="btn" bindtap="copy" data-current="0731-85330017">
+      复制
+    </view>
+  </tui-modal>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

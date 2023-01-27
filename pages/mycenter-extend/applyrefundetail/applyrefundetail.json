@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "退款售后详情",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon",
+    "tui-modal1": "../../../components/modal1/modal1",
+    "tui-countdown": "../../../components/countdown/countdown"
+  }
+}

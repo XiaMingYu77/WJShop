@@ -1,0 +1,149 @@
+/* pages/extend-view//bargaining/bargingrecord/bargingrecord.wxss */
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  /* background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%); */
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-weight: 500;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .goods {
+  width: 94%;
+  margin: 0 3%;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.16);
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  color: #333;
+  font-size: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.container .goods>view:first-child{
+  display: flex;
+}
+
+.container .goods>view:last-child{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container .goods .btn{
+  width: 114rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  border-radius: 10rpx;
+  border: 1rpx solid #2D5DF6;
+  color: #333;
+  /* font-size: 20rpx; */
+  text-align: center;
+}
+
+.container .goods image {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 30rpx;
+}
+
+.container .goods .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container .goods .info .goodrule{
+  color: #999999;
+  font-size: 20rpx;
+  margin:12rpx 0 30rpx;
+}
+
+.container .goods .info .infobot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .goods .time {
+  color: #999;
+}
+
+
+.container .kong {
+  /* background: #e8e8e9; */
+  margin-top: 400rpx;
+  padding: 200rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.container .noorder {
+  display: none;
+}
+
+.container .kong image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 20rpx;
+}

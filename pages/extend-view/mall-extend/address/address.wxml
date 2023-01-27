@@ -1,0 +1,56 @@
+<view class="container">
+  <!-- 红色区域 -->
+  
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      收货地址
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+
+  <!-- 地址 -->
+  <view class="personifobox" style="margin-top:{{height+10}}px">
+    <view class="personifo" wx:for="{{addressList}}" wx:key="index" data-current="{{item}}" catchtap="{{flag=='true'?'chooseaddress':''}}">
+      <view class="personinfo-top">
+        <view class="personifo-left">
+          <image src="../../../../static/iconfont/dingwei.png" class="dingwei"></image>
+          <view class="infomation">
+            <view class="name">{{item.ReceiverName}}
+              <text class="phone">{{item.ReceiverMobile}}</text> 
+            </view>
+            <view class="address">{{item.ReceiverAddress}}</view>
+          </view>
+        </view>
+        <view>
+          <!-- <image src="../../../../static/iconfont/right.png" class="rightarrow"></image> -->
+        </view>
+      </view>
+
+      <view class="personifo-bot">
+        <view data-default="{{index}}" catchtap="default">
+          <checkbox checked="{{index==checked?true:false}}"></checkbox>
+          <text wx-if="{{index!=checked}}">设为默认地址</text>
+          <text wx-if="{{index==checked}}">已经设为默认地址</text>
+        </view>
+        <view class="edit">
+          <text data-current1="{{index}}" catchtap="edit" data-default="{{item.IsDefault}}">编辑</text>
+          <text data-current2="{{index}}" catchtap="delete" data-current="{{index}}" style="margin-left:20rpx">删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 地址结束 -->
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips">确定删除该地址吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="clickdelete">确定</button>
+    </view>
+  </tui-modal1>
+
+  <view class="preserve" bindtap="editAddr">新增收货地址</view>
+</view>

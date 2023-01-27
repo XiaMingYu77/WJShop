@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "店铺收藏",
+  "usingComponents": {
+    "tui-modal": "../../../components/modal/modal"
+  }
+}

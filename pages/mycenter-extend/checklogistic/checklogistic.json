@@ -1,0 +1,9 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "查看物流",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

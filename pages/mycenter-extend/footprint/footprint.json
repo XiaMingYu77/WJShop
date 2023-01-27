@@ -1,0 +1,10 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的足迹",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon",
+    "tui-modal1": "../../../components/modal1/modal1"
+  }
+}

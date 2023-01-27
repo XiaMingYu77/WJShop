@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "",
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-list-cell": "../../../../components/list-cell/list-cell",
+    "tui-icon": "../../../../components/icon/icon",
+    "tui-divider": "../../../../components/divider/divider",
+    "tui-loadmore": "../../../../components/loadmore/loadmore",
+    "tui-modal1": "../../../components/modal1/modal1",
+    "tui-button": "../../../components/button/button"
+  }
+}

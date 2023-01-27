@@ -1,0 +1,162 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      确认订单
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 地址 -->
+  <view class="personifo" bindtap="chooseAddr" style="margin-top:{{height+10}}px">
+    <view class="personifo-left" wx:if="{{addressList!=null}}">
+      <image src="../../../../static/iconfont/dingwei.png" class="dingwei"></image>
+      <view class="infomation">
+        <view class="name">{{addressList.ReceiverName}}
+          <text class="phone">{{addressList.ReceiverPhone}}</text>
+        </view>
+        <view class="address">{{addressList.ReceiverAddress}}</view>
+      </view>
+    </view>
+    <view class="personifo-left" wx:if="{{addressList==null}}" style="color:#666666">
+      <image src="../../../../static/iconfont/dingwei.png" class="dingwei"></image>
+      无地址,点击前往添加
+    </view>
+    <view>
+      <image src="../../../../static/iconfont/right.png" class="rightarrow"></image>
+    </view>
+  </view>
+  <!-- 地址结束 -->
+
+  <!-- 店铺名称 -->
+  <view class="shop">
+    <view class="shop-top">
+      <image src="{{shopinfo.ShopPhoto}}" class="logo" mode="aspectFit"></image>
+      <text>{{shopinfo.ShopName}}</text>
+    </view>
+    <view class="shop-mid">
+      <view>
+        <image class="proimg" src="{{productInfo.productImgSrc}}" mode="aspectFit"></image>
+      </view>
+      <view>
+        <view>{{productInfo.productName}}</view>
+        <view class="phone">
+          <text wx:for="{{productInfo.productRule}}" wx:key="index">{{item}} </text>
+        </view>
+        <view>
+          <!-- <text class="price"  wx:if="{{productInfo.tuanflag==''}}">￥{{productInfo.marketPrice}}元/件</text> -->
+          <text class="price">￥{{productInfo.marketPrice}}元/件</text>
+        </view>
+      </view>
+    </view>
+    <view class="shop-bot">
+      <view>购买数量</view>
+      <tui-numberbox max="{{storage}}" min="1" value="{{quantity}}" bind:change="change"></tui-numberbox>
+    </view>
+    <view class="remark">
+      <view>
+        <text>订单备注:</text>
+      </view>
+      <view>
+        <input bindinput="getInput" placeholder="给商家留言" value="{{remark}}"></input>
+      </view>
+    </view>
+  </view>
+  <!-- 店铺名称结束 -->
+
+  <!-- 同城产品 -->
+  <!-- <view class="citypro">
+    <view class="citypro-top">同城产品</view>
+    <view class="citypro-mid">
+      <image src="../../../../static/logo/坐标(1).png" class="dingwei"></image>
+      <text>店家地址:长沙市·雨花区·华晨双帆国际</text>
+    </view>
+    <view class="citypro-bot">
+      <text data-index="1" bindtap="checktype" class="self {{selected1==1?'selected':''}}">同城自提</text>
+      <text data-index="2" bindtap="checktype" class="delivery {{selected1==2?'selected':''}}">+5元同城配送</text>
+      <text class="text">平台和美团跑腿合作</text>
+    </view>
+  </view> -->
+  <!-- 同城产品结束 -->
+
+  <!-- 同城自提弹框 -->
+  <!-- <tui-modal show="{{modal1}}" bind:cancel="hideaddress" custom="{{true}}" class="clickaddress">
+    <view class="clickaddress-time">
+      <picker-view style="height: 70rpx;margin-top:20rpx;border:none;" value="{{value}}" bindchange="bindChange" class="pick">
+        <picker-view-column>
+          <view wx:for="{{days}}" wx:key="index" style="line-height: 70rpx">{{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{hours}}" wx:key="index" style="line-height: 70rpx">{{item}}点</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{minutes}}" wx:key="index" style="line-height: 70rpx">{{item}}分</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </tui-modal> -->
+  <!-- 同城自提弹框结束 -->
+
+  <!-- 支付方式 -->
+  <!-- <view class="payment">
+    <view class="paymentmode">支付方式</view>
+    <view data-current="1" bindtap="selectpay">
+      <image src="../../../../static/logo/wx.png"></image>
+      <text>微信支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==1?'select':''}}"></image>
+    </view>
+    <view data-current="2" bindtap="selectpay">
+      <image src="../../../../static/logo/zfb.png"></image>
+      <text>支付宝支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==2?'select':''}}"></image>
+    </view>
+    <view data-current="3" bindtap="selectpay">
+      <image src="../../../../static/logo/hb.png"></image>
+      <text>花呗支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==3?'select':''}}"></image>
+    </view>
+    <view data-current="4" bindtap="selectpay">
+      <image src="../../../../static/logo/wj.png"></image>
+      <text>商城平台支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==4?'select':''}}"></image>
+    </view>
+  </view> -->
+  <!-- 支付方式结束 -->
+
+  <!-- 底部支付按钮 -->
+  <view class="orderbot">
+    <view class="clickpay" bindtap="topay">立即支付</view>
+    <view class="pay">
+      实付款
+      <text class="text1">
+        <text class="money">￥</text>{{fn.tofixed(productInfo.marketPrice*quantity)}}
+      <text class="mian">免运费</text>
+      </text>
+    </view>
+  </view>
+  <!-- 底部支付结束 -->
+
+
+  <!-- 无地址弹框 -->
+  <tui-modal1 show="{{modal}}" bind:cancel="hidemodal" custom="{{true}}" class="noaddress">
+    <image src="../../../../static/iconfont/!.png"></image>
+    <view class="tips">
+      <view style="marign-bottom:5rpx;">你还没有收货地址，添加一个吧</view>
+      <!-- <view>无法结算,请添加收货地址</view> -->
+    </view>
+    <view class="btn">
+      <view bindtap="hidemodal">取消</view>
+      <view style="background:#2D5DF6;color:#fff" bindtap="chooseAddr">添加地址</view>
+    </view>
+  </tui-modal1>
+</view>
+
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

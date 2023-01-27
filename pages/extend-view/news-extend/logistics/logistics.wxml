@@ -1,0 +1,29 @@
+<!--pages/extend-view//news-extend/logistics/logistics.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      交易物流
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+  <view class="none" style="margin-top:{{height+10}}px" wx:if="{{list.length==0}}">
+    <nodata text="暂无交易物流"></nodata>
+  </view>
+  <view class="logistic" style="margin-top:{{height+10}}px">
+    <block wx:for="{{list}}" wx:key="index">
+      <view class="time">{{item.senddate}}</view>
+      <view class="box">
+        <image src="{{item.noClass.Photo}}" data-id="{{item.noClass.data}}" bindtap="togoodsdetail" mode="aspectFit"></image>
+        <view>
+          <view class="notice">{{item.noClass.Title}}</view>
+          <view class="content">{{item.noClass.msg}}</view>
+          <view class="check" data-current="{{item.noClass.no}}" wx:if="{{item.pushtype=='1'}}" data-id="{{item.noClass.OrderID}}" bindtap="tologisticsdetail">查看物流详情</view>
+          <view class="check" wx:if="{{item.pushtype=='2'&&item.noClass.Status=='0'}}" data-id="{{item.noClass.OrderID}}" bindtap="towaitingdelivergoodsdetail">查看订单详情</view>
+          <view class="check" data-id="{{item.noClass.data}}" wx:if="{{item.pushtype=='2'&&item.noClass.Status=='1'}}" bindtap="togoodsdetail">重新发起</view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

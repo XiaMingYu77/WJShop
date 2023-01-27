@@ -1,0 +1,71 @@
+<!--pages/extend-view1//mymenmber/mymember.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我的会员
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="tabs" style="top:{{height}}px;">
+    <view class="tabs-top" wx:if="{{selected==0}}">
+      您共有{{count}}位普通会员,其中直属普通会员更有<text style="color:#2D5DF6">{{myhy}}</text>位哦~
+    </view>
+    <view class="tabs-top" wx:if="{{selected==1}}">
+      您共有{{count}}位超级会员,其中直属超级会员更有<text style="color:#2D5DF6">{{myhy}}</text>位哦~
+    </view>
+    <view class="tabs-top" wx:if="{{selected==2}}">
+      您共有{{count}}位导师,其中直属导师更有<text style="color:#2D5DF6">{{myhy}}</text>位哦~
+    </view>
+    <view class="tabs-top" wx:if="{{selected==3}}">
+      您共有{{count}}位合伙人,其中直属合伙人更有<text style="color:#2D5DF6">{{myhy}}</text>位哦~
+    </view>
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+    <view class="slider {{selected==0?'left1':''}} {{selected==1?'left2':''}} {{selected==2?'left3':''}} {{selected==3?'left4':''}}" ></view>
+  </view>
+
+  <view>
+    <view class="memberbox" style="margin-top:{{height+10}}px;">
+      <view class="member" wx:for="{{registerlist}}" wx:key="index">
+        <view class="member-top">
+          <view>
+            <image src="{{item.Photo}}"></image>
+          </view>
+          <view class="infobox">
+            <view class="name">{{item.NickName}} <text class="phone">({{item.MobilePhone}})</text></view>
+            <!-- <view class="phone">手机号码:{{item.MobilePhone}}</view> -->
+            <view>注册时间：{{item.RegisterTime}}</view>
+          </view>
+        </view>
+        <!-- <view class="member-bot" bindtap="tomemberdetail" data-current="{{item.MemID}}" data-name="{{item. NickName}}">
+          详情
+          <image src="../../../static/iconfont/right.png"></image>
+        </view> -->
+      </view>
+      <nodata wx:if="{{flag1}}"></nodata>
+    </view>
+    <view class="tips" wx:if="{{!flag1}}">注:您的直属{{tabs[selected].name}}所邀请的{{tabs[selected].name}}也是您的会员哦~</view>
+  </view>
+
+  <!-- <view wx-if="{{selected=='1'}}">
+    <view class="memberbox" style="margin-top:{{height+10}}px;">
+      <view class="member" wx:for="{{superlist}}" wx:key="index">
+        <view class="member-top">
+          <view>
+            <image src="{{item.Photo}}"></image>
+          </view>
+          <view class="infobox">
+            <view class="name">{{item.NickName}} <text class="phone">({{item.MobilePhone}})</text></view>
+            <view>注册时间：{{item.RegisterTime}}</view>
+          </view>
+        </view>
+      </view>
+      <nodata wx:if="{{flag2}}"></nodata>
+    </view>
+    <view class="tips" wx:if="{{!flag2}}">注:您的直属超级会员所邀请的注册用户也是您的会员哦~</view>
+  </view> -->
+</view>

@@ -1,0 +1,110 @@
+<!--pages/extend-view1//myprofit/myprofit.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我的收益
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="tabs" style="top:{{height}}px;">
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+    <view class="slider {{selected==0?'left1':''}} {{selected==1?'left2':''}} {{selected==2?'left3':''}}"></view>
+  </view>
+
+
+
+  <!-- 本月预估 -->
+  <view class="myprofit" style="margin-top:{{height}}px;">
+    <!-- <view class="myprofit-top">
+      <view>统计包含{{list.StartDatetime}}~{{list.EndDatetime}}的数据</view>
+      <view class="pop" bindtap="popup">预估收益说明</view>
+    </view> -->
+
+    <view class="myprofit-bot">
+      <view class="border">
+        <view wx:if="{{selected=='1'}}" style="color:#333">本月预估总收益</view>
+        <view wx:if="{{selected=='2'}}" style="color:#333">上月预估总收益</view>
+        <view wx:if="{{selected=='0'}}" style="color:#333">今日总收益</view>
+        <view class="money">￥{{list.IncomeNumber}}</view>
+      </view>
+      <view class="border">
+        <view wx:if="{{selected=='1'}}">本月预估返现收益</view>
+        <view wx:if="{{selected=='2'}}">上月预估返现收益</view>
+        <view wx:if="{{selected=='0'}}" style="color:#333">今日返现收益</view>
+        <view class="{{selected=='0'?'money':''}}">￥{{list.MyIncome}}</view>
+      </view>
+      <view class="border">
+        <view wx:if="{{selected=='1'}}">本月预估推广收益</view>
+        <view wx:if="{{selected=='2'}}">上月预估推广收益</view>
+        <view wx:if="{{selected=='0'}}" style="color:#333">今日推广收益</view>
+        <view class="{{selected=='0'?'money':''}}">￥{{list.tgIncome}}</view>
+      </view>
+      <view class="border">
+        <view wx:if="{{selected=='1'}}">本月预估平台奖励</view>
+        <view wx:if="{{selected=='2'}}">上月预估平台奖励</view>
+        <view wx:if="{{selected=='0'}}" style="color:#333">今日平台收益</view>
+        <view class="{{selected=='0'?'money':''}}">￥{{list.Reward}}</view>
+      </view>
+    </view>
+
+    <view class="myprofit-bot" style="margin-top:76rpx" wx:if="{{selected!='0'}}">
+      <view class="border">
+        <view>本月预估结算金额</view>
+        <view>￥{{list.SettlementIncome}}</view>
+      </view>
+      <view class="border">
+        <view>下月预估结算金额</view>
+        <view>￥{{list.LowerSettlementIncome}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 本月预估 -->
+
+  <!-- 底部跳转 -->
+  <view class="myprofit-to">
+    <view class="myprofit-to-box" bindtap="tototalprofitdetail">
+      <view>我的总收益详情</view>
+      <view>
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <view class="myprofit-to-box" bindtap="toprofitdetail">
+      <view>我的推广收益详情</view>
+      <view>
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <view class="myprofit-to-box" bindtap="toprofitincomedetail">
+      <view>我的平台奖励详情</view>
+      <view>
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <view class="myprofit-to-box" bindtap="tomyrecashdetail">
+      <view>我的返现收益详情</view>
+      <view>
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="yugu" bindtap="popup">预估收益说明</view>
+  <!-- 底部跳转结束 -->
+
+  <!-- 底部弹出框 -->
+  <tui-modal1 show="{{showtext}}" bind:cancel="hide" custom="{{true}}" class="showtext">
+    <!-- <view class="text1">预估收益说明</view> -->
+    <view class="text">
+      <view class="text1">预估收益是根据用户下单时间预估统计的推广效果数据，并非实际结算收益。</view>
+      <view class="text2">订单取消或者退换货后对应收益会相应扣除，实际收益以订单完成为准</view>
+    </view>
+    <view class="know" bindtap="hide">我知道了</view>
+  </tui-modal1>
+  <!-- 底部弹出框结束 -->
+
+</view>

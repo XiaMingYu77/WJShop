@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      意见反馈
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="input" style="margin-top:{{height+10}}px">
+    <textarea value="{{content}}" bindinput="inputcontent" placeholder="请输入您的问题或建议"></textarea>
+  </view>
+
+  <view class="infomation">
+    <view>
+      <text>姓名(必填):</text>
+      <input value="{{namevalue}}" bindinput="inputname" placeholder="请输入您的姓名"></input>
+    </view>
+    <view>
+      <text>联系方式(必填):</text>
+      <input value="{{phonevalue}}" bindinput="inputphone" placeholder="请输入您的电话号码"></input>
+    </view>
+  </view>
+
+  <view class="upload">
+    <view>上传照片(选填)</view>
+    <view class="question-images">
+      <block wx:for="{{images}}" wx:key="*this">
+        <view class="q-image-wrap">
+          <!-- 图片缩略图  -->
+          <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview" mode="aspectFit"></image>
+          <!-- 移除图片的按钮  -->
+          <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+        </view>
+      </block>
+    </view>
+    <view class="uploadbot">
+      <view class="uploadbtn" bindtap="chooseImage">
+        <image src="../../../static/iconfont/photo.png"></image>
+        <!-- <view>上传图片</view> -->
+      </view>
+      <!-- <view style="color: #666666;">联系电话：130 2310 6599</view> -->
+    </view>
+  </view>
+  <view class="record" bindtap="tofeedbackrecord">反馈记录</view>`
+
+  <view class="btn">
+    <view class="clicksubmit" data-current="0" bindtap="showmodal">功能异常</view>
+    <view class="clicksubmit" data-current="1" bindtap="showmodal">优化建议</view>
+  </view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hideinfo" custom="{{true}}" class="modal">
+    <!-- <view class="title">反馈成功</view> -->
+    <view class="content">感谢您的及时反馈，小二正火速处理中，请注意在[消息]中查收</view>
+    <view class="btn">
+      <button class="cancle" bindtap="hideinfo">取消</button>
+      <button class="submit" bindtap="submit">确定</button>
+    </view>
+    <!-- <image class="x" src="../../../static/iconfont/close.png" bindtap="hideinfo"></image> -->
+  </tui-modal1>
+  
+</view>

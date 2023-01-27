@@ -1,0 +1,185 @@
+/* pages/extend-view//news-extend/discount/discount.wxss */
+
+page {
+  background: #fff;
+}
+
+.container {
+  /* height: 100vh; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: #fff;
+  box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .none {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.container .box {
+  /* height: 713rpx; */
+  background: #fff;
+  width: 94%;
+  margin: 0 3%;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.container .box .topic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 20rpx;
+  color: #333;
+}
+
+.container .box .topic .title {
+  font-weight: 700;
+}
+
+.container .box .topic .time {
+  color: #999;
+  font-size: 20rpx;
+}
+
+.container .box .topic image {
+  width: 33rpx;
+  height: 30rpx;
+  vertical-align: -5rpx;
+  margin-right: 10rpx;
+}
+
+.container .box .imgbox{
+  width: 100%;
+  height: 316rpx;
+}
+
+.container .box .imgbox .img {
+  width: 100%;
+  height: 100%;
+}
+
+.container .findgoodsmessage .boxbot{
+  display: flex;
+  align-items: center;
+  padding: 12rpx 20rpx 18rpx;
+}
+
+.container .findgoodsmessage .boxbot image{
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.container .findgoodsmessage .boxbot .content{
+  margin-left: 36rpx;
+}
+
+.container .findgoodsmessage .boxbot .content>view:first-child{
+  color: #333333;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.container .findgoodsmessage .boxbot .content>view:last-child{
+  color: #666666;
+  font-size: 20rpx;
+}
+
+/* .container .box .content {
+  height: 100rpx;
+  display: flex;
+  line-height: 100rpx;
+  padding-left: 20rpx;
+  font-size: 22rpx;
+}
+
+.container .box .content image {
+  width: 85rpx;
+  height: 85rpx;
+  margin-left: 100rpx;
+}
+
+.contentright {
+  width: 420rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
+.tips {
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  text-align: center;
+  margin-bottom: 10rpx;
+} */

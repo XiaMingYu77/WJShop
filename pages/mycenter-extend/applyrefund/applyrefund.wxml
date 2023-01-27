@@ -1,0 +1,201 @@
+<!--pages/mycenter-extend//applyrefund/applyrefund.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;">
+      选择服务类型
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="applytop" style="margin-top:{{height+10}}px">
+    <view class="goods">
+      <image src="{{orderpro.ThumbnailImg}}"></image>
+      <view>
+        <view class="name">{{orderpro.ProductName}}</view>
+        <view class="mt">{{orderpro.ProductSpecs}}</view>
+        <view class="mt">数量:{{orderpro.Quantity}}</view>
+      </view>
+    </view>
+    <view class="applytype" bindtap="applytype">
+      <view>申请类型:
+        <text>{{content1}}</text>
+      </view>
+      <view>
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <!-- <view class="applyreason" bindtap="applyreason">
+      <view>申请原因
+        <text>{{content2}}</text>
+      </view>
+      <view>
+        <image src="../../../static/logo/right.png"></image>
+      </view>
+    </view> -->
+    <view wx:if="{{activeindex1==0}}">
+      <view class="applyreason" bindtap="showstatus">
+        <view>商品状态
+          <text>{{statuscontent}}</text>
+        </view>
+        <view>
+          <image src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+      <view class="applyreason" bindtap="applyreason">
+        <view>申请原因
+          <text>{{content2}}</text>
+        </view>
+        <view>
+          <image src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+      <view class="money">
+        确认退款金额:
+        <text style="color:#E64048">￥{{orderpro.SubPrice}}</text>
+      </view>
+    </view>
+    <!-- 退款退货 -->
+    <view wx:if="{{activeindex1==1}}">
+      <view class="applyreason" bindtap="applyreason">
+        <view>申请原因
+          <text>{{content2}}</text>
+        </view>
+        <view>
+          <image src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+      <view class="money">
+        确认退款金额:
+        <text style="color:#E64048">￥{{orderpro.SubPrice}}</text>
+      </view>
+    </view>
+    <!-- 换货 -->
+    <view wx:if="{{activeindex1==2}}">
+      <view class="applyreason" bindtap="applyreason">
+        <view>申请原因
+          <text>{{content2}}</text>
+        </view>
+        <view>
+          <image src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+      <view class="applyreason" bindtap="showpromodal">
+        <view>选择换货商品
+          <text>{{modalstr}}</text>
+        </view>
+        <view>
+          <image src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+      <!-- <view class="money">
+        确认退款金额:
+        <text style="color:#E64048">￥{{orderpro.SubPrice}}</text>
+      </view> -->
+    </view>
+
+  </view>
+
+  <!-- <view class="amount">
+    <view class="amount-top">
+      <view class="text1">退款金额</view>
+      <view class="price">￥{{price}}</view>
+    </view>
+    <view class="text2">若退款成功，退还金原路返回，注意查收</view>
+  </view> -->
+
+  <view class="notes">
+    <view class="notes-top">
+      <view>申请说明</view>
+      <view class="number">你还可以输入{{lastArea}}字</view>
+    </view>
+    <textarea placeholder="必填,请您详细填写申请说明" name="information" value="{{information}}" bindinput="getDataBindTap" wx:if="{{!modal1}}"></textarea>
+    <!-- <textarea wx:if="{{!multiShow}}" class='' bindblur="ifshowArea" data-show="yes" value="{{information}}" bindinput='getDataBindTap' maxlength="{{lastArea}}" data-type="information"  placeholder="必填,请您详情填写申请说明" focus="true"  focus="true"/> -->
+      <view wx:else style='height:170rpx;color:#333333;'>{{information}}</view>
+    <view class="upload">
+      <view class="question-images">
+        <block wx:for="{{images}}" wx:key="*this">
+          <view class="q-image-wrap">
+            <!-- 图片缩略图  -->
+            <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview" mode="aspectFit"></image>
+            <!-- 移除图片的按钮  -->
+            <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
+          </view>
+        </block>
+      </view>
+      <view class="uploadbtn" bindtap="chooseImage">
+        <view>上传图片</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- <view class="phone">
+    联系电话
+    <input class="phonenumber" value="{{phone}}" bindinput="phonechange" placeholder="{{phone}}"></input>
+  </view> -->
+
+  <view class="submit" bindtap="submit">提交申请</view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hidemodal" custom="{{true}}" class="clickaddress">
+    <view class="tips">确认提交吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hidemodal">取消</button>
+      <button class="addaddress" bindtap="confirm">确认</button>
+    </view>
+    <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hidemodal"></image> -->
+  </tui-modal1>
+
+  <tui-bottom-popup show="{{popupShow}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+    <view class="title">请选择类型</view>
+    <!-- <view class="tips">订单一旦取消,无法恢复</view> -->
+    <view wx:for="{{reason}}" wx:key="index" class="reason {{activeindex1==index?'active':''}}" data-index="{{index}}" data-current="{{index}}" bindtap="choosereason1">{{item}}</view>
+    <!-- <button class="submit" bindtap="submit1">确定</button> -->
+  </tui-bottom-popup>
+
+  <tui-bottom-popup show="{{popupShow1}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+    <view class="title">请选择原因</view>
+    <!-- <view class="tips">订单一旦取消,无法恢复</view> -->
+    <view wx:for="{{reason1}}" wx:key="index" class="reason {{activeindex2===index+1?'active':''}}" data-index="{{item.Key}}" data-current="{{item.Value}}" bindtap="choosereason2">{{item.Value}}</view>
+    <!-- <button class="submit" bindtap="submit2">确定</button> -->
+  </tui-bottom-popup>
+
+  <tui-bottom-popup show="{{popupShow2}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+    <view class="title">请选择状态</view>
+    <!-- <view class="tips">订单一旦取消,无法恢复</view> -->
+    <view wx:for="{{status}}" wx:key="index" class="reason {{statusindex===index?'active':''}}" data-index="{{index}}" bindtap="choosestatus">{{item}}</view>
+    <!-- <button class="submit" bindtap="submit2">确定</button> -->
+  </tui-bottom-popup>
+
+
+  <tui-bottom-popup show="{{choosemodelflag}}" tui-popup-class="tui-popup" bind:close="hide">
+    <view class="pro-popbox">
+      <image class="x" src="../../../static/iconfont/close.png" bindtap="hide"></image>
+      <view class="popbox">
+        <image src="{{infoModel.FullImg}}" class="popup-img" mode="aspectFit"></image>
+        <view class="popup-price">
+          <!-- <view class="price">
+            <text class="money">￥</text>{{marketPrice}}元
+          </view> -->
+          <view class="number">库存量：{{storage}}件</view>
+          <view class="model">已选: {{modalstr}}</view>
+        </view>
+      </view>
+      <view class="choosemodel" wx:for="{{productrule}}" wx:for-index="index1" wx:key="index1">
+        <view class="choose">{{item.specName}}</view>
+        <view class="content">
+          <view wx:for="{{item.specVal}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
+            <view class="model  {{(selectedCurrent[index1]==index1+1 &&selectedAttr[index1]==index2)?'selected':''}}" data-current="{{index1+1}}" data-select-index="{{id}}" data-name="{{item2.val}}" data-attr-index="{{index2}}" data-content="{{properties}}" bindtap="choosemodel">{{item2.val}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="amount1">
+      <view>数量</view>
+      <tui-numberbox max="{{orderpro.Quantity}}" min="1" value="{{value}}" bind:change="change1"></tui-numberbox>
+    </view> -->
+    <view class="addcart-determine {{storage<=0?'nostorage':''}}" catchtap="choosemodalsubmit">
+      确定
+    </view>
+  </tui-bottom-popup>
+</view>

@@ -1,0 +1,54 @@
+<!--pages/mycenter-extend//groupassistant1/groupassistant1.wxml-->
+<view class="container">
+  <view class="top">
+    <view class="toptext">
+      <view style="color:#2D5DF6">
+        <view>第一步</view>
+        <view>修改微信群名称</view>
+      </view>
+      <view style="text-align:center">
+        <view>第二步</view>
+        <view>选择你的群人数</view>
+      </view>
+      <view style="text-align:right">
+        <view>第三步</view>
+        <view>去添加助理</view>
+      </view>
+    </view>
+    <view class="topline">
+      <view>
+        <image src="../../../static/iconfont/gou.png"></image>
+      </view>
+      <view class="line color"></view>
+      <view class="dot"></view>
+      <view class="line line1"></view>
+      <view class="dot"></view>
+    </view>
+  </view>
+  <view class="groupinfo">
+    <view class="groupinfo-top">
+      <view class="title">请将群名修改为:</view>
+      <view class="groupname">{{data.F_WX_CHATNAME}}</view>
+      <view class="copy" bindtap="copy">复制</view>
+    </view>
+    <view class="img">
+      <image  src="../../../static/image/1_03.jpg" mode="aspectFit"></image>
+    </view>
+    <view class="tips">
+      <view>注意*</view>
+      <view>1、开通时务必按照要求修改群名</view>
+      <view>2、开通助理后可再次修改自己群名</view>
+    </view>
+  </view>
+  <view class="next" bindtap="next">下一步</view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips">请确认群名已修改?</view>
+    <view class="content">请修改群名为【{{data.F_WX_CHATNAME}}】否则无法成功开通助理哦~</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="confirm">确认</button>
+    </view>
+    <!-- <image src="../../../static/logo/guanbi.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+</view>

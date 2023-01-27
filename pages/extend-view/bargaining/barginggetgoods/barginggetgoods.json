@@ -1,0 +1,13 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "好物免费拿",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "swipe-action": "../../../../components/swipe-action/swipe-action",
+    "tui-modal1": "../../../../components/modal1/modal1",
+    "tui-button": "../../../../components/button/button",
+    "tui-icon": "../../../../components/icon/icon",
+    "tui-countdown": "../../../../components/countdown/countdown"
+  }
+}

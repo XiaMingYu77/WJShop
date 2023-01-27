@@ -1,0 +1,259 @@
+<!--pages/mycenter-extend//checklogistic/checklogistic.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      物流详情
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 订单物流 -->
+  <view wx:if="{{flag=='orderlogistic'}}">
+    <view class="logistic" style="margin-top:{{height+10}}px">
+      <view class="logistic-top">
+        <view class="logistic-top-left">
+          <image src="{{logistics.logo}}" wx:if="{{logisticflag}}" mode="aspectFit"></image>
+          <image wx:if="{{!logisticflag}}" src="../../../static/iconfont/moren.png"></image>
+          <view>
+            <view class="name" wx:if="{{logisticflag}}">{{logistics.name}}</view>
+            <view class="name" wx:if="{{!logisticflag}}">暂无物流</view>
+            <view class="number">快递单号：{{trackingno}}
+              <text class="copy" bindtap="copy" data-current="{{trackingno}}">复制</text> </view>
+          </view>
+        </view>
+        <view class="logistic-top-right" bindtap="tocustomerservice">
+          <image src="../../../static/iconfont/kefu.png"></image>
+          <view>物流服务</view>
+        </view>
+      </view>
+      <view class="logistic-bot">
+        <view>
+          <image src="../../../static/iconfont/wuliu.png"></image>
+        </view>
+        <view>
+          <view>订单编号：{{address.OrderNo}}</view>
+          <view class="address">收货地址：{{address.ReceiverAddress}}</view>
+        </view>
+      </view>
+      <view class="personinfo">
+        <view>收件人:
+          <text>{{address.ReceiverName}}</text>
+        </view>
+        <view style="margin-top:10rpx">联系方式:
+          <text>{{address.ReceiverPhone}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="{{index=='0'?'first':''}}" wx:for="{{logistics.list}}" wx:key="index" wx:if="{{logisticflag}}">
+        <view class="dot {{index=='0'?'active':''}}"></view>
+        <view class="text">{{item.content}}</view>
+      </view>
+      <view wx:if="{{!logisticflag}}" style="justify-content:center;color:#333">
+        暂无物流信息
+      </view>
+    </view>
+  </view>
+
+  <!-- 用户发货 -->
+  <view wx:if="{{flag=='imdeliver'}}">
+    <view class="logistic" style="margin-top:{{height+10}}px">
+      <view class="logistic-top">
+        <view class="logistic-top-left">
+          <image src="{{logistics.logo}}"></image>
+          <view>
+            <view class="name">{{logistics.expTextName}}</view>
+            <view class="number">快递单号：{{trackingno}}
+              <text class="copy" bindtap="copy" data-current="{{trackingno}}">复制</text> </view>
+          </view>
+        </view>
+        <view class="logistic-top-right" bindtap="tocustomerservice">
+          <image src="../../../static/iconfont/kefu.png"></image>
+          <view>物流服务</view>
+        </view>
+      </view>
+      <view class="logistic-bot">
+        <view>
+          <image src="../../../static/iconfont/wuliu.png"></image>
+        </view>
+        <view>
+          <view>订单编号：{{orderno}}</view>
+          <view class="address">收货地址：{{address.address}}</view>
+        </view>
+      </view>
+      <view class="personinfo">
+        <view>收件人:
+          <text>{{address.name}}</text>
+        </view>
+        <view style="margin-top:10rpx">联系方式:
+          <text>{{address.phone}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="{{index=='0'?'first':''}}" wx:for="{{logistics.data}}" wx:key="index" wx:if="{{logistics.data.length>0}}">
+        <view class="dot {{index=='0'?'active':''}}"></view>
+        <view>
+          <view class="text">{{item.context}}</view>
+          <view>{{item.time}}</view>
+        </view>
+      </view>
+      <view wx:if="{{logistics.data.length==0}}" style="justify-content:center;color:#333">
+        暂无物流信息
+      </view>
+    </view>
+  </view>
+
+  <!-- 商家发货 -->
+  <view wx:if="{{flag=='otherdeliver'}}">
+    <view class="logistic" style="margin-top:{{height+10}}px">
+      <view class="logistic-top">
+        <view class="logistic-top-left">
+          <image src="{{logistics.logo}}"></image>
+          <view>
+            <view class="name">{{logistics.expTextName}}</view>
+            <view class="number">快递单号：{{trackingno}}
+              <text class="copy" bindtap="copy" data-current="{{trackingno}}">复制</text> </view>
+          </view>
+        </view>
+        <view class="logistic-top-right" bindtap="tocustomerservice">
+          <image src="../../../static/iconfont/kefu.png"></image>
+          <view>物流服务</view>
+        </view>
+      </view>
+      <view class="logistic-bot">
+        <view>
+          <image src="../../../static/iconfont/wuliu.png"></image>
+        </view>
+        <view>
+          <view>订单编号：{{orderno}}</view>
+          <view class="address">收货地址：{{address.ReceiverAddress}}</view>
+        </view>
+      </view>
+      <view class="personinfo">
+        <view>收件人:
+          <text>{{address.ReceiverName}}</text>
+        </view>
+        <view style="margin-top:10rpx">联系方式:
+          <text>{{address.ReceiverPhone}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="{{index=='0'?'first':''}}" wx:for="{{logistics.data}}" wx:key="index" wx:if="{{logistics.data.length!=0}}">
+        <view class="dot {{index=='0'?'active':''}}"></view>
+        <view>
+          <view class="text">{{item.context}}</view>
+          <view>{{item.time}}</view>
+        </view>
+      </view>
+      <view wx:if="{{logistics.data.length==0}}" style="justify-content:center;color:#333">
+        暂无物流信息
+      </view>
+    </view>
+  </view>
+
+  <!-- 砍价物流 -->
+  <view wx:if="{{flag=='barging'}}">
+    <view class="logistic" style="margin-top:{{height+10}}px">
+      <view class="logistic-top">
+        <view class="logistic-top-left">
+          <image src="{{logistics.logo}}" wx:if="{{logisticflag}}" mode="aspectFit"></image>
+          <image wx:if="{{!logisticflag}}" src="../../../static/iconfont/moren.png"></image>
+          <view>
+            <view class="name" wx:if="{{logisticflag}}">{{logistics.expTextName}}</view>
+            <view class="name" wx:if="{{!logisticflag}}">暂无物流</view>
+            <view class="number">快递单号：{{info.F_LogisticsNo}}
+              <text class="copy" bindtap="copy" data-current="{{info.F_LogisticsNo}}">复制</text> </view>
+          </view>
+        </view>
+        <view class="logistic-top-right" bindtap="tocustomerservice">
+          <image src="../../../static/iconfont/kefu.png"></image>
+          <view>物流服务</view>
+        </view>
+      </view>
+      <view class="logistic-bot">
+        <view>
+          <image src="../../../static/iconfont/wuliu.png"></image>
+        </view>
+        <view>
+          <!-- <view>订单编号：{{address.OrderNo}}</view> -->
+          <view class="address" style="font-size:24rpx;margin-top:0">收货地址：{{info.F_ReceiverAddress}}</view>
+        </view>
+      </view>
+      <view class="personinfo">
+        <view>收件人:
+          <text>{{info.F_ReceiverName}}</text>
+        </view>
+        <view style="margin-top:10rpx">联系方式:
+          <text>{{info.F_ReceiverPhone}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="{{index=='0'?'first':''}}" wx:for="{{logistics.data}}" wx:key="index" wx:if="{{logisticflag}}">
+        <view class="dot {{index=='0'?'active':''}}"></view>
+        <view>
+          <view class="text">{{item.context}}</view>
+          <view>{{item.time}}</view>
+        </view>
+      </view>
+      <view wx:if="{{!logisticflag}}" style="justify-content:center;color:#333">
+        暂无物流信息
+      </view>
+    </view>
+  </view>
+
+  <!-- 抽奖物流 -->
+  <view wx:if="{{flag=='luckdraw'}}">
+    <view class="logistic" style="margin-top:{{height+10}}px">
+      <view class="logistic-top">
+        <view class="logistic-top-left">
+          <image src="{{logistics.logo}}" wx:if="{{logisticflag}}" mode="aspectFit"></image>
+          <image wx:if="{{!logisticflag}}" src="../../../static/iconfont/moren.png"></image>
+          <view>
+            <view class="name" wx:if="{{logisticflag}}">{{logistics.expTextName}}</view>
+            <view class="name" wx:if="{{!logisticflag}}">暂无物流</view>
+            <view class="number">快递单号：{{info.F_LogisticsNo}}
+              <text class="copy" bindtap="copy" data-current="{{info.F_LogisticsNo}}">复制</text> </view>
+          </view>
+        </view>
+        <view class="logistic-top-right" bindtap="tocustomerservice">
+          <image src="../../../static/iconfont/kefu.png"></image>
+          <view>物流服务</view>
+        </view>
+      </view>
+      <view class="logistic-bot">
+        <view>
+          <image src="../../../static/iconfont/wuliu.png"></image>
+        </view>
+        <view>
+          <!-- <view>订单编号：{{address.OrderNo}}</view> -->
+          <view class="address" style="font-size:24rpx;margin-top:0">收货地址：{{info.F_RecipientsAddress}}</view>
+        </view>
+      </view>
+      <view class="personinfo">
+        <view>收件人:
+          <text>{{info.F_RecipientsName}}</text>
+        </view>
+        <view style="margin-top:10rpx">联系方式:
+          <text>{{info.F_RecipientsPhone}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="{{index=='0'?'first':''}}" wx:for="{{logistics.data}}" wx:key="index" wx:if="{{logisticflag}}">
+        <view class="dot {{index=='0'?'active':''}}"></view>
+        <view>
+          <view class="text">{{item.context}}</view>
+          <view>{{item.time}}</view>
+        </view>
+      </view>
+      <view wx:if="{{!logisticflag}}" style="justify-content:center;color:#333">
+        暂无物流信息
+      </view>
+    </view>
+  </view>
+</view>

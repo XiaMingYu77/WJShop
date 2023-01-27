@@ -1,0 +1,31 @@
+<!--pages/mycenter-extend//feedbackrecorddetail/feedbackrecorddetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      反馈详情
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view style="margin-top:{{height+10}}px">
+    <view class="question">
+      <view>问题内容: <text style="color:#333;font-size:24rpx">{{content.FeedContent}}</text></view>
+      <view class="imgs">
+        <block wx:for="{{content.t_Shop_MemberFeedBackImg}}" wx:key="Guid">
+          <image class="{{(index+1)%3==0?'last':''}}" src="{{item.FeedImage}}" data-idx="{{index}}" bindtap="handleImagePreview" mode="aspectFit"></image>
+        </block>
+      </view>
+      <view>提交时间: <text style="color:#999999;font-size:20rpx">{{time}}</text></view>
+    </view>
+    <view class="answer" wx:if="{{content.FeedStatus==1}}">
+      <view>问题解答:</view>
+      <view class="name">
+        <image src="{{content.Photo}}" mode="aspectFit"></image> 商城官方客服
+      </view>
+      <view class="replay">{{content.FeedReply}}</view>
+      <!-- <view class="time">{{time}}</view> -->
+    </view>
+  </view>
+</view>

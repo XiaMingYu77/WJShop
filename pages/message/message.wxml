@@ -1,0 +1,116 @@
+<view class="container">
+  <!--pages/message/message.wxml-->
+  <view class="message_centen">
+    <!-- <view class="jurisdiction">
+    <image src="../../static/images/message/操作-关闭.png" class="img_shape"></image>
+    <text class="inform_txt">代开手机系统通知权限，信息不错过</text>
+    <text class="open">开启</text>
+  </view> -->
+
+    <view class="message_type">
+      <view class="contentalgin">
+        <image class="testclass" src="../../static/iconfont/message.png"></image>
+        <text class="tui-news-item" wx:if="{{unread==0}}">没有未读信息</text>
+        <text class="tui-news-item" wx:if="{{unread!=0}}">{{unread}}条未读信息</text>
+      </view>
+      <view class="tui-order-list">
+        <view wx:for="{{message}}" wx:key="index" class="tui-order-item" bindtap="href" data-current="{{item.to}}" data-type="{{message_number}}">
+          <view class="tui-icon-box">
+            <image src="{{item.img}}" class="tui-order-icon"></image>
+            <view class="dot" wx:if="{{index==3&&unread!=0}}"></view>
+          </view>
+          <view class="tui-order-text">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- <view class="message_rest">
+      <view class="tui-cell-header">
+        <view class="tui-cell-title">其他通知</view>
+        <view class="tui-cell-sub">更多 <image src="../../static/iconfont/right.png"></image> </view>
+      </view>
+    </view> -->
+
+    <view class="tui-product-box">
+      <view class="tui-group-name">
+        <text>更多热卖</text>
+      </view>
+      <view class="prolist">
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble">
+                  <view class="spellback">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{fn.tofixed(item.markprice)}}</view>
+                    <!-- <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view> -->
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble">
+                  <view class="spellback">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{fn.tofixed(item.markprice)}}</view>
+                    <!-- <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view> -->
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

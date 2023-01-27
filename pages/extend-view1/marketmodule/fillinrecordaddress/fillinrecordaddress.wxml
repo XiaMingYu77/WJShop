@@ -1,0 +1,25 @@
+<!--pages/extend-view1//marketmodule/fillinrecordaddress/fillinrecordaddress.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      填写地址
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="content" style="margin-top:{{height+10}}px">
+    <view style="border:none">
+      收货人 <input placeholder="姓名" style="margin-left:52rpx;" bindinput="nameinput"></input>
+    </view>
+    <view>
+      联系方式 <input placeholder="手机号码" bindinput="phoneinput"></input>
+    </view>
+    <view style="align-items: flex-start;">
+      填写地址 <textarea placeholder="请填写你所在的地址" bindinput="addressinput"></textarea>
+    </view>
+  </view>
+
+  <view class="submit" bindtap="submit">确定收货地址</view>
+</view>

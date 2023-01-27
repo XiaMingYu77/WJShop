@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="red"></view>
+  <view class="hasphone" wx-if="{{}}">
+    <view class="phone">135****7745</view>
+    <view class="tips">本手机号认证服务由中国xx提供</view>
+    <button class="bind">本手机号一键绑定</button>
+    <view class="check">切换手机号</view>
+  </view>
+
+  <view class="bindphone" wx-if="{{}}">
+    <view class="number">18229825523</view>
+    <view class="inp">
+      <view>
+        <input placeholder="请输入验证码"></input>
+      </view>
+      <view class="getcode">请输入验证码</view>
+    </view>
+    <button class="immediatelybind">立即绑定</button>
+  </view>
+
+  <view class="successbind">
+    <view>
+      <image></image>
+    </view>
+    <view class="number">已绑定手机号:135****7745</view>
+    <view>您可以使用绑定的手机号登录当前商城账号</view>
+    <view class="tips">为降低账号安全风险,每三个月仅能更换一次,请谨慎修改</view>
+  </view>
+</view>

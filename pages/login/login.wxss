@@ -1,0 +1,197 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  /* background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%); */
+  overflow: hidden;
+  color: #333;
+  /* background-image: url(http://imgs2.we-time.net/DocumenInfo/0200/62/20/WJ202006220230042123/1753eed004874009be93abb4cf0ea0f0.png); */
+  /* background-image: url(http://172.20.5.154:8080/images/icons/xiaochengxudenglubg.png); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-weight: 400;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .title {
+  margin: 0 auto;
+  margin-top: 20rpx;
+  letter-spacing: 24rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  text-align: center;
+}
+
+.container .logo {
+  text-align: center;
+}
+
+.container .logo image {
+  width: 232rpx;
+  height: 232rpx;
+}
+
+.container .box1 {
+  position: fixed;
+  left: 75rpx;
+  bottom: 200rpx;
+}
+
+.container .box2 {
+  position: fixed;
+  left: 75rpx;
+  top: 170rpx;
+}
+
+.container .submit {
+  width: 602rpx;
+  margin: auto;
+  height: 92rpx;
+  line-height: 92rpx;
+  background: #94aeff;
+  border-radius: 46px;
+  color: #fff;
+  margin-top: 350rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.container .submit1 {
+  margin-top: 850rpx;
+}
+
+.container .nologin{
+  width: 120rpx;
+  text-align: center;
+  color: #94aeff;
+  font-size: 28rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  border-bottom: 1rpx solid #94aeff;
+}
+
+.container .tips {
+  font-size: 24rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  text-align: center;
+  color: #94aeff;
+}
+
+.container  .tips1 {
+  font-size: 24rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  text-align: center;
+  color: #2d5df6;
+}
+
+.container .tips .cls {
+  color: #333;
+}
+
+.container .cls1 {
+  color: #d2d2d2;
+}
+
+.container .invitebox {
+  /* position: fixed;
+  top: 166rpx;
+  left: 75rpx; */
+}
+
+.container .invitebox .invitetext {
+  font-size: 44rpx;
+  color: #fff;
+}
+
+.container .invitenum {
+  display: flex;
+  padding: 0 40rpx;
+  align-items: center;
+  width: 602rpx;
+  height: 92rpx;
+  background: #fff;
+  border-radius: 46rpx;
+  margin-top: 132rpx;
+  box-sizing: border-box;
+}
+
+.container .invitenum input {
+  width: 470rpx;
+}
+
+.container .invitenum image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 20rpx;
+}

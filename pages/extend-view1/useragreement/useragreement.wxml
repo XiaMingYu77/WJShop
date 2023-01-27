@@ -1,0 +1,15 @@
+<!--pages/extend-view1//useragreement/useragreement.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      {{title}}
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view style="margin-top:{{height}}px;padding:0 20rpx">
+    <rich-text nodes="{{info.Content}}"></rich-text>
+  </view>
+</view>

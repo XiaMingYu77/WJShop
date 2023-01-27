@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "帮你找",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "white",
+  "backgroundColorTop": "#fff",
+  "backgroundColorBottom": "#fff",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../../components/icon/icon",
+    "tui-tag": "../../../../components/tag/tag",
+    "tui-actionsheet": "../../../../components/actionsheet/actionsheet",
+    "tui-modal": "../../../../components/modal/modal"
+  }
+}

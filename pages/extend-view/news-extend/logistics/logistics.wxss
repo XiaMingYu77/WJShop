@@ -1,0 +1,136 @@
+/* pages/extend-view//news-extend/logistics/logistics.wxss */
+page{
+  /* background: #E8E8E9; */
+}
+.container{
+  height: 100%;
+  /* background: #E8E8E9; */
+}
+
+.container .logistic{
+  /* margin-top: 30rpx; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: #FFFFFF;
+  box-shadow:0px 4rpx 12rpx 0px rgba(0,0,0,0.12);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .none{
+  text-align: center;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.container .time{
+  font-size: 20rpx;
+  color: #6C6C6C;
+  text-align: center;
+  margin-bottom: 10rpx;
+  margin-top: 30rpx;
+}
+
+.container .box{
+  display: flex;
+  height: 276rpx;
+  background: #fff;
+  width: 94%;
+  background: #fff;
+  margin: 0 3%;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx 20rpx 20rpx;
+  box-sizing: border-box;
+  font-size: 20rpx;
+  box-shadow:0px 4rpx 8rpx 0px rgba(0,0,0,0.12);
+}
+
+.container .box image{
+  width: 228rpx;
+  height: 228rpx;
+  margin-right: 36rpx;
+}
+
+.container .box .notice{
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.container .box .content{
+  color: #666666;
+  margin-bottom: 38rpx;
+}
+
+.container .box .check{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 174rpx;
+  height: 44rpx;
+  border: 1rpx solid #2D5DF6;
+  color: #2D5DF6;
+  border-radius: 10rpx;
+  line-height: 44rpx;
+}

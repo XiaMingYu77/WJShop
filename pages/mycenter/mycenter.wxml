@@ -1,0 +1,260 @@
+<view class="container">
+  <!--header-->
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;">
+      我的
+    </view>
+    <!-- <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view> -->
+  </view>
+  <view class="header" style="margin-top:{{height}}px;">
+    <view class="mybg-box">
+      <view class="myimg">
+        <image src="{{information.Photo}}" bindtap="tonicknameinfo" mode="aspectFit"></image>
+      </view>
+      <view class="info">
+        <view>
+          <view class="info-top">
+            <view class="personinfo">
+              <view class="name" bindtap="tonicknameinfo">{{information.NickName}}</view>
+              <view class="member member1" wx:if="{{information.MemberGroup=='1'}}">
+                <image src="../../static/iconfont/white.png"></image>
+                普通会员
+              </view>
+              <view class="member" wx:if="{{information.MemberGroup=='2'}}">
+                <image src="../../static/center/memberflag.png"></image>
+                超级会员
+              </view>
+              <view class="member" wx:if="{{information.MemberGroup=='3'}}">
+                <image src="../../static/center/memberflag.png"></image>
+                导师
+              </view>
+              <view class="member" wx:if="{{information.MemberGroup=='4'}}">
+                <image src="../../static/center/memberflag.png"></image>
+                合伙人
+              </view>
+            </view>
+            <!-- <view class="headoffice" bindtap="headoffice" data-current="{{information.isds}}">
+            <view>掌门人</view>
+            <image src="../../static/center/bluearrow.png"></image>
+          </view> -->
+          </view>
+          <view class="info-bot">
+            <view class="code">
+              <view class="num">{{information.RecommonCode}}</view>
+              <view class="copy" bindtap="copy">复制邀请码</view>
+            </view>
+          </view>
+        </view>
+        <view class="activevalue" bindtap="toactivevalue">
+          活跃值
+          <image src="../../static/center/bluearrow.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="center-content">
+      <view class="estimatedprofit">
+        预估收益:
+        <text class="money">￥{{estimateprofit.IncomeNumber}}</text>
+      </view>
+      <view class="profit">
+        <view class="cashout" bindtap="tomyprofit">
+          收益详情
+          <image src="../../static/center/white.png"></image>
+        </view>
+        <view class="cashout" bindtap="tocashout">
+          收益提现
+          <image src="../../static/center/black.png"></image>
+        </view>
+      </view>
+      <view class="active">
+        <view>近30天活跃值: {{activevalue}}</view>
+        <view class="line">
+          <view class="blueline" style="width:{{activelength}}rpx">
+            <view class="dot" style="left:{{activelength}}rpx"></view>
+          </view>
+        </view>
+        <view class="num">
+          <view>0</view>
+          <view>4000</view>
+        </view>
+      </view>
+      <view class="positionbox">
+        <view class="qun" bindtap="mygroup">
+          <view class="img">
+            <image src="https://shop.we-time.net/images/icons/group.png"></image>
+          </view>
+          <view>
+            <view>{{estimateprofit.wxqCount}}个</view>
+            <view class="text">我的群组</view>
+          </view>
+        </view>
+        <view class="assistant" bindtap="assistant">
+          <view class="img">
+            <image src="https://shop.we-time.net/images/icons/check.png"></image>
+          </view>
+          <view>
+            <view>查看</view>
+            <view class="text">商城助理</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--header-->
+
+  <!-- <view style="width:100%;height:100rpx;background-color:#E80202;" wx-if="{{isVip==0}}">
+    预留给超级会员的活跃度
+  </view> -->
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips"><image src="https://shop.we-time.net/images/icons/logo.png"></image> 钱钱都放在这里啦</view>
+    <view class="content">请点击下方复制按钮，浏览器中输入打开就能下载提现了哦~</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="copywx">复制链接</button>
+    </view>
+    <!-- <image src="../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+
+  <view class="myorder">
+    <view class="ordertitle" data-current="0" bindtap="tomyorder">
+      <view>我的订单</view>
+      <view>查看全部订单
+        <image src="../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <view class="order">
+      <view data-current="1" bindtap="tomyorder">
+        <view class="icon">
+          <image src="https://shop.we-time.net/images/icons/pay.png"></image>
+          <view class="num {{flag1?'show':''}}" wx:if="{{estimateprofit.PendingCount!=0}}">{{estimateprofit.PendingCount}}</view>
+        </view>
+        <view>待付款</view>
+      </view>
+      <view data-current="2" bindtap="tomyorder">
+        <view class="icon">
+          <image src="https://shop.we-time.net/images/icons/share.png"></image>
+          <view class="num {{flag2?'show':''}}" wx:if="{{estimateprofit.ShareCount!=0}}">{{estimateprofit.ShareCount}}</view>
+        </view>
+        <view>待分享</view>
+      </view>
+      <view data-current="3" bindtap="tomyorder">
+        <view class="icon">
+          <image src="https://shop.we-time.net/images/icons/delivergood.png"></image>
+          <view class="num {{flag3?'show':''}}" wx:if="{{estimateprofit.DeliveryrCount!=0}}">{{estimateprofit.DeliveryrCount}}</view>
+        </view>
+        <view>待发货</view>
+      </view>
+      <view data-current="4" bindtap="tomyorder">
+        <view class="icon">
+          <image src="https://shop.we-time.net/images/icons/getgood.png"></image>
+          <view class="num {{flag4?'show':''}}" wx:if="{{estimateprofit.GoodsrCount!=0}}">{{estimateprofit.GoodsrCount}}</view>
+        </view>
+        <view>待收货</view>
+      </view>
+      <view data-current="5" bindtap="tomyorder">
+        <view class="icon">
+          <image src="https://shop.we-time.net/images/icons/evaluate.png"></image>
+          <view class="num {{flag5?'show':''}}" wx:if="{{estimateprofit.EvaluationCount!=0}}">{{estimateprofit.EvaluationCount}}</view>
+        </view>
+        <view>待评价</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的会员 我的推广订单 -->
+  <view class="center-mid">
+    <view class="member" bindtap="tomymember">
+      <view>
+        <view class="text1">我的会员</view>
+        <view class="text2">共{{estimateprofit.counthy}}人</view>
+        <view class="text3">今日+{{estimateprofit.Todaycounthy}}人</view>
+      </view>
+      <image src="https://shop.we-time.net/images/icons/member.png"></image>
+    </view>
+    <view class="extendorder" bindtap="toextendorder">
+      <view>
+        <view class="text1">推广订单</view>
+        <view class="text2">共{{estimateprofit.OrderNumber}}单</view>
+        <view class="text3">今日+{{estimateprofit.TodayNumber}}单</view>
+      </view>
+      <image src="https://shop.we-time.net/images/icons/order.png"></image>
+    </view>
+  </view>
+
+
+  <!-- 其他内容 -->
+  <view class="othercontent">
+    <view class="title">其他内容</view>
+    <view class="content">
+      <view class="content-top">
+        <view bindtap="toshopcart">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/car.png"></image>
+          </view>
+          <view>购物车</view>
+        </view>
+        <view bindtap="tomaillist">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/maillist.png"></image>
+          </view>
+          <view>通讯录</view>
+        </view>
+        <view bindtap="tomyevaluation">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/myevaluate.png"></image>
+          </view>
+          <view>我的评价</view>
+        </view>
+        <view bindtap="todrawback">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/refund.png"></image>
+          </view>
+          <view>退款售后</view>
+        </view>
+        <view bindtap="toaboutus">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/aboutus.png"></image>
+          </view>
+          <view>关于我们</view>
+        </view>
+      </view>
+      <view class="content-bot">
+        <view bindtap="tofootprint">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/foot.png"></image>
+          </view>
+          <view>足迹</view>
+        </view>
+        <view bindtap="tobusinesscooperation">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/cooperation.png"></image>
+          </view>
+          <view>商务合作</view>
+        </view>
+        <view bindtap="tofeedback">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/feedback.png"></image>
+          </view>
+          <view>意见反馈</view>
+        </view>
+        <view bindtap="tocommonproblem">
+          <view>
+            <image src="https://shop.we-time.net/images/icons/problem.png"></image>
+          </view>
+          <view>常见问题</view>
+        </view>
+        <view bindtap="toaccountsettings">
+          <view>
+            <image src="../../static/center/setting.png" style="margin-top:-2rpx"></image>
+          </view>
+          <view>账户设置</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <image src="https://shop.we-time.net/images/icons/yijianshengchenghaibao.png" bindtap="shareimg" class="botbanner"></image>
+</view>

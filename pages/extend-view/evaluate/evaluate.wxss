@@ -1,0 +1,127 @@
+/* pages/extend-view//evaluate/evaluate.wxss */
+
+page {
+  background: #e8e8e9;
+}
+
+.container {
+  /* height: 100vh; */
+}
+
+.container .topnav .lable .active {
+  border: 1rpx solid #2D5DF6;
+  background: #2D5DF6;
+  color: #fff;
+}
+
+.container .topnav {
+  background: #fff;
+  padding: 20rpx 30rpx;
+  padding-right: 0;
+}
+
+.container .topnav .title {
+  width: 100%;
+  font-size: 24rpx;
+  text-align: center;
+  color: #666660;
+  font-weight: 400;
+}
+
+.container .topnav .lable view {
+  display: inline-block;
+  margin-right: 49rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  width: 131rpx;
+  border: 1rpx solid #C7D5FF;
+  background: #C7D5FF;
+  color: #fff;
+  font-size: 20rpx;
+  /* padding: 0 22rpx; */
+  margin-top: 20rpx;
+  border-radius: 40rpx;
+  text-align: center;
+}
+
+.container .topnav .lable image {
+  width: 18rpx;
+  height: 14rpx;
+  margin-right: 10rpx;
+}
+
+.container .topnav .lable .fourth {
+  margin-right: 0;
+}
+
+.container .topnav .title .num {
+  color: #E64048;
+}
+
+.container .box {
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 20rpx 0;
+}
+
+.container .box .name {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+  padding: 0 20rpx;
+}
+
+.container .box .name .name-left {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 24rpx;
+}
+
+.container .box .name .name-left>view{
+  display: flex;
+  align-items: center;
+}
+
+.container .box .name image {
+  width: 42rpx;
+  height: 42rpx;
+  margin-right: 10rpx;
+}
+
+.container .box .name .time {
+  color: #626367;
+  line-height: 70rpx;
+  font-size: 20rpx;
+}
+
+.container .box .content {
+  padding: 0 20rpx;
+  font-size: 24rpx;
+  margin-bottom: 16rpx;
+  color: #333;
+}
+
+.container .box .norms {
+  padding: 0 20rpx;
+  font-size: 24rpx;
+}
+
+.container .box .norms .text1 {
+  margin-right: 20rpx;
+  color: #828181;
+  font-size: 20rpx;
+}
+
+.container .box .proevaluate-img {
+  padding: 0 20rpx;
+}
+
+.container .box .proevaluate-img image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 10rpx;
+}

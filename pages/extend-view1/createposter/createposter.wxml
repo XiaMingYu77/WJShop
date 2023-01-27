@@ -1,0 +1,8 @@
+<!--pages/extend-view1//createposter/createposter.wxml-->
+<view class="container">
+  <view class="poster">
+    <image src="{{src}}" bindtap="clickposter" mode="aspectFit"></image>
+  </view>
+  <!-- <view class="btn mr" bindtap="keepphoto">保存到手机相册</view> -->
+  <view class="btn mr"  bindtap="clickposter">预览海报长按保存</view>
+</view>

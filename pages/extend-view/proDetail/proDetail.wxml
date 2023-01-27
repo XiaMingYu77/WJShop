@@ -1,0 +1,710 @@
+<!-- <view class="container"> -->
+<!-- <tui-skeleton wx:if="{{skeletonShow}}" backgroundColor="#fafafa" borderRadius="10rpx"></tui-skeleton>  -->
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>
+<!--header-->
+<view class="tui-header-box" style="height:{{height}}px;background:rgba(255,255,255,{{opcity}})" wx:if="{{!undercarriageflag}}">
+  <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+    <view class="navbox">
+      <view wx:for="{{tabs}}" wx:key="index" class="nav" data-current="{{index}}" data-id="{{item.id}}" bindtap="clicknav">
+        <view class="{{currentindex==index?'clicknav':''}}">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="tui-header-icon" style="margin-top:{{top}}px">
+    <!-- <tui-icon name="arrowleft" color="{{opcity>=1?'#000':'#fff'}}" bindtap="back" tui-icon-class="tui-icon-back" class="tui-icon" style="background:rgba(0, 0, 0, {{iconOpcity}});"></tui-icon> -->
+    <!-- <tui-icon name="more-fill" color="{{opcity>=1?'#000':'#fff'}}" size="20" tui-icon-class="tui-icon-more" class="tui-icon tui-icon-ml" style="background:rgba(0, 0, 0, {{iconOpcity}});" catchtap="openMenu"></tui-icon>
+    <tui-badge type="red" tui-badge-class="tui-badge" size="small">5</tui-badge> -->
+    <image wx:if="{{opcity==0}}" bindtap="back" class="back" src="../../../static/iconfont/back.png" mode="aspectFit"></image>
+    <tui-icon wx:if="{{opcity==1}}" name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+  </view>
+</view>
+<!-- header -->
+
+<!-- <view class="tab {{scrollTop>0?'selected':''}}"> -->
+
+<!-- <view class="tab {{scrollTop>20?'selected':''}}">
+  <view class="tabs">
+    <view wx:for="{{tabs}}" wx:key="index" class="nav" data-current="{{index}}" data-id="{{item.id}}" bindtap="clicknav">
+      <view class="{{currentindex==index?'clicknav':''}}">{{item.name}}</view>
+    </view>
+    <view class="clickright">
+      <view class="cart" bindtap="gotoshopcart">
+        <view class="iconfont icon-gouwuche"></view>
+        <view>购物车</view>
+      </view>
+      <view class="addcart" bindtap="addcart">
+        <view class="iconfont icon-jiarugouwuche"></view>
+        <view>加入购物车</view>
+      </view>
+    </view>
+  </view>
+</view> -->
+
+
+<scroll-view scroll-into-view="{{toitem}}" scroll-y="true" class="position tui-skeleton {{scrollTop>0?'gochooseAbank':''}}" bindscroll="scroll" bindscrolltolower="reachbot" wx:if="{{!undercarriageflag}}">
+  <view id="shop">
+    <view class="tui-banner-swiper">
+      <swiper autoplay="true" interval="5000" duration="150" circular="{{true}}" style="height:{{scrollH}}px" bindchange="bannerChange">
+        <block wx:for="{{banner}}" wx:key="index">
+          <swiper-item data-index="{{index}}" catchtap="previewImage">
+            <image src="{{item}}" class="tui-slide-image" style="height:{{scrollH}}px" mode="aspectFit"/>
+          </swiper-item>
+        </block>
+      </swiper>
+      <tui-tag type="white" tui-tag-class="tui-tag-banner" size="small">{{bannerIndex+1}}/{{banner.length}}</tui-tag>
+    </view>
+
+    <!--banner-->
+
+    <!-- 价格栏 -->
+    <view class='pricetag'>
+      <view class="pricetag-left">
+        <view>
+          <text style="padding-bottom:10rpx">￥ </text>
+          <text class="price">{{TuanPrice}}</text>
+        </view>
+        <view class="commission" wx:if="{{!newflag}}">推广佣金￥{{fn.tofixed((infoModel.Score-infoModel.Score*ordinaryrepercent)*ratepercent)}}</view>
+        <view class="commission" wx:if="{{newflag}}">推广佣金￥0</view>
+        <view class="cash" wx:if="{{!newflag}}">返现￥{{fn.tofixed(repercent*infoModel.Score)}}</view>
+        <view class="cash" wx:if="{{newflag}}">返现￥{{fn.tofixed(TuanPrice*0.9)}}</view>
+      </view>
+      <view class="pricetag-right">
+        <!-- <view class="reminder">
+        <image src="../../../static/logo/tx.png"></image>
+        <view>降价提醒</view>
+      </view> -->
+        <view class="addcart" catchtap="addcart">
+          <image src="../../../static/iconfont/addgouwuche.png"></image>
+          <view>加入购物车</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 商品名称 -->
+    <view class="proname">
+      <view class="proname-top">
+        <view class="namebox">
+          <text class="third" wx:if="{{infoModel.BrandName!=null}}">{{infoModel.BrandName}}</text>
+          <text class="third" wx:if="{{infoModel.BrandName==null}}">商城</text>
+          <text class="name" selectable='true'>{{infoModel.ProductName}}</text>
+        </view>
+        <view>
+          <text class="push" wx:if="{{infoModel.IsSend==0}}">未推送</text>
+          <text class="push" wx:if="{{infoModel.IsSend==1}}">已推送</text>
+        </view>
+      </view>
+      <view class="proname-bot">
+        <view wx:if="{{infoModel.IsSupport=='1'}}">
+          <text class="dian">·</text> 正品保障</view>
+        <view wx:if="{{infoModel.IsQuality=='1'}}">
+          <text class="dian">·</text> 品质保障</view>
+        <view wx:if="{{infoModel.IsSaleSafe=='1'}}">
+          <text class="dian">·</text> 售后无忧</view>
+        <view wx:if="{{infoModel.NoReasonToReturn=='1'}}">
+          <text class="dian">·</text> 7天无理由退换货</view>
+        <view wx:if="{{infoModel.NoReasonToReturn=='0'}}">
+          <text class="dian">·</text> 不支持七天无理由退换</view>
+        <view wx:if="{{infoModel.FifteenReplacement=='1'}}">
+          <text class="dian">·</text> 15天包换</view>
+        <view wx:if="{{infoModel.IsForMail=='1'}}">
+          <text class="dian">·</text> 限时包邮</view>
+      </view>
+    </view>
+
+    <!-- 商品规格 配送地址 -->
+    <view class="prostandards">
+      <view class="prostandards-top" bindtap="showPopup">
+        <view>
+          <text class="guige">规格</text>
+          <text>{{modalstr}}</text>
+        </view>
+        <view>
+          <image src="../../../static/iconfont/right.png" mode="aspectFit"></image>
+        </view>
+      </view>
+      <view class="prostandards-bot" bindtap="showaddress">
+        <view class="address">
+          <view>
+            <text class="arrive">收货地址</text>
+          </view>
+          <view>
+            {{address.ReceiverAddress}}
+          </view>
+        </view>
+        <view>
+          <image src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+    </view>
+    <!-- 商品规格 配送地址结束 -->
+
+
+    <!-- 省钱赚钱？ -->
+    <!-- <view class="Strategy" bindtap="tomakemoney">
+      <image src="../../../static/iconfont/gongnue.png"></image>
+    </view> -->
+
+    <!-- 拼团 -->
+    <view class="assemble">
+      <view class="assemble-top">
+        <text class="text1">可参与拼团</text>
+        <text class="text2">{{tuanlist.TuanCount}}人在拼</text>
+      </view>
+
+      <swiper wx:if="{{tuanlist.TuanCount!=0}}" indicator-dots="{{false}}" autoplay="true" interval="2000" duration="400" circular="{{true}}" display-multiple-items="{{tuanlist.tuanlist.length >1 ? 2 : 1}}" vertical="true" class="tui-spike-swiper">
+        <swiper-item wx:for="{{tuanlist.tuanlist}}" wx:key="index">
+          <view class="assemble-bot">
+            <view class="name">
+              <image src="{{item.photo}}" mode="aspectFit"></image>
+              {{item.nickName}}
+            </view>
+            <view class="countbox">
+              <view class="countdown">
+                <view>
+                  差
+                  <text style="color:#E80202">1</text>人成团
+                </view>
+                <tui-countdown bind:end="endOfTime" bindtap='clickcountdown' data-current="{{index}}" style="margin-top:3rpx;" time="{{item.endTime}}" bcolor="transparent" isColon="{{false}}"></tui-countdown>
+              </view>
+              <view>
+                <text class="goassemble" data-current="{{item}}" bindtap="toassemble">去拼团</text>
+              </view>
+            </view>
+          </view>
+        </swiper-item>
+      </swiper>
+      <view class="nonetuan" wx:if="{{tuanlist.TuanCount==0}}">暂无可参与的拼团</view>
+    </view>
+    <!-- 商品文案 -->
+    <view class="procopywriting">
+      <view class="procopywriting-top">
+        <view class="select">
+          <view class="selected" bindtap="addtoassistant">加入助理</view>
+          <view class="copy" bindtap="copy" data-current="{{infoModel.Titles}}">复制文字</view>
+          <view bindtap="tocreateposter" data-current="{{goodsid}}">生成海报</view>
+        </view>
+        <view style="color:#666666">
+          <rich-text nodes="{{infoModel.Title}}"></rich-text>
+          <!-- {{infoModel.Titles}} -->
+        </view>
+      </view>
+      <view class="procopywriting-bot">
+        <view>市场价格：￥{{MemberPrice}}</view>
+        <view>商城平台：￥{{TuanPrice}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 商品评价 -->
+  <view id="pingjia" class="proevaluate">
+    <view class="proevaluate-top" bindtap="toevaluate">
+      <view>
+        <text class="text1">用户评价</text>
+      </view>
+      <view>
+        <text class="text2" wx:if="{{evaluateflag}}"><text style="color:#E80202">{{hpd}}%</text>好评率</text>
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+    <!-- <view class="proevaluate-keyword">
+      <text>外观好看</text>
+      <text>结实耐用</text>
+      <text>结实耐用</text>
+      <text>结实耐用</text>
+    </view> -->
+    <view class="noneevaluate" wx:if="{{!evaluateflag}}">当前商品暂无评价</view>
+    <view class="name" wx:if="{{evaluateflag}}">
+      <view class="name-left">
+        <view>
+          <image src="{{evaluate.MemImg}}" mode="aspectFit"></image>
+        </view>
+        <view>
+          <view>{{evaluate.BuyerName}}</view>
+          <tui-rate current="{{evaluate.ReCommentInt}}" active="rgb(255,218,38)" size="14"></tui-rate>
+        </view>
+      </view>
+      <view class="time">{{evaluate.AddDate}}</view>
+    </view>
+
+    <view class="valuate">
+      {{evaluate.Comment}}
+    </view>
+
+    <!-- <view class="proevaluate-img"> -->
+    <!-- <scroll-view scroll-x="true" class="scrollimg">
+        <block wx:for="{{evaluate.ProductCommentMedia}}" wx:key="index">
+          <image src="{{item.MediaUrl}}"></image>
+        </block>
+      </scroll-view> -->
+    <!-- </view> -->
+
+    <view class="proevaluatebox">
+      <view class="proevaluate-img">
+        <block wx:for="{{evaluate.ProductCommentMedia}}" wx:key="index">
+          <image wx-if="{{item.ReComment=='0'}}" src="{{item.MediaUrl}}" data-current="{{item.MediaUrl}}" data-list="{{evaluate.ProductCommentMedia}}" bindtap="previewImage1" mode="aspectFit"></image>
+          <video id="myVideo" wx-if="{{item.ReComment=='1'}}" objectFit="cover" src="{{item.MediaUrl}}" controls></video>
+        </block>
+      </view>
+    </view>
+
+    <view class="proevaluate-size" wx:if="{{evaluateflag}}">
+      <text class="text1">规格</text>
+      <text class="text1">[{{evaluate.ProductSpecs}}]</text>
+    </view>
+  </view>
+  <!-- 商品评价结束 -->
+  <view id="detail">
+    <!-- 详情 -->
+    <view class="detailtile">
+      <view class="line"></view>
+      <view style="margin:0 16rpx;">商品详情</view>
+      <view class="line"></view>
+    </view>
+    <view class="detailbox">
+      <view class="detail" id="detailbox">
+        <rich-text nodes="{{detaillist}}"></rich-text>
+      </view>
+    </view>
+    <!-- 详情结束 -->
+  </view>
+  <view id="pro">
+    <view class="recommend" style="text-align:center;">
+      <view class="line"></view>
+      <view class="text">更多推荐</view>
+      <view class="line"></view>
+    </view>
+    <view class="goodbox">
+      <view class="prolist">
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble1">
+                  <view class="spellback1">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit1">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view>
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble1">
+                  <view class="spellback1">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit1">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view>
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="nopro" wx:if="{{storage=='0'}}">商品已经售罄啦~</view>
+
+<!-- 底部选择框 -->
+<view class="botbox" wx:if="{{!undercarriageflag}}">
+  <view class="icon">
+    <view bindtap="tocustomerservice">
+      <image src="../../../static/iconfont/kefu.png"></image>
+    </view>
+    <view bindtap="gotoshopcart">
+      <image src="../../../static/iconfont/togouwuche.png"></image>
+    </view>
+  </view>
+  <view class="buying" bindtap="loneybuy" wx:if="{{storage!='0'}}">
+    <text style="margin-right:10rpx"><text style="font-size:20rpx;">￥</text>{{marketPrice}}</text>
+    <text>单独购买</text>
+  </view>
+  <view class="pintuan" bindtap="submitorder" wx:if="{{storage!='0'}}">
+    <text style="margin-right:10rpx"><text style="font-size:20rpx;">￥</text>{{TuanPrice}}</text>
+    <text>发起拼团</text>
+  </view>
+  <view class="buying" style="opacity:0.5" wx:if="{{storage=='0'}}">
+    <text style="margin-right:10rpx"><text style="font-size:20rpx;">￥</text>{{marketPrice}}</text>
+    <text>单独购买</text>
+  </view>
+  <view class="pintuan" style="opacity:0.5" wx:if="{{storage=='0'}}">
+    <text style="margin-right:10rpx"><text style="font-size:20rpx;">￥</text>{{TuanPrice}}</text>
+    <text>发起拼团</text>
+  </view>
+</view>
+<!-- 底部选择框结束 -->
+
+<!-- </view> -->
+
+<!-- 加入购物车弹框 -->
+<tui-bottom-popup show="{{addcartShow}}" tui-popup-class="tui-popup" bind:close="hidecartadd">
+  <view class="pro-popbox">
+    <image class="x" src="../../../static/iconfont/close.png" bindtap="hidecartadd"></image>
+    <view class="popbox">
+      <image src="{{modalimg}}" class="popup-img" bindtap="handleImagePreview" data-idx="{{modalimg}}" mode="aspectFit"></image>
+      <view class="popup-price">
+        <view class="price" wx-if="{{flag=='addcart'}}">
+          <text class="money">￥</text>{{marketPrice}}</view>
+        <view class="price" wx-if="{{flag=='maverickbuy'}}">
+          <text class="money">￥</text>{{marketPrice}}</view>
+        <view class="price" wx-if="{{flag=='startgroup'}}">
+          <text class="money">￥</text>{{TuanPrice}}</view>
+        <view class="price" wx-if="{{flag=='attendgroup'}}">
+          <text class="money">￥</text>{{TuanPrice}}</view>
+        <view class="number">库存量： {{storage}}件</view>
+        <view class="model">已选: {{modalstr}}</view>
+      </view>
+    </view>
+    <view class="choosemodel" wx:for="{{productrule}}" wx:for-index="index1" wx:key="index1">
+      <view class="choose">{{item.specName}}</view>
+      <view class="content">
+        <view wx:for="{{item.specVal}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
+          <view class="model  {{(selectedCurrent[index1]==index1+1 &&selectedAttr[index1]==index2)?'selected':''}}" data-current="{{index1+1}}" data-select-index="{{id}}" data-name="{{item2.val}}" data-attr-index="{{index2}}" data-content="{{properties}}" bindtap="choosemodel">{{item2.val}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="amount">
+      <view>数量</view>
+      <tui-numberbox max="{{storage}}" min="1" value="{{value}}" bind:change="change"></tui-numberbox>
+    </view>
+  </view>
+
+  <view class="addcart-determine {{storage<=0?'nostorage':''}}" wx-if="{{flag=='addcart'}}" catchtap="addtocart">
+    确定
+  </view>
+  <view class="addcart-determine {{storage<=0?'nostorage':''}}" wx-if="{{flag=='maverickbuy'}}" catchtap="maverickbuy">
+    确定
+  </view>
+  <view class="addcart-determine {{storage<=0?'nostorage':''}}" wx-if="{{flag=='startgroup'}}" catchtap="startgroup">
+    确定
+  </view>
+  <view class="addcart-determine {{storage<=0?'nostorage':''}}" wx-if="{{flag=='attendgroup'}}" catchtap="attendgroup">
+    确定
+  </view>
+</tui-bottom-popup>
+<!-- 加入购物车弹框结束 -->
+
+<!--规格选择层-->
+<tui-bottom-popup show="{{popupShow}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+  <view class="pro-popbox">
+    <image class="x" src="../../../static/iconfont/close.png" bindtap="closePopup"></image>
+    <view class="popbox">
+      <image src="{{modalimg}}" class="popup-img" bindtap="handleImagePreview" data-idx="{{modalimg}}" mode="aspectFit"></image>
+      <view class="popup-price">
+        <view class="price">
+          <text class="money">￥</text>{{marketPrice}}</view>
+        <view class="number">库存量： {{storage}}件</view>
+        <view class="model">选择型号：{{modalstr}}</view>
+      </view>
+    </view>
+    <view class="choosemodel" wx:for="{{productrule}}" wx:for-index="index1" wx:key="index1">
+      <view class="choose">{{item.specName}}</view>
+      <view class="content">
+        <view wx:for="{{item.specVal}}" wx:for-item="item2" wx:for-index="index2" wx:key="index2">
+          <view class="model  {{(selectedCurrent[index1]==index1+1 &&selectedAttr[index1]==index2)?'selected':''}}" data-current="{{index1+1}}" data-select-index="{{id}}" data-name="{{item2.val}}" data-attr-index="{{index2}}" data-content="{{properties}}" bindtap="choosemodel">{{item2.val}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="amount">
+      <view>数量:</view>
+      <tui-numberbox max="{{storage}}" min="1" value="{{value}}" bind:change="change"></tui-numberbox>
+    </view>
+  </view>
+
+  <view class="ass-notice" wx:if="{{tuanlist.TuanCount!=0}}">
+    <view class="notice-left">
+      <image src="{{tuanlist.tuanlist[0].photo}}" style="border-radius:50%" mode="aspectFit"></image>{{tuanlist.tuanlist[0].nickName}}的团还差
+      <text class="people">1</text>人
+    </view>
+    <view class="quick" data-current="{{tuanlist.tuanlist[0].tuanId}}" data-image="{{tuanlist.tuanlist[0].photo}}" bindtap="attendgroup">
+      快速参团，立即拼成
+    </view>
+  </view>
+
+  <view class="popbox-bot">
+    <view class="addaddress" catchtap="addtocart">
+      <image src="../../../static/iconfont/togouwuche.png"></image>
+    </view>
+    <view class="buying" bindtap="maverickbuy" wx:if="{{storage!='0'}}">
+      <text>￥{{marketPrice}} </text>
+      <text>单独购买</text>
+    </view>
+    <view class="assembling" bindtap="startgroup" wx:if="{{storage!='0'}}">
+      <text>￥{{TuanPrice}} </text>
+      <text>发起拼团</text>
+    </view>
+    <view class="buying" style="background:#C7D5FF;opacity:0.5" wx:if="{{storage=='0'}}">
+      <text>￥{{marketPrice}} </text>
+      <text>单独购买</text>
+    </view>
+    <view class="assembling" style="background:#2D5DF6;opacity:0.5" wx:if="{{storage=='0'}}">
+      <text>￥{{TuanPrice}} </text>
+      <text>发起拼团</text>
+    </view>
+  </view>
+</tui-bottom-popup>
+<!--规格选择层-->
+
+<!-- 收获地址弹框  当没有地址时 -->
+
+<tui-modal1 show="{{modal1}}" bind:cancel="hideaddress" custom="{{true}}" class="clickaddress">
+  <image src="../../../static/iconfont/!.png" class="jz"></image>
+  <view class="tips">您当前登录的账号无收获地址无法结算，请添加收货地址</view>
+  <view class="btn">
+    <button class="cancel" bindtap="hideaddress">取消</button>
+    <button class="addaddress" bindtap="editaddress">添加地址</button>
+  </view>
+  <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hideaddress"></image> -->
+</tui-modal1>
+
+<!-- 收获地址弹框结束  当没有地址时 -->
+
+<!-- 收获地址弹框  当有地址时 -->
+<tui-bottom-popup show="{{hasaddress}}" tui-popup-class="tui-popup" bind:close="hidePopup" class="hasaddress">
+  <view class="hasaddress-top">选择地址</view>
+  <scroll-view scroll-y class="addresslist">
+    <view class="personifo" wx:for="{{addresslist}}" wx:key="index" data-current="{{item}}" bindtap="clickaddress">
+      <view class="personifo-left">
+        <image src="../../../static/iconfont/dingwei.png" class="dingwei"></image>
+        <view class="infomation">
+          <view class="name">{{item.ReceiverName}}
+            <text class="phone">{{item.ReceiverPhone}}</text> </view>
+          <view class="address">{{item.ReceiverAddress}}</view>
+        </view>
+      </view>
+      <view>
+        <image src="../../../static/iconfont/gou.png" class="rightarrow" wx:if="{{item.ReceiverAddressID==address.ReceiverAddressID}}"></image>
+        <view class="circle" wx:if="{{item.ReceiverAddressID!=address.ReceiverAddressID}}"></view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="preserve" bindtap="toaddress">+新增加地址</view>
+  <image src="../../../static/iconfont/close.png" class="x" bindtap="hidePopup"></image>
+</tui-bottom-popup>
+<!-- 收获地址弹框结束  当有地址时 -->
+
+<!-- 点击去拼团弹出的框 -->
+<tui-modal1 show="{{modal2}}" bind:cancel="hideassemble" custom="{{true}}" class="toassemble">
+  <view class="title">参与{{tuan.nickName}}的拼单</view>
+  <view class="time">
+    <view>仅剩
+      <text class="num">1</text>个名额，</view>
+    <tui-countdown time="{{tuan.endTime}}" bcolor="#fff"></tui-countdown>后结束
+  </view>
+  <view class="img">
+    <view class="firstimg">
+      <image src="{{tuan.photo}}" mode="aspectFit"></image>
+      <view class="text1">拼主</view>
+    </view>
+    <view>
+      <image class="dot" src="../../../static/iconfont/dot.png"></image>
+    </view>
+    <view>
+      <image src="../../../static/iconfont/add.png"></image>
+    </view>
+  </view>
+  <view class="parttake" data-current="{{tuan.tuanId}}" bindtap="joingroup">参与拼单</view>
+  <image src="../../../static/iconfont/close.png" class="close" bindtap="hideassemble"></image>
+</tui-modal1>
+<!-- 拼团结束 -->
+
+<tui-modal1 show="{{modal3}}" style="padding:0" bind:cancel="closemodal3" custom="{{true}}" class="successassemble">
+  <image class="close" src="../../../static/iconfont/close.png" bindtap="closemodal3"></image>
+  <view class="title">
+    <image src="../../../static/iconfont/gou.png"></image>
+    已支付,拼团成功后
+  </view>
+  <view class="return">返现￥{{fn.tofixed(assemblerecash)}}</view>
+  <view class="bot">
+    <view>
+      还差
+      <text style="color:#E80202">1</text>人,邀请好友参与拼团赚返现
+    </view>
+    <view>
+      <button open-type="share" id="btnId" style="display:hidden"></button>
+      <label for="btnId" style="z-index:99;height:76rpx">
+        <image class="wx" src="../../../static/iconfont/weixin.png"></image>
+      </label>
+    </view>
+    <view class="count">
+      人满发货·人不满退款·
+      <tui-countdown color="#E64048" bcolor="#fff" bgcolor="#fff" colonColor="#E64048" time="{{timeList}}"></tui-countdown>
+    </view>
+  </view>
+</tui-modal1>
+
+<!-- 店铺 -->
+<!-- <view class="shop">
+    <view class="shop-top">
+      <image src="{{Shop.ShopPhoto}}" class="logo"></image>
+      <text>{{Shop.ShopName}}</text>
+    </view>
+    <view class="shop-mid">
+      <view class="fans">
+        <view class="mount">
+          {{Shop.IsCare}}+
+        </view>
+        <view>
+          粉丝人数
+        </view>
+      </view>
+      <view class="count">
+        <view class="mount">
+          {{Shop.ProCount}}
+        </view>
+        <view>
+          全部商品
+        </view>
+      </view>
+    </view>
+    <view class="shop-bot">
+      <view bindtap="collectshop" wx:if="{{IsCare=='0'}}">关注店铺</view>
+      <view bindtap="collectshop" wx:if="{{IsCare=='1'}}">取消关注</view>
+      <view>进入店铺</view>
+    </view>
+  </view> -->
+<!-- 店铺结束 -->
+
+<!-- 商品下架 -->
+
+<view class="container tui-skeleton" wx:if="{{undercarriageflag}}">
+  <view class="tui-header-box" style="height:{{height}}px;box-shadow:0px 2px 6px 0px rgba(0,0,0,0.12);background:#fff">
+    <view class="tui-header" style="padding-top:{{top}}px;">
+      商品过期不存在
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+  <view class="undercarriage">
+    <image src="../../../static/iconfont/undercarriageflag.png"></image>
+    <view>商品过期不存在</view>
+  </view>
+  <view>
+    <view class="recommend" style="text-align:center;">
+      <view class="line" style="width:212rpx"></view>
+      <view class="text" style="font-size:32rpx;color:#333">试试其他宝贝</view>
+      <view class="line" style="width:212rpx"></view>
+    </view>
+    <view class="goodbox">
+      <view class="prolist">
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" lazy-load="true"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble1">
+                  <view class="spellback1">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit1">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view>
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+        <view class="tui-product-container">
+          <block wx:for="{{productList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" lazy-load="true"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble1">
+                  <view class="spellback1">
+                    <text>返现</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit1">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <view class="zhu" wx:if="{{item.IsSend=='1'}}">助</view>
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <authorize bind:onLoadFun='onLoadFun' isGoIndex='{{isGoIndex}}' iShidden="{{iShidden}}" isAuto="{{isAuto}}" goodId="{{goodsid}}"></authorize> -->

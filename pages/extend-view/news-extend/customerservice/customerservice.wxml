@@ -1,0 +1,153 @@
+<view class='chat' id="chat" style="min-height:{{height}}px; padding-bottom:{{flag?'230':'116'}}rpx; background-color:#EFF0F3">
+  <!-- 下拉加载更多 -->
+  <view class="more">
+    <text class="more_text">{{more_text}}</text>
+  </view>
+  <block wx:for="{{myMessages}}" wx:key="index">
+    <!-- 自定义消息 -->
+    <view class="chat_box" wx:if="{{item.type == 'TIMCustomElem'}}">
+      <view class="chat-item" wx:if="{{item.flow == 'in'}}" data-type="{{item.payload.data.type}}" data-id="{{item.payload.data.id}}" bindtap="house_detail">
+        <image wx:if="{{item.flow == 'in'}}" class='avatar' style="margin-right: 19rpx;" mode="scaleToFill" src="{{friendAvatarUrl ? friendAvatarUrl : 'https://shop.we-time.net/images/kefuicon.png'}}"></image>
+        <view class="infobox">
+          <view class="info" data-id="{{item.payload.data.proid}}" bindtap="togoodsdetail">
+            <view>
+              <image src="{{item.payload.data.proimg}}"></image>
+            </view>
+            <view class="namebox">
+              <view class="name">{{item.payload.data.proname}}</view>
+              <view class="price">￥{{item.payload.data.proprice}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class="chat-item flex-wrap" data-type="{{item.payload.data.type}}" data-id="{{item.payload.data.proid}}" bindtap="house_detail">
+        <view class='avatar' style="margin-left:20rpx">
+          <!-- <open-data type="userAvatarUrl"></open-data> -->
+          <image src="{{myimg}}" class="avatar"></image>
+        </view>
+        <view class="infobox" style="margin:0">
+          <view class="info" data-id="{{item.payload.data.proid}}" bindtap="togoodsdetail">
+            <view>
+              <image src="{{item.payload.data.proimg}}" mode="aspectFit"></image>
+            </view>
+            <view class="namebox">
+              <view class="name">{{item.payload.data.proname}}</view>
+              <view class="price">￥{{item.payload.data.proprice}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="chat_box" wx:if="{{item.type != 'TIMCustomElem'}}">
+      <view class="chat-item {{item.flow == 'in' ? '' : 'flex-wrap'}}">
+        <image wx:if="{{item.flow == 'in'}}" class='avatar' style="margin-right: 19rpx;" mode="scaleToFill" src="{{friendAvatarUrl ? friendAvatarUrl : 'https://shop.we-time.net/images/kefuicon.png'}}"></image>
+        <view class='avatar' style="margin-left: 19rpx" wx:else>
+          <!-- <open-data type="userAvatarUrl"></open-data> -->
+          <image src="{{myimg}}" class="avatar"></image>
+        </view>
+        <view class="content {{item.flow == 'in' ? '' : 'rightbox'}}">
+          <text decode="true" wx:if='{{item._elements[0].type=="TIMTextElem"}}'>{{item.payload.text}}</text>
+          <image class="pay_img" mode="widthFix" bindtap="preview" data-current="{{index}}" wx:if='{{item._elements[0].type=="TIMImageElem"}}' src="{{item._elements[0].content.imageInfoArray[0].imageUrl}}"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- <view class="info">
+    <view>
+      <image src="{{proimg}}"></image>
+    </view>
+    <view class="namebox">
+      <view class="name">{{proname}}</view>
+      <view class="price">￥{{proprice}}</view>
+    </view>
+  </view> -->
+
+</view>
+<view class="bot {{flag?'show':'hide'}}" bindtap="createXzlmsg" data-id="{{proid}}">
+  <view class="info">
+    <view>
+      <image src="{{proimg}}" mode="aspectFit"></image>
+    </view>
+    <view class="namebox">
+      <view class="name" style="color:#333333">{{proname}}</view>
+      <view class="price">￥{{proprice}}</view>
+    </view>
+  </view>
+</view>
+<!-- <view class="chat-footer">
+  <view class='input' bindtap="bindFocus">
+    <textarea class="inputArea" focus="{{focus}}" fixed="true" cursor-spacing="25" disable-default-padding="true" bindinput="bindKeyInput" bindfocus="bindfocus" bindblur="bindblur" value="{{inputValue}}" placeholder="" />
+    <text class="placeHolder" wx:if="{{inputShow}}">对ta发送消息</text>
+  </view>
+  <view class='send' wx:if='{{if_send&&inputValue!=""}}' bindtap='bindConfirm'>发送</view>
+  <tui-icon class='add_icon' name="add" size="40" color="#000" wx:if='{{add&&!if_send&&inputValue==""}}' bindtap='add_icon_click' id='1'></tui-icon>
+  <tui-icon class='add_icon' name="add" size="40" color="#000" wx:if='{{cross}}' bindtap='add_icon_click' id='2'></tui-icon>
+</view>
+
+<block wx:if='{{cross}}'>
+  <view class="p_r">
+    <view class='item1' bindtap='sendImg'>
+      <image class='img' src='/img/camera-true.png'></image>
+      <view class='text'>图片</view>
+    </view>
+    <view class='item2' bindtap='camera'>
+      <image class='img' src='/img/camera-true.png'></image>
+      <view class='text'>拍照</view>
+    </view>
+  </view>
+</block> -->
+
+<view class='zezhao' wx:if='{{cross}}' bindtap='add_icon_click' id='2'></view>
+<view class='{{cross?"in_voice_icon":""}}'>
+  <view class="sendmessage" wx:if='{{!cross}}' style='bottom:{{input_bottom}}px'>
+    <view class="msg">
+      <input type="text" style='border: 1px solid #d0d0d0;' adjust-position='{{false}}' cursor-spacing='5' bindinput="bindKeyInput" value='{{inputValue}}' focus='{{focus}}' bindblur='no_focus' bindfocus="focus" confirm-type="done" placeholder="请输入您要咨询的问题"/>
+      <tui-icon class='add_icon' name="imface" size="30" color="#000" bindtap='faceclick'></tui-icon>
+      <view wx:if='{{if_send&&inputValue!=""}}' bindtap="bindConfirm" class='user_input_text'>发送</view>
+      <tui-icon class='add_icon' name="add" size="36" color="#000" wx:if='{{add&&!if_send&&inputValue==""}}' bindtap='add_icon_click' id='1'></tui-icon>
+      <tui-icon class='add_icon' name="add" size="36" color="#000" wx:if='{{cross}}' bindtap='add_icon_click' id='2'></tui-icon>
+    </view>
+    <view class="face" wx:if="{{faceflag}}">
+      <block wx:for="{{emojiChar}}" wx:key="index">
+        <view class='emoji' bindtap='selectEmoji' data-text="{{item}}">
+          <text>{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <block wx:if='{{cross}}'>
+    <view class="p_r">
+      <view class='item1' bindtap='sendImg'>
+        <!-- <image class='img' src='/img/camera-true.png'></image> -->
+        <view class='text'>图片</view>
+      </view>
+      <view class='item2' bindtap='camera'>
+        <!-- <image class='img' src='/img/camera-true.png'></image> -->
+        <view class='text'>拍照</view>
+      </view>
+    </view>
+  </block>
+  <!-- <view class="bot {{flag?'show':'hide'}}" bindtap="createXzlmsg" data-id="{{proid}}">
+    <view class="info">
+      <view>
+        <image src="{{proimg}}"></image>
+      </view>
+      <view class="namebox">
+        <view class="name">{{proname}}</view>
+        <view class="price">￥{{proprice}}</view>
+      </view>
+    </view>
+  </view> -->
+</view>
+
+
+<wxs module="fn">
+  module.exports = {
+    sub: function(str) {
+      return str.substring(str.length - 32);
+    },
+    sub1: function(str) {
+      return str.substring(0, str.length - 32);
+    }
+  }
+</wxs>

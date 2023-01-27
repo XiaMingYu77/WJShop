@@ -1,0 +1,203 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      通讯录
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="box bs" style="margin-top:{{height+10}}px">
+    <view class="info">
+      <view class="img">
+        <image src="{{maillist.Photo}}"></image>
+      </view>
+      <view class="infobox">
+        <view class="name">
+          <view>{{maillist.RealName}} </view>
+          <view class="member" wx-if="{{maillist.Group=='3'}}">
+            <view>
+              <image src="../../../static/iconfont/white.png"></image>
+            </view>
+            <view>导师</view>
+          </view>
+          <view class="member" wx-if="{{maillist.Group=='2'}}">
+            <view>
+              <image src="../../../static/iconfont/white.png"></image>
+            </view>
+            <view>超级会员</view>
+          </view>
+          <view class="member registermember" wx-if="{{maillist.Group=='1'}}">
+            <view>
+              <image src="../../../static/iconfont/blackmember.png"></image>
+            </view>
+            <view>普通会员</view>
+          </view>
+        </view>
+        <view class="weixin weixin1">
+          <view wx:if="{{maillist.weixin}}">微信号：{{maillist.weixin}} </view>
+          <view wx:if="{{!maillist.weixin}}">未填写微信号</view>
+          <view class="change" bindtap="change">
+            <image src="../../../static/iconfont/change.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="jianbian">
+      <view class="content">
+        <view>
+          <text style="color:#2D5DF6">您的特权:</text>{{maillist.privilege}},快速发展自己的销售队伍</view>
+      </view>
+      <view class="content">
+        <view>
+          <text style="color:#2D5DF6">您的特权:</text>{{maillist.Recommonprivilege}}</view>
+      </view>
+    </view> -->
+  </view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="title">填写微信号</view>
+    <view class="tips">赶快填写微信号吧~方便导师添加你进行1对1深度教学</view>
+    <input class="inp" value="{{maillist.weixin}}" bindinput="inputchange"></input>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="changesubmit">确认</button>
+    </view>
+    <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+
+  <view class="box position" style="margin-top:20rpx;background-image:url(https://shop.we-time.net/images/icons/maillistbg.png);background-size:100% 100%" wx:if="{{maillist.RecommonMemID!=null}}">
+    <view class="invitepeople">
+      <image src="../../../static/iconfont/invite.png"></image>
+      邀请人
+    </view>
+    <view class="info">
+      <view class="img">
+        <image src="{{maillist.RecommonPhoto}}"></image>
+      </view>
+      <view class="infobox">
+        <view class="name">
+          <view>{{maillist.RecommonRealName}} </view>
+          <view class="member" wx-if="{{maillist.RecommonGroup=='3'}}">
+            <view>
+              <image src="../../../static/iconfont/white.png"></image>
+            </view>
+            <view>导师</view>
+          </view>
+          <view class="member" wx-if="{{maillist.RecommonGroup=='2'}}">
+            <view>
+              <image src="../../../static/iconfont/white.png"></image>
+            </view>
+            <view>超级会员</view>
+          </view>
+          <view class="member registermember" wx-if="{{maillist.RecommonGroup=='1'}}">
+            <view>
+              <image src="../../../static/iconfont/blackmember.png"></image>
+            </view>
+            <view>普通会员</view>
+          </view>
+        </view>
+        <view class="weixin" wx:if="{{maillist.Recommonweixin}}" style="color:#fff;">
+          微信号：{{maillist.Recommonweixin}}
+          <text class="copy" data-current="{{maillist.Recommonweixin}}" bindtap="copy" style="color:#fff;border-color:#fff">复制</text>
+        </view>
+        <view class="weixin" wx:if="{{!maillist.Recommonweixin}}">
+          该用户未填写微信号
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="box position" style="margin-top:20rpx;background-image:url(https://shop.we-time.net/images/icons/maillistbg.png);background-size:100% 100%" wx:if="{{maillist.TutorMemID!=null}}">
+    <view class="invitepeople">
+      <image src="../../../static/iconfont/invite.png"></image>
+      导师
+    </view>
+    <view class="info">
+      <view class="img">
+        <image src="{{maillist.TutorPhoto}}"></image>
+      </view>
+      <view class="infobox">
+        <view class="name">
+          <view>{{maillist.TutorRealName}} </view>
+          <view class="member" wx-if="{{maillist.TutorGroup=='3'}}">
+            <view>
+              <image src="../../../static/iconfont/white.png"></image>
+            </view>
+            <view>导师</view>
+          </view>
+          <view class="member" wx-if="{{maillist.TutorGroup=='2'}}">
+            <view>
+              <image src="../../../static/iconfont/white.png"></image>
+            </view>
+            <view>超级会员</view>
+          </view>
+          <view class="member registermember" wx-if="{{maillist.TutorGroup=='1'}}">
+            <view>
+              <image src="../../../static/iconfont/blackmember.png"></image>
+            </view>
+            <view>普通会员</view>
+          </view>
+        </view>
+        <view class="weixin" wx:if="{{maillist.Tutorweixin}}" style="color:#fff;">微信号：{{maillist.Tutorweixin}}
+          <text class="copy" data-current="{{maillist.Tutorweixin}}" bindtap="copy" style="color:#fff;border-color:#fff">复制</text>
+        </view>
+        <view class="weixin" wx:if="{{!maillist.Tutorweixin}}">
+          该用户未填写微信号
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="box box1 bs" style="margin-top:20rpx;">
+    <view class="people">我的会员
+      <text class="tips">仅显示已填写微信号的粉丝</text> </view>
+    <view class="info" wx:for="{{mymemberlist}}" data-current="{{item.MemID}}" wx:key="index">
+      <view class="info-left">
+        <view class="img">
+          <image src="{{item.Photo}}"></image>
+        </view>
+        <view class="information infobox">
+          <view class="name">
+            <view>{{item.RealName}} </view>
+            <view class="member" wx-if="{{item.Group!='1'}}">
+              <view>
+                <image src="../../../static/iconfont/white.png"></image>
+              </view>
+              <view>超级会员</view>
+            </view>
+            <view class="member registermember" wx-if="{{item.Group=='1'}}">
+              <view>
+                <image src="../../../static/iconfont/blackmember.png"></image>
+              </view>
+              <view>普通会员</view>
+            </view>
+            <!-- <view class="member remember">
+            <view>
+              <image src="../../../static/logo/member.png"></image>
+            </view>
+            <view>注册会员</view>
+          </view> -->
+          </view>
+          <view class="weixin" wx:if="{{item.weixin}}">微信号：{{item.weixin}}
+            <text class="copy" data-current="{{item.weixin}}" bindtap="copy">复制</text>
+          </view>
+          <view class="weixin" wx:if="{{!item.weixin}}">
+            该用户未填写微信号
+          </view>
+        </view>
+      </view>
+      <view class="recommend" bindtap="showinfo" wx-if="{{item.Group=='1'}}" data-current="{{item.MemID}}">一键推荐</view>
+    </view>
+  </view>
+
+  <tui-modal1 show="{{modal1}}" bind:cancel="hideinfo" custom="{{true}}" class="clicktime">
+    <view class="title">推荐</view>
+    <view class="content">您确定要推荐该用户成为超级会员吗？</view>
+    <view class="btn">
+      <button class="cancle" bindtap="hideinfo">取消</button>
+      <button class="submit" bindtap="submit">确定</button>
+    </view>
+    <!-- <image class="x" src="../../../static/iconfont/close.png" bindtap="hideinfo"></image> -->
+  </tui-modal1>
+</view>

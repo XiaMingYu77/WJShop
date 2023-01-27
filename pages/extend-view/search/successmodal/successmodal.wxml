@@ -1,0 +1,6 @@
+<!--pages/extend-view//search/successmodal/successmodal.wxml-->
+<view class="container">
+  <image src="https://shop.we-time.net/images/searchgood_success.png"></image>
+  <view class="firsttips">您的反馈已成功提交</view>
+  <view class="secondtips">我们将在找到商品后第一时间与您联络 请留意信息，谢谢</view>
+</view>

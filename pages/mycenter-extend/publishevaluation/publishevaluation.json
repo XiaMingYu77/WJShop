@@ -1,0 +1,12 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "发表评论",
+  "onReachBottomDistance": 50,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-rate": "../../../components/rate/rate",
+    "tui-modal": "../../../components/modal/modal",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

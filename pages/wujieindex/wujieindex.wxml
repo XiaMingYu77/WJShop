@@ -1,0 +1,733 @@
+<view class="container">
+  <!--header-->
+  <view class="tui-header">
+    <view class="tui-rolling-search">
+      <icon type="search" size='13' color='#999'></icon>
+      <swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="8000" class="tui-swiper">
+        <swiper-item wx:for="{{hotSearch}}" wx:key="index" class="tui-swiper-item" data-current="{{item.key}}" bindtap="search">
+          <view class="tui-hot-item">{{item.key}}</view>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="smallbell" bindtap="tonavmessage">
+      <image src="../../static/iconfont/lindang.png"></image>
+      <view class="dot" wx:if="{{notreadnum!=0}}"></view>
+    </view>
+  </view>
+  <!-- 顶部选项卡 -->
+  <view class="tab-bar-item" style="position:fixed;">
+  </view>
+  <view class="tab">
+    <scroll-view scroll-x scroll-with-animation class="tab-view" scroll-left="{{scrollLeft}}">
+      <view wx:for="{{tab}}" wx:key="index" class="tab-bar-item {{currentTab==index ? 'active' : ''}}" data-current="{{index}}" catchtap="swichNav">
+        <text class="tab-bar-title">{{item}}</text>
+      </view>
+    </scroll-view>
+  </view> 
+
+  <view id="tabbigbox" class="tabbigbox">
+    <view class="tabbox">
+      <scroll-view class="tab" scroll-x scroll-left="{{tabScroll}}" scroll-with-animation="true">
+        <block wx:for="{{tab}}" wx:key="index">
+          <view class="tab-item {{currentTab == index ? 'active' : ''}}" data-current="{{index}}" data-id="{{item.id}}" bindtap='clickMenu'>
+            <view>{{item.name}}</view>
+            <view class="line" wx:if="{{currentTab == index}}"></view>
+          </view>
+        </block>
+      </scroll-view>
+      <view class="classification">
+        <!-- <view class="yinying">
+          <image src="../../static/iconfont/yingyin.png" class="img"></image>
+        </view> -->
+        <view class="content" bindtap="showtopdropdown">
+          <image src="../../static/iconfont/fenlei.png"></image>
+          分类
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--header 顶部下拉选择框-->
+  <tui-top-dropdown class="topdropdown" height="{{74+clasictap*2}}" show="{{dropShow}}" translatey="{{tabflag1?'150':'170'}}" bind:close="btnCloseDrop" catchtouchmove="true">
+    <view class="topdropdown-top">
+      <view>全部类目</view>
+      <view>
+        <image src="../../static/iconfont/close.png" bindtap="btnCloseDrop"></image>
+      </view>
+    </view>
+    <!-- <scroll-view class="tui-scroll-box" scroll-y > -->
+    <view class="clasic" id="clasic">
+      <block wx:for="{{tab}}" wx:key="index">
+        <view class="{{currentTab == index ? 'active' : ''}}" data-current="{{index}}" data-id="{{item.id}}" bindtap="clickclasic">{{item.name}}</view>
+      </block>
+    </view>
+    <!-- </scroll-view> -->
+  </tui-top-dropdown>
+  <!--header 顶部下拉选择框-->
+
+  <!-- <swiper class="content" style='height: {{height}}px' duration="1000" current="{{currentTab}}" bindchange="changeContent">
+    <swiper-item class="content-item" wx:for="{{menuList}}" wx:key="index">
+      
+    </swiper-item>
+  </swiper> -->
+
+  <!-- 首页布局内容 -->
+  <view wx-if="{{currentTab ==0}}">
+    <!--Banner图轮播-->
+    <view class="tui-header-banner">
+      <view class="tui-banner-bg">
+        <swiper indicator-dots="true" autoplay="true" interval="5000" duration="150" class="tui-banner-swiper" circular="{{true}}">
+          <swiper-item wx:for="{{banner}}" wx:key="index">
+            <image src="{{item.image}}" class="tui-slide-image" mode="aspectFit" data-current="{{item.url}}" bindtap="clickbanner" />
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+
+    <view class="categorybox">
+      <!-- 九宫格 -->
+      <scroll-view scroll-x scroll-y="true" bindscroll="categoryscoll" class="tui-product-category">
+        <view class="tui-category-item" id="category" wx:for="{{category}}" wx:key="index" data-key="{{item.ActName}}" data-current="{{item.ActID}}" bindtap="more">
+          <image src="{{item.ImageSrc}}" class="tui-category-img" mode="aspectFit"></image>
+          <view class="tui-category-name">{{item.ActName}}</view>
+        </view>
+      </scroll-view>
+      <view class="scollline">
+        <view class="innerline" style="width:{{innerwidth}}rpx;left: {{left}}rpx;"></view>
+      </view>
+      <!-- 滚动栏 -->
+      <view class="tui-rolling-news">
+        <view class="rollingtitle">
+          <text>商城事件</text>
+          <text class="circle"></text>
+          <text class="new">最新</text>
+        </view>
+        <swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="3000" class="tui-swiper">
+          <swiper-item wx:for="{{newsList}}" wx:key="index" class="tui-swiper-item">
+            <view class="tui-news-item" bindtap='tomessage' data-current="{{item.id}}">{{item.name}}</view>
+          </swiper-item>
+        </swiper>
+        <!-- <view bindtap='tomessage' style="margin-left:20rpx;font-size:28rpx;" class="more">更多></view> -->
+      </view>
+    </view>
+
+    <!-- 五大块 -->
+    <!-- <view class="fiveblock">
+      <view class="firstblock" bindtap="more" data-key="{{'新人上手'}}">
+        <image src="../../static/iconfont/1.png"></image>
+        <view class="newpeople">
+          <view class="text1">新人福利</view>
+          <view class="text2">100%成功参团</view>
+        </view>
+      </view>
+      <view class="secondblock">
+        <view class="highpro" bindtap="more" data-key="{{'高佣商品'}}">
+          <image src="../../static/iconfont/3.png"></image>
+          <view class="highproduct">
+            <view class="text1">高佣商品</view>
+            <view class="text2">赚钱更容易</view>
+          </view>
+        </view>
+        <view>
+          <view class="factory" bindtap="more" data-key="{{'工厂直供'}}">
+            <image src="../../static/iconfont/2.png"></image>
+            <view class="factorypro">
+              <view class="text1">源头好货</view>
+              <view class="text2">大牌出厂价</view>
+            </view>
+          </view>
+          <view class="factory" bindtap="more" data-key="{{'百亿补贴'}}">
+            <image src="../../static/iconfont/billion.png"></image>
+            <view class="factorypro billion">
+              <view class="text1">百亿补贴</view>
+              <view class="text2">击穿底价</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+    <!-- 五大块结束 -->
+
+    <!-- 新人专享补贴 -->
+    <view class="newexclusive">
+      <view class="newexclusivetop">
+        <view>新人专享补贴低价
+          <text style="font-size:20rpx;font-weight: 500;">返还90%支付金额</text>
+        </view>
+        <image src="../../static/iconfont/go.png" bindtap="more" data-key="{{'新人上手'}}"></image>
+      </view>
+      <view class="newexclusivebot">
+        <swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="3000" class="newexclusiveswiper">
+          <swiper-item wx:for="{{newsProductInfo.NewsList1}}" wx:key="index" class="newexclusiveswiperitem">
+            <view class="newexclusivegood" bindtap="tonewgoodsdetail" data-current="{{item.id}}">
+              <image src="{{item.img}}" mode="aspectFit"></image>
+              <view class="price">
+                <view>￥{{item.markprice}}</view>
+                <view>￥{{fn.tofixed(item.markprice*0.1)}}</view>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+        <swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="3000" class="newexclusiveswiper">
+          <swiper-item wx:for="{{newsProductInfo.NewsList2}}" wx:key="index" class="newexclusiveswiperitem">
+            <view class="newexclusivegood" bindtap="tonewgoodsdetail" data-current="{{item.id}}">
+              <image src="{{item.img}}" mode="aspectFit"></image>
+              <view class="price">
+                <view>￥{{item.markprice}}</view>
+                <view>￥{{fn.tofixed(item.markprice*0.1)}}</view>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+        <swiper vertical="{{true}}" autoplay="{{true}}" circular="{{true}}" interval="3000" class="newexclusiveswiper">
+          <swiper-item wx:for="{{newsProductInfo.NewsList3}}" wx:key="index" class="newexclusiveswiperitem">
+            <view class="newexclusivegood" bindtap="tonewgoodsdetail" data-current="{{item.id}}">
+              <image src="{{item.img}}" mode="aspectFit"></image>
+              <view class="price">
+                <view>￥{{item.markprice}}</view>
+                <view>￥{{fn.tofixed(item.markprice*0.1)}}</view>
+              </view>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+    <view class="newexclusiveimg" catchtap="toluckdraw">
+      <image src="https://shop.we-time.net/images/luckdraw.png"></image>
+    </view>
+    <!-- 新人专享补贴结束 -->
+
+    <!-- 新版四大块 -->
+    <view class="fourblock">
+      <view class="fourblockleft">
+        <view class="highservant" bindtap="more" data-key="{{'高佣商品'}}">
+          <view>高拥商品
+            <text>赚钱更容易</text>
+          </view>
+          <view class="highservantproduct">
+            <view class="product" wx:for="{{highServantList}}" wx:key="index">
+              <image src="{{item.FullImg}}" mode="aspectFit"></image>
+              <view>
+                <text style="font-size:15rpx;">可赚 </text> ￥{{item.Score}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="goodproduct" bindtap="more" data-key="{{'好物免费拿'}}">
+          <view>好物免费拿
+            <text>一起来砍价</text>
+          </view>
+          <view class="goodproductcontent">
+            <view class="product" wx:for="{{otherList}}" wx:key="index">
+              <image src="{{item.FullImg}}" mode="aspectFit"></image>
+              <view>可砍至0元</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="fourblockright">
+        <view class="factory" bindtap="more" data-key="{{'工厂直供'}}">
+          <view>
+            源头好货
+            <image src="https://shop.we-time.net/images/dapaichuchangjiagif.png"></image>
+          </view>
+          <view class="factoryproduct">
+            <view class="product" wx:for="{{factoryList}}" wx:key="index">
+              <image src="{{item.FullImg}}" mode="aspectFit"></image>
+            </view>
+          </view>
+        </view>
+        <view class="factory subsidy" style="margin-top:12rpx;" bindtap="more" data-key="{{'百亿补贴'}}">
+          <view>
+            百亿补贴
+            <image src="https://shop.we-time.net/images/jichuandijiagif.gif"></image>
+          </view>
+          <view class="factoryproduct">
+            <view class="product" wx:for="{{subsidyList}}" wx:key="index">
+              <image src="{{item.FullImg}}" mode="aspectFit"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 新版四大块结束 -->
+
+    <!-- 选项卡 -->
+    <!-- //{{tabflag2?'selected':''}} -->
+    <!-- <view class="tui-mtop {{tabflag2?'selected':''}}" id="tui-mtop">
+      <tui-tabs wx-if="{{!dropShow}}" tabs="{{tabs2}}" bgColor="#E8E8E9" currentTab="{{currentTab1}}" selectedColor="#EB0909" sliderBgColor="#EB0909" bind:change="change"></tui-tabs>
+    </view> -->
+
+    <view class="tabs">
+      <view class="tab1">
+        <view wx:for="{{tabs2}}" class="{{currentTab1==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change" data-current="{{index}}">
+          <view>{{item.name}}</view>
+          <view class="slider" wx:if="{{currentTab1==index}}"></view>
+        </view>
+      </view>
+      <!-- <view class="slider {{selected==1?'left1':''}} {{selected==2?'left2':''}} {{selected==3?'left3':''}}"></view> -->
+    </view>
+    <!-- 猜你喜欢 -->
+    <!-- <view class="prolist" wx-if="{{currentTab1 ==0}}">
+      <view class="goods" wx:for="{{isGuessLoveList}}" wx:key="id">
+        <view class="imgbox">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="content">
+          <view class="name">
+            {{item.name}}
+          </view>
+          <view class="evaluate">566条评论 好评率98%</view>
+          <view class="assemble">
+            <view class="spellback">
+              <text>拼返现</text>￥2.6
+            </view>
+            <view class="pushprofit">
+              <text>推广赚</text>￥7.3
+            </view>
+          </view>
+          <view class="price">
+            <view class="money">￥{{item.markprice}}
+              <text class="juan">劵</text>
+            </view>
+            <view class="nopush">未推送</view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+    <view class="prolist" wx-if="{{currentTab1 ==0}}">
+      <view class="tui-product-container">
+        <block wx:for="{{isGuessLoveList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0'}}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1'}}">已推送</view>
+          </view>
+        </block>
+      </view>
+      <view class="tui-product-container">
+        <block wx:for="{{isGuessLoveList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- <view class="prolist" wx-if="{{currentTab1 ==0}}">
+      <view class="goods" wx:for="{{isGuessLoveList}}" wx:key="id">
+        <view class="imgbox">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="content">
+          <view class="name">
+            {{item.name}}
+          </view>
+          <view class="evaluate">566条评论 好评率98%</view>
+          <view class="assemble">
+            <view class="spellback">
+              <text>拼返现</text>￥2.6
+            </view>
+            <view class="pushprofit">
+              <text>推广赚</text>￥7.3
+            </view>
+          </view>
+          <view class="price">
+            <view class="money">￥{{item.markprice}}
+              <text class="juan">劵</text>
+            </view>
+            <view class="nopush">未推送</view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+
+    <view class="prolist" wx-if="{{currentTab1 ==1}}">
+      <view class="tui-product-container">
+        <block wx:for="{{isPopularList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+          </view>
+        </block>
+      </view>
+      <view class="tui-product-container">
+        <block wx:for="{{isPopularList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="prolist" wx-if="{{currentTab1 ==2}}">
+      <view class="tui-product-container">
+        <block wx:for="{{isExcellentList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" wx:if="{{item.IsSend=='1'}}">立即分享</view>
+                <view class="price-right" wx:if="{{item.IsSend=='0'}}">立即抢</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+          </view>
+        </block>
+      </view>
+      <view class="tui-product-container">
+        <block wx:for="{{isExcellentList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="prolist" wx-if="{{currentTab1 ==3}}">
+      <view class="tui-product-container">
+        <block wx:for="{{isTopHotList}}" wx:if="{{(index+1)%2!=0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+          </view>
+        </block>
+      </view>
+      <view class="tui-product-container">
+        <block wx:for="{{isTopHotList}}" wx:if="{{(index+1)%2==0}}" wx:key="index">
+          <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+            <view class="imgbox">
+              <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.name}}
+              </view>
+              <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+              <view class="assemble">
+                <view class="spellback">
+                  <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                </view>
+                <view class="pushprofit">
+                  <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                </view>
+              </view>
+              <view class="price">
+                <view class="price-left">
+                  <view>￥</view>
+                  <view class="money">{{item.markprice}}</view>
+                  <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                </view>
+                <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+              </view>
+            </view>
+            <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+            <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 其他分类页面布局内容 -->
+  <view wx-if="{{currentTab !=0}}">
+    <view class="{{flag?'noorder':''}} kong">
+      <image src="../../static/iconfont/none.png"></image>
+      <view>暂无更多数据</view>
+    </view>
+    <view class="otherclasic" style="margin-top:170rpx;">
+      <!-- <view class="productbox">
+        <view class="product">
+          <view wx:for="{{catelist}}" wx:key="index" data-key="{{item.name}}" bindtap="more">
+            <image src="/static/logo/moren.png" class="tui_explosion_item_image"></image>
+            <view class="tui-category-name">{{item.name}}</view>
+          </view>
+        </view>
+      </view> -->
+
+
+      <view class="explosion" wx:if="{{hotlist.length>=3}}">
+        <!-- <view class="explosion_text">
+          <text class="explosion_text_blod">人气爆款</text>
+          <text class="explosion_text_small">大家都在买的人气好好货</text>
+        </view> -->
+        <swiper indicator-dots="true" interval="3000" duration="150" indicator-active-color="rgba(45,93,246,1)" class="tui-explosion-swiper" circular="{{true}}" indicator-color="rgba(237,237,237,1)">
+          <swiper-item wx:for="{{explosionProduct}}" wx:key="index">
+            <view class="tui_explosion_item" wx:for="{{item}}" wx:key="index" wx:for-item="item1" data-id="{{item1.id}}" bindtap="togoodsdetail">
+              <image class="tui_explosion_item_image" src="{{item1.img}}" mode="aspectFit"></image>
+              <!-- <image src="/static/logo/moren.png" class="tui_explosion_item_image"></image> -->
+              <text class="tui_explosion_text1">{{item1.name}}</text>
+              <view class="explosion_view_text">
+                <text class="tui_explosion_text2">￥{{item1.markprice}}</text>
+                <text class="tui_explosion_text3"><text class="return">返</text>￥{{fn.tofixed(item1.scorce*repercent)}}</text>
+              </view>
+              <!-- <view class="explosion_view_text flower">
+                <image src="../../static/iconfont/flower.png"></image>
+                <text class="tui_explosion_text4">好评{{item1.AllCommentsNum}}+</text>
+              </view> -->
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+
+      <view class="morepro" wx:if="{{morelist.length!=0}}">更多热卖</view>
+
+      <view class="prolist" wx:if="{{morelist.length!=0}}">
+        <view class="tui-product-container">
+          <block wx:for="{{morelist}}" wx:if="{{(index+1)%2!=0}}" wx:key="id">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble">
+                  <view class="spellback">
+                    <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+            </view>
+          </block>
+        </view>
+        <view class="tui-product-container">
+          <block wx:for="{{morelist}}" wx:if="{{(index+1)%2==0}}" wx:key="id">
+            <view class="goods" data-id="{{item.id}}" bindtap="togoodsdetail">
+              <view class="imgbox">
+                <image src="{{item.img}}" lazy-load="true" mode="aspectFit"></image>
+              </view>
+              <view class="content">
+                <view class="name">
+                  {{item.name}}
+                </view>
+                <!-- <view class="evaluate">{{item.AllCommentsNum}}条评论 好评率{{item.GoodCommentsRatio}}%</view> -->
+                <view class="assemble">
+                  <view class="spellback">
+                    <text>返</text>￥{{fn.tofixed(item.scorce*repercent)}}
+                  </view>
+                  <view class="pushprofit">
+                    <text>推广赚</text>￥{{fn.tofixed((item.scorce-item.scorce*ordinaryrepercent)*ratepercent)}}
+                  </view>
+                </view>
+                <view class="price">
+                  <view class="price-left">
+                    <view>￥</view>
+                    <view class="money">{{item.markprice}}</view>
+                    <!-- <view class="zhu" wx:if="{{item.IsSend=='0'}}" catchtap="addtoassistant" data-current="{{item.id}}">助</view> -->
+                  </view>
+                  <view class="price-right" data-current="{{item.id}}" catchtap="tocreateposter">立即分享</view>
+                </view>
+              </view>
+              <view class="nopush" wx:if="{{item.IsSend=='0' }}">未推送</view>
+              <view class="push" wx:if="{{item.IsSend=='1' }}">已推送</view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="imagebox" wx:if="{{imageflag}}">
+    <image catchtap="toluckdraw" class="invitenew" src="https://shop.we-time.net/images/yaoxinjiangligif.gif"></image>
+    <image catchtap="hideimg" class="close" src="../../static/iconfont/blackclose.png"></image>
+  </view>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>
+
+<!-- <authorize bind:onLoadFun='onLoadFun' isGoIndex='{{isGoIndex}}' iShidden="{{iShidden}}" isAuto="{{isAuto}}" invitenum="{{invitenum}}"></authorize> -->

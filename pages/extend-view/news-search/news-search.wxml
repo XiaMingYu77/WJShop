@@ -1,0 +1,43 @@
+<view class="container">
+  <view class="tui-searchbox">
+    <view class="tui-search-input">
+      <icon type="search" size='13' color='#333'></icon>
+      <!-- <input  placeholder="{{placeholder}}" auto-focus="{{true}}"  class="tui-input" value="{{value}}" bindinput="input" /> -->
+      <input placeholder="{{placeholder}}" class="tui-input" placeholder-class="tui-input-plholder" value="{{value}}"  bindinput="input" focus="true"></input>
+      <icon type="clear" size='13' color='#bcbcbc' bindtap="cleanKey" hidden="{{!key}}"></icon>
+    </view>
+    <view class="tui-cancle" bindtap="search">搜索</view>
+  </view>
+
+  <view class="tui-search-history" wx:if="{{searchRecord.length>0}}">
+    <view class="tui-history-header">
+      <view class="tui-search-title">
+        最近搜索
+      </view>
+      <image class="x" src="../../../static/iconfont/x.png" bindtap="openActionSheet"></image>
+    </view>
+    <view class="tui-history-content">
+      <block wx:for="{{searchRecord}}" wx:key="index">
+        <tui-tag size="small" bindlongpress="deletekey" data-index="{{index}}"  class="tui-tag" data-current="{{item.value}}" shape="circle" catchtap="tosearch">{{item.value}}</tui-tag>
+      </block>
+    </view>
+  </view>
+
+  <view class="tui-search-hot">
+    <view class="tui-hot-header">
+      <view class="tui-search-title tui-search-title1">
+          热门搜索
+      </view>
+    </view>
+    <view class="tui-hot-content">
+      <block wx:for="{{hotsearch}}" wx:key="index">
+        <tui-tag size="small" tui-tag-class="tui-tag" data-current="{{item.key}}" shape="circle" bindtap="tosearch1">{{item.key}}</tui-tag>
+      </block>
+    </view>
+  </view>
+  <!-- <tui-actionsheet show="{{showActionSheet}}" tips="{{tips}}" bind:click="itemClick" bind:cancel="closeActionSheet"></tui-actionsheet> -->
+</view>
+
+<tui-modal show="{{modal}}" bind:click="handleClick" bind:cancel="hide" content="确定删除该条搜索纪录吗？" color="#333" size="32" button="{{button}}"></tui-modal>
+
+<tui-modal show="{{showActionSheet}}" bind:click="itemClick" bind:cancel="closeActionSheet" content="确定删除所有搜索纪录吗?" color="#333" size="32" button="{{button}}"></tui-modal>

@@ -1,0 +1,165 @@
+/* pages/mycenter-extend//collectshop/collectshop.wxss */
+
+.tui-checkbox {
+  /* width: 40rpx; */
+  padding-right: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.tui-checkbox .wx-checkbox-input {
+  width: 26rpx;
+  height: 26rpx;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.tui-checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background: #f82400;
+  width: 30rpx;
+  height: 30rpx;
+  border: none;
+}
+
+page {
+  background: #e8e8e9;
+}
+
+.container .manage{
+  background: #e80202;
+  color: #fff;
+  padding-bottom: 5rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+.red {
+  height: 70rpx;
+  background: #e80202;
+}
+
+.shopbox {
+  margin-top: -70rpx;
+}
+
+.shopbox .shop {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.shopbox .shop image {
+  width: 107rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+  margin-left: 10rpx;
+}
+
+.shopbox .shop .shopname {
+  font-size: 24rpx;
+}
+
+.shopbox .shop .number {
+  font-size: 20rpx;
+  color: #848484;
+}
+
+.container .botbox {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+.container .botbox .bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 78rpx;
+  background: #fff;
+  font-size: 22rpx;
+  color: #7A7A7A;
+  padding: 0 20rpx;
+}
+
+.container .botbox .bot .input{
+  margin-left: 20rpx;
+}
+
+.container .botbox .bot checkbox{
+  margin-right: 10rpx;
+}
+
+.container .botbox .bot .cancle{
+  width: 172rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  background: #EA1004;
+  color: #fff;
+  border-radius: 30rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+
+/* 添加无地址的弹框 */
+
+.container .clickaddress {
+  position: relative;
+}
+
+.container .clickaddress .jz {
+  width: 72rpx;
+  height: 72rpx;
+  padding-left: 220rpx;
+}
+
+.container .clickaddress .tips {
+  width: 311rpx;
+  margin: 0 auto;
+  font-size: 24rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  line-height: 40rpx;
+}
+
+.container .clickaddress .btn {
+  display: flex;
+  margin-top: 30rpx;
+  height: 60rpx;
+}
+
+.container .clickaddress .btn .cancel {
+  width: 200rpx;
+  background: #fff;
+  border: 1rpx solid #000;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+}
+
+.container .clickaddress .btn .addaddress {
+  width: 200rpx;
+  color: #fff;
+  background: #e80202;
+  border-radius: 30rpx;
+  line-height: 60rpx;
+  font-size: 28rpx;
+}
+
+.container .clickaddress .close {
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+}
+
+/* 添加无地址的弹框结束 */

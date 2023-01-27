@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "通讯录",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-modal1": "../../../components/modal1/modal1",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

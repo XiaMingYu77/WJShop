@@ -1,0 +1,178 @@
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  /* background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%); */
+  background: #fff;
+  overflow: hidden;
+  /* box-shadow:0px 4rpx 12rpx 0px rgba(0,0,0,0.12); */
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 62rpx;
+  background: #e6f0ff;
+  font-size: 20rpx;
+  color: #2d5df6;
+  padding-right: 24rpx;
+  margin-bottom: 30rpx;
+}
+
+.container .title .newgood {
+  position: relative;
+  width: 162rpx;
+  height: 38rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.container .title .newgood image {
+  width: 162rpx;
+  height: 38rpx;
+}
+
+.container .title .newgood view {
+  position: absolute;
+  top: 3rpx;
+  left: 20rpx;
+}
+
+.goodbox {
+  display: flex;
+  justify-content: space-between;
+  width: 94%;
+  margin: 0 3%;
+  flex-wrap: wrap;
+}
+
+.goodbox .goods {
+  width: 340rpx;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+}
+
+.goodbox .goods image {
+  width: 340rpx;
+  height: 340rpx;
+}
+
+.goodbox .goods .goodsname{
+  height: 80rpx;
+  font-size: 24rpx;
+  color: #333;
+  padding: 10rpx 6rpx 6rpx 14rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.goodbox .goods .goodsbot{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14rpx 20rpx;
+  font-size: 28rpx;
+  color: #2D5DF6;
+  margin-top: 10rpx;
+}
+
+.goodbox .goods .goodsbot{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 14rpx 30rpx;
+  font-size: 28rpx;
+  color: #2D5DF6;
+}
+
+.goodbox .goods .goodsbot .price{
+  display: flex;
+  align-items: flex-end;
+  margin-top: 10rpx;
+}
+
+.goodbox .goods .goodsbot>view:first-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+.goodbox .goods .goodsbot>view:last-child{
+  width: 128rpx;
+  height: 128rpx;
+  background: #2D5DF6;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 128rpx;
+}
+
+.container .botbanner{
+  width: 94%;
+  height: 198rpx;
+  margin: 30rpx 3% 0;
+}

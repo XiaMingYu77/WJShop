@@ -1,0 +1,68 @@
+<!--pages/extend-view1//shop/shop.wxml-->
+<view class="container">
+ 
+
+  <view class="shop">
+      <view class="shoptop">
+        <view class="shopimg">
+          <image src="../../../static/logo/moren.png"></image>
+        </view>
+        <view class="shopname">
+          <view class="name" bindtap="toshopdetail">商城旗舰店 ></view>
+          <view class="count">
+            <text class="wujie">商城自营</text>
+            <text class="num">粉丝人数:36.2万</text>
+          </view>
+        </view>
+      </view>
+      <view class="shopbot">
+        <view class="colloct1">已收藏</view>
+        <!-- <view class="colloct2">收藏</view> -->
+      </view>
+    </view>
+
+  <view class="clasic">
+    <view class="clasiccontent {{selectflag?'select':''}}">
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+      <view>奶粉</view>
+    </view>
+    <view class="down">
+      <image bindtap="clickdown" src="../../../static/logo/bot.png"></image>
+    </view>
+  </view>
+
+  <!--screen-->
+  <view id="tui-header" class="tui-header-screen" style="top:{{height}}px;position: {{flag?'fixed':''}};top:{{flag?'0':''}}">
+    <view class="tui-screen-top">
+      <view class="tui-top-item {{tabIndex==0?'tui-active tui-bold':''}}" data-index="0" bindtap="screen">
+        <view>综合</view>
+        <tui-icon name="{{selectH>0?'arrowup':'arrowdown'}}" size="14" color="{{tabIndex==0?'#e41f19':'#444'}}" tui-icon-class="tui-ml"></tui-icon>
+      </view>
+      <view class="tui-top-item {{tabIndex==1?'tui-active tui-bold':''}}" bindtap="screen" data-index="1">销量</view>
+      <!-- <view class="tui-top-item" bindtap="screen" data-index="2">
+        <tui-icon name="{{isList?'manage':'listview'}}" size="{{isList?22:18}}" bold="{{isList?false:true}}" color="#333"></tui-icon>
+      </view> -->
+      <view class="tui-top-item {{tabIndex==2?'tui-active tui-bold':''}}" bindtap="screen" data-index="2">
+        <text>价格</text>
+        <!-- <tui-icon name="turningdown" size="12" color="{{tabIndex==2?'#e41f19':'#444'}}" tui-icon-class="tui-ml" bold="{{true}}"></tui-icon> -->
+        <image wx:if='{{priceflag1==""}}' src="../../../static/logo/price.png"></image>
+        <image wx:if='{{priceflag1=="3"}}' src="../../../static/logo/low.png"></image>
+        <image wx:if='{{priceflag1=="4"}}' src="../../../static/logo/high.png"></image>
+      </view>
+    </view>
+  </view>
+  <!--screen-->
+
+  <!-- goodlist -->
+  <view class="goodlist">
+
+  </view>
+</view>

@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "待成团",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-bottom-popup": "../../../components/bottom-popup/bottom-popup",
+    "tui-modal": "../../../components/modal/modal",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "反馈详情",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "tui-modal": "../../../components/modal/modal",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

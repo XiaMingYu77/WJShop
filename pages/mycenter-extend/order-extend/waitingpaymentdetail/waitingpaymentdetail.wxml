@@ -1,0 +1,141 @@
+<!--pages/mycenter-extend//order-extend/evaluatedetail/evaluatedetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      待付款
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 支付方式 -->
+  <!-- <view class="payment">
+    <view data-current="1" bindtap="selectpay">
+      <image src="../../../../static/logo/wx.png"></image>
+      <text>微信支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==1?'select':''}}"></image>
+    </view>
+    <view data-current="2" bindtap="selectpay">
+      <image src="../../../../static/logo/zfb.png"></image>
+      <text>支付宝支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==2?'select':''}}"></image>
+    </view>
+    <view data-current="3" bindtap="selectpay">
+      <image src="../../../../static/logo/hb.png"></image>
+      <text>花呗支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==3?'select':''}}"></image>
+    </view>
+    <view data-current="4" bindtap="selectpay">
+      <image src="../../../../static/logo/wj.png"></image>
+      <text>商城平台支付</text>
+      <image src="../../../../static/logo/gou.png" class="gou {{selected==4?'select':''}}"></image>
+    </view>
+  </view> -->
+  <!-- 支付方式结束 -->
+
+  <view class="proinfo" style="margin-top:{{height+10}}px;">
+    <view class="content" wx:for="{{orderproduct}}" wx:key="index">
+      <view class="shop">
+        <image src="{{order.ShopPhoto}}" mode="aspectFit"></image>
+        <text>{{order.ShopName}}</text>
+      </view>
+      <view class="content-mid" data-id="{{item.ProductID}}" bindtap="togoodsdetail">
+        <view>
+          <image src="{{item.ThumbnailImg}}" mode="aspectFit"></image>
+        </view>
+        <view class="info">
+          <view class="name">{{item.ProductName}}</view>
+          <view class="model">{{item.ProductSpecs}}</view>
+          <view class="count">
+            <view>数量：x{{item.Quantity}}</view>
+          </view>
+          <view class="price">
+            <view>￥{{item.UnitPrice}}</view>
+            <view>返现{{fn.tofixed(item.Score)}}元</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="assemble">
+      <text class="paytext">待付款:</text>
+      <text class="price">￥{{order.TotalPrice}}</text>(免运费)
+    </view>
+    <view class="address">
+      <view class="address-top">
+        <view>
+          <image src="../../../../static/iconfont/wuliu.png"></image>
+        </view>
+        <view>
+          <view style="font-size:28rpx"><text style="color:#333">{{order.ReceiverName}}</text> <text>{{order.ReceiverPhone}}</text></view>
+          <!-- <view class="ordernum">
+            <view>订单编号:{{order.OrderNo}}</view>
+            <view class="copy" bindtap="copy" data-current="order.OrderNo">复制</view>
+          </view> -->
+          <view style="margin-top:6rpx;">收货地址: {{order.ReceiverAddress}}</view>
+        </view>
+      </view>
+      <view>
+        <!-- <view class="modify">修改</view> -->
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="orderinfo">
+    <view class="orderinfo-top">
+      <view class="ordernum">
+        <view>订单编号:{{order.OrderNo}}</view>
+        <view class="copy" bindtap="copy" data-current="order.OrderNo">复制</view>
+      </view>
+      <!-- <view>
+        <view>商品快照:和对交易细节时,可作为判断依据</view>
+        <view class="bor">查看</view>
+      </view> -->
+      <view>下单时间:{{time}}</view>
+      <view class="yuqi">注:逾期未付款,订单将自动取消(本单还有逾期)</view>
+    </view>
+    <view class="orderinfo-bot">
+      <view bindtap="tocustomerservice">
+        <image src="../../../../static/iconfont/shangjia.png"></image>联系商家
+      </view>
+      <view bindtap="showphone">
+        <image src="../../../../static/iconfont/phone.png"></image>拨打电话
+      </view>
+    </view>
+  </view>
+
+  <!-- <view>
+    <view class="tuijian">购买过产品的人还浏览了</view>
+  </view> -->
+
+  <view class="bot">
+    <view class="hurry" catchtap="cancleorder">取消订单</view>
+    <view class="evaluate" catchtap="topay" data-current="{{order.OrderNo}}" data-id="{{orderproduct[0].ProductID}}" data-score="{{orderproduct[0].Score}}">立即付款</view>
+  </view>
+
+  <!--取消订单-->
+  <tui-bottom-popup show="{{popupShow}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+    <view class="title">请选择原因</view>
+    <view class="tips">订单一旦取消,无法恢复</view>
+    <view wx:for="{{reason}}" wx:key="index" class="reason {{activeindex==item.Key?'active':''}}" data-current="{{item.Key}}" bindtap="choosereason">{{item.Value}}</view>
+    <button class="submit" bindtap="submit">提交申请</button>
+  </tui-bottom-popup>
+  <!--取消订单-->
+
+  <tui-modal show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="phone">
+    <view class="content">0731-85330017</view>
+    <view class="btn" bindtap="copy" data-current="0731-85330017">
+      知道了
+    </view>
+  </tui-modal>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

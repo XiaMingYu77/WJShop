@@ -1,0 +1,40 @@
+<!--pages/extend-view//search/findgoodsrecord/findgoodsrecord.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      帮找纪录
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 暂无中奖纪录 -->
+  <view class="{{dataflag?'noorder':''}} kong">
+    <image src="../../../../static/iconfont/none.png"></image>
+    <view>暂无帮找纪录</view>
+  </view>
+
+  <view class="goodbox" style="margin-top:{{height+10}}px">
+    <block wx:for="{{info}}" wx:key="index">
+      <view class="goods">
+        <view>
+          <image src="{{item.Images}}" mode="aspectFit"></image>
+          <view class="info">
+            <view class="name">{{item.ProductName}}</view>
+            <view class="modal">规格: {{item.ProductGoods}}</view>
+            <view class="infobot">
+              <view class="time">
+                提交时间 {{item.CreateTime}}
+              </view>
+              <view>
+                <view class="btn" wx:if="{{item.IsProcessed=='0'}}" bindtap="tofillinrecordaddress" data-current="{{item.ID}}">正在努力找货</view>
+                <view class="btn" wx:if="{{item.IsProcessed=='1'}}">已成功找到</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,197 @@
+/* pages/extend-view//search/findgoods/findgoods.wxss */
+
+.container {
+  /* width: 100%;
+  height: 100%; */
+  position: relative;
+}
+
+.tui-header-box {
+  width: 100%;
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: url("https://shop.we-time.net/images/searchgoodbg.png");
+  background-size: 100% 100%;
+  color: #fff;
+}
+
+.tui-header {
+  position: fixed;
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .color {
+  /* position: relative;
+  top: 340rpx; */
+  width: 570rpx;
+  height: 24rpx;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16rpx 16rpx 0 0;
+  z-index: 9999;
+  margin-top: -140rpx;
+}
+
+.container .content {
+  /* position: relative;
+  top: 340rpx; */
+  width: 614rpx;
+  /* height: 400rpx; */
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0rpx 4rpx 16rpx 0rpx rgba(10, 144, 250, 0.21);
+  border-radius: 16rpx;
+  z-index: 9999;
+}
+
+.container .content .title {
+  padding: 48rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 20px;
+}
+
+.container .content .name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 22rpx 32rpx 0;
+  border-top: 1rpx solid #efefef;
+}
+
+.container .content .name .block {
+  display: inline-block;
+  width: 8rpx;
+  height: 26rpx;
+  background: #6495f4;
+  margin-right: 14rpx;
+}
+
+.container .content .name>view:first-child {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.container .content .name input {
+  text-align: right;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.container .content .upload {
+  display: block;
+  border-top: 6rpx solid #efefef;
+  border-bottom: 6rpx solid #efefef;
+}
+
+.container .content .upload .uploadimg {
+  width: 174rpx;
+  height: 174rpx;
+}
+
+.container .content .upload>view:last-child {
+  padding: 0 26rpx;
+  margin-top: 14rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+
+.container .upload .question-images {
+  padding-top: 20rpx;
+  display: flex;
+}
+
+.container .upload .question-images .q-image-wrap {
+  margin-right: 30rpx;
+  text-align: center;
+}
+
+.container .upload .question-images .q-image-wrap image {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.container .record{
+  width: 614rpx;
+  margin: 20rpx auto 0;
+  text-align: right;
+  color: #333333;
+  font-size: 24rpx;
+}
+
+.container .submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 614rpx;
+  height: 96rpx;
+  background: url("https://shop.we-time.net/images/searchgoodbtn.png");
+  background-size: 100% 100%;
+  margin: 46rpx auto 0;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 24px;
+}
+
+.container .submitactive {
+  background: #d3e2ff;
+}

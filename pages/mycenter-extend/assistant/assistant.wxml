@@ -1,0 +1,161 @@
+<!--pages/mycenter-extend//assistant/assistant.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      助理
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view style="margin-top:{{height+10}}px;">
+    <block wx:for="{{list.BoundList}}" wx:key="index">
+      <view class="groupbox" wx:if="{{item.F_STATUS!=0}}">
+        <view class="group">
+          <view class="group-top">
+            <view class="groupname">
+              助理群名称({{item.F_WX_CHATNAME}})
+            </view>
+            <!-- <view style="" class="closeassistant">
+              <text data-current="{{item.F_GUID}}" bindtap="closeassistant">关闭助理</text>
+            </view> -->
+            <view class="assistantstatus" wx:if="{{item.F_STATUS!='0' }}">
+              <view style="margin-top:5rpx;">助理状态</view>
+              <!-- <label class="tui-checkbox"> -->
+              <!-- <checkbox bindtap="statuschange" data-id="{{item.F_GUID}}" checked="{{item.F_STATUS=='1'}}" data-current="{{item.F_STATUS}}" color="#fff"></checkbox> -->
+              <!-- </label> -->
+              <switch bindchange="statuschange" data-current="{{item.F_STATUS}}" data-id="{{item.F_GUID}}" checked="{{item.F_STATUS=='1'}}" color="#2D5DF6" class="switch-small" />
+            </view>
+            <!-- <view>申请助理</view> -->
+          </view>
+          <view class="group-bot" data-current="{{item}}" bindtap="showpop">
+            <view>
+              <view>
+                <text class="color">名称</text>: {{item.F_WX_NICKNAME}}</view>
+              <view class="closeassistant" data-current="{{item.F_GUID}}" bindtap="closeassistant">取消智能助理</view>
+            </view>
+            <view style="display:flex;align-items:center">
+              <view class="welcome">
+                <view>{{item.F_MSG_CONTENT}}</view>
+              </view>
+              <view>
+                <image src="../../../static/iconfont/check.png"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{item.F_STATUS=='0'}}" class="noassistant">
+        <view class="groupname">
+          助理群名称({{item.F_WX_CHATNAME}})
+        </view>
+        <view data-current="{{item}}" bindtap="applyassistant">申请助理</view>
+      </view>
+    </block>
+  </view>
+  <view class="time" bindtap="showmodal">
+    <view>发布时间及频率</view>
+    <view>
+      <image src="../../../static/iconfont/right.png"></image>
+    </view>
+  </view>
+
+  <view class="pushcontent">
+    <view class="tab">
+      <view class="{{tabindex=='0'?'active':''}}" data-current="0" bindtap="clicktab">待推送</view>
+      <view class="{{tabindex=='1'?'active':''}}" data-current="1" bindtap="clicktab">推送历史</view>
+    </view>
+
+    <!-- 未推送 -->
+    <block wx:for="{{list.NotpushList}}" wx:key="index">
+      <view class="goods" wx:if="{{tabindex=='0'}}" bindtap="todetail" data-current="{{item.F_PRODUCTID}}">
+        <view>
+          <image src="{{item.FullImg}}" mode="aspectFit"></image>
+        </view>
+        <view class="goodright">
+          <view class="goodsname">{{item.ProductName}}</view>
+          <view catchtap="copy" class="copy" data-current="{{item.ProductName}}">复制文案</view>
+          <view class="money">
+            <view class="push">
+              <text class="pushtext">推广赚</text> ￥{{fn.tofixed((item.Score-item.Score*ordinaryrepercent)*ratepercent)}}元
+            </view>
+            <view class="deleteassistant" catchtap="deleteassistant" data-current="{{item.F_PRODUCTID}}">移除助理</view>
+          </view>
+          <view class="btngroup">
+            <view >￥<text class="price">{{item.MarketPrice}}</text></view>
+            <view class="share" catchtap="tocreateposter" data-current="{{item.F_PRODUCTID}}">马上分享</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- 推送历史 -->
+    <block wx:for="{{list.PushList1}}" wx:key="index">
+      <view class="goods" wx:if="{{tabindex=='1'}}" bindtap="todetail" data-current="{{item.F_PRODUCTID}}">
+        <view>
+          <image src="{{item.FullImg}}" mode="aspectFit"></image>
+        </view>
+        <view class="goodright">
+          <view class="goodsname">{{item.ProductName}}</view>
+          <view catchtap="copy" class="copy" data-current="{{item.ProductName}}">复制文案</view>
+          <view class="money">
+            <view class="push">
+              <text class="pushtext">推广赚</text> ￥{{fn.tofixed((item.Score-item.Score*ordinaryrepercent)*ratepercent)}}元
+            </view>
+          </view>
+          <view class="btngroup">
+            <view >￥<text class="price">{{item.MarketPrice}}</text></view>
+            <view class="share" catchtap="tocreateposter" data-current="{{item.F_PRODUCTID}}">马上分享</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="none" wx-if="{{flag}}">
+      <image src="../../../static/iconfont/none.png"></image>
+      <view>暂无更多数据</view>
+    </view>
+  </view>
+
+  <view class="{{imgflag?'coverbox':''}}">
+    <view class="cover" bindtap="closeimg">
+      <view>
+        <image class="img" src="{{src}}" catchtap="clickposter" mode="aspectFit"></image>
+        <view class="close">
+          <image class="closeimg" catchtap="closeimg" src="../../../static/iconfont/close.png"></image>
+        </view>
+        <view class="btn mr" catchtap="keepphoto">保存到手机相册</view>
+        <view class="btn mr" catchtap="clickposter">预览图片长按分享</view>
+      </view>
+    </view>
+  </view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips">提示</view>
+    <scroll-view class="content" scroll-y>
+      <rich-text nodes="{{content}}"></rich-text>
+    </scroll-view>
+    <view class="know" bindtap="hide">
+      知道了
+    </view>
+  </tui-modal1>
+
+  <tui-bottom-popup show="{{popupShow}}" class="popup" bind:close="hidePopup">
+    <view class="title">更改信息</view>
+    <view class="name">
+      <text class="color" style="margin-right:10rpx;">名称:</text>{{name}}</view>
+    <view class="welcome">
+      <view class="color">欢迎语:</view>
+      <textarea bindinput="inputchange" cursor-spacing="200" class="textarea" placeholder="" value="{{welcomecontent}}"></textarea>
+    </view>
+    <view class="preserve" bindtap="preserve">保存</view>
+  </tui-bottom-popup>
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+     return num.toFixed(2)
+    }
+  }
+</wxs>

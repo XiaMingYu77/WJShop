@@ -1,0 +1,58 @@
+<!--pages/mycenter-extend//groupassistant1/groupassistant1.wxml-->
+<view class="container">
+  <view class="top">
+    <view class="toptext">
+      <view style="text-align:left;color:#2D5DF6">
+        <view>第一步</view>
+        <view>修改微信群名称</view>
+      </view>
+      <view style="text-align:center;color:#2D5DF6">
+        <view>第二步</view>
+        <view>选择你的群人数</view>
+      </view>
+      <view style="text-align:right;">
+        <view>第三步</view>
+        <view>去添加助理</view>
+      </view>
+    </view>
+    <view class="topline">
+      <view>
+        <image src="../../../static/iconfont/gou.png"></image>
+      </view>
+      <view class="line color"></view>
+      <view>
+        <image src="../../../static/iconfont/gou.png"></image>
+      </view>
+      <view class="line color"></view>
+      <view>
+        <image src="../../../static/iconfont/gou.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="addassistant">
+    <view>1.复制以下微信添加助理为好友</view>
+    <view class="wx">为您分配助理微信号:
+      <text style="color:#2D5DF6"> {{wx}}</text>
+    </view>
+    <view class="copy" bindtap="copy">点击复制助理微信</view>
+    <view class="img1">
+      <image src="../../../static/image/3.jpg"></image>
+    </view>
+    <view class="second">2.把助理拉到您的微信群,并务必:
+      <text style="color:#2D5DF6">@他</text>
+    </view>
+    <view class="img1">
+      <image src="../../../static/image/2_06.jpg"></image>
+    </view>
+    <view class="tips">
+      <view class="bold">申请注意</view>
+      <view class="red">1.每个群开通智能助理务必单独申请</view>
+      <view class="red" style="margin-top:5rpx;">2.此助理微信号不可用于其他人或微信群</view>
+      <view class="bold">完成以上操作后</view>
+      <view class="gray">1.客服工作时间内,一般会在2个小时内为您开通,助理会在群里自动发产品。</view>
+      <view class="gray">2.如果助理2小时内为自动发产品,请联系商城在线客服解决。</view>
+      <view class="gray">客服工作时间：09：00-23：00</view>
+    </view>
+  </view>
+</view>

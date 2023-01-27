@@ -1,0 +1,61 @@
+<!--pages/extend-view1//mymenmber/mymember.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      平台奖励收益
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- <view class="tabs" style="top:{{height}}px;">
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+    <view class="slider {{selected==0?'left1':''}} {{selected==1?'left2':''}}"></view>
+  </view> -->
+  <view>
+    <view class="memberbox" style="margin-top:{{height+10}}px;">
+      <view class="member" wx:for="{{registermember}}" wx:key="index">
+        <view class="member-top">
+          <view>
+            <image src="{{item.Photo}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="name">{{item.NickName}}</view>
+            <view class="phone">平台奖励: ￥{{item.RewardsMoney}}</view>
+            <view>注册时间：{{item.RegisterTime}}</view>
+          </view>
+        </view>
+        <view class="member-bot" bindtap="tomemberdetail" data-current="{{item.MemID}}" data-name="{{item. NickName}}">
+          详情
+          <image class="right" src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+      <nodata wx:if="{{flag1}}"></nodata>
+    </view>
+  </view>
+
+  <!-- <view wx-if="{{selected=='1'}}">
+    <view class="memberbox" style="margin-top:{{height+10}}px;">
+      <view class="member" wx:for="{{supermember}}" wx:key="index">
+        <view class="member-top">
+          <view>
+            <image src="{{item.Photo}}" style="margin-right:20rpx"></image>
+          </view>
+          <view>
+            <view class="name">{{item.NickName}}</view>
+            <view class="phone">今日收益: ￥{{item.Money}}</view>
+            <view>注册时间：{{item.RegisterTime}}</view>
+          </view>
+        </view>
+        <view class="member-bot" bindtap="tomemberdetail" data-current="{{item.MemID}}" data-name="{{item. NickName}}">
+          详情
+          <image class="right" src="../../../static/iconfont/right.png"></image>
+        </view>
+      </view>
+      <nodata wx:if="{{flag2}}"></nodata>
+    </view>
+  </view> -->
+</view>

@@ -1,0 +1,71 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      昵称信息
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#000" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="info" style="margin-top:{{height+10}}px">
+    <view class="changeimg">
+      <view>
+        <image src="{{images[0]}}" data-idx="{{0}}" bindtap="handleImagePreview" mode="aspectFit"></image>
+      </view>
+      <view bindtap="chooseImage">更换头像</view>
+    </view>
+
+    <view class="changeinfo">
+      <view class="name">商城昵称
+        <input class="text" value="{{name}}" bindinput="inputchange"></input>
+      </view>
+      <view class="sex">
+        <view>性别</view>
+        <view>
+          <radio-group class="radio-group" name="sex" bindchange="radiochange">
+            <label class="tui-radio" style="margin-right:20rpx;">
+              <radio value="1" checked="{{sex=='1'}}" color="#2D5DF6" />男
+            </label>
+            <label class="tui-radio">
+              <radio value="2" checked="{{sex=='2'}}" color="#2D5DF6" />女
+            </label>
+          </radio-group>
+        </view>
+      </view>
+
+      <view class="birthday">
+        <view>
+          您的出生年月日
+        </view>
+
+        <view class="section">
+          <picker mode="date" value="{{date}}" bindchange="bindDateChange" end="{{endtime}}">
+            <view class="picker">
+              {{date}}
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+
+    <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+      <view class="tips">确认修改信息吗?</view>
+      <view class="btn">
+        <button class="cancel" bindtap="hide">取消</button>
+        <button class="addaddress" bindtap="confirm">确认</button>
+      </view>
+      <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+    </tui-modal1>
+
+
+    <view class="submit" bindtap="submit">确认修改</view>
+    <view class="cancle" bindtap="back">取消</view>
+
+
+
+
+
+
+  </view>
+</view>

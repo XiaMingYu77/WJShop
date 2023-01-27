@@ -1,0 +1,282 @@
+/* pages/extend-view1//marketmodule/limited/limited.wxss */
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  /* background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%); */
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+/* tab栏 */
+
+.tabs {
+  width: 100%;
+  height: 80rpx;
+  position: fixed;
+  top: 0;
+  /* background: #E80202; */
+  color: #333;
+  overflow: hidden;
+  background: #fff;
+  z-index: 9999;
+  padding-top: 20rpx;
+  box-sizing: border-box;
+}
+
+.tab {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.tab view {
+  margin-bottom: 10rpx;
+}
+
+.tab .select {
+  color: #2d5df6;
+  border-bottom: 2rpx solid #2d5df6;
+}
+
+.slider {
+  height: 5rpx;
+  width: 40rpx;
+  background: black;
+  position: absolute;
+  left: 100rpx;
+  background: #fff;
+}
+
+.tabs .left1 {
+  left: 340rpx;
+}
+
+.tabs .left2 {
+  left: 600rpx;
+}
+
+/* tab栏切换 */
+
+swiper {
+  width: 94%;
+  height: 400rpx;
+  margin: 0 3%;
+  overflow: hidden;
+}
+
+swiper image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.tab1 {
+  font-size: 28rpx;
+  margin-top: 26rpx;
+  margin-bottom: 22rpx;
+}
+
+.goodbox {
+  width: 94%;
+  margin: 20rpx 3% 0;
+}
+
+.goodbox .goods {
+  display: flex;
+  padding: 30rpx;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.goodbox .goods image{
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 20rpx;
+}
+
+.goodbox .goods .info{
+  width: 425rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goodbox .goods .info .proname{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.goodbox .goods .info .infomid{
+  display: flex;
+  font-size: 16rpx;
+  color: #999999;
+}
+
+.goodbox .goods .info .pronum{
+  width: 266rpx;
+  height: 24rpx;
+  position: relative;
+  background: #BACAFD;
+  font-size: 16rpx;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+
+.goodbox .goods .info .pronum .inner{
+  position: absolute;
+  left: 0;
+  width: 232rpx;
+  height: 100%;
+  background: #2D5DF6;
+  border-radius: 12rpx;
+}
+
+.goodbox .goods .info .pronum .percent{
+  position: absolute;
+  left: 86rpx;
+  color: #fff;
+  line-height: 24rpx;
+}
+
+.goodbox .goods .info .infobot{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goodbox .goods .info .infobot .price{
+  display: flex;
+  align-items: flex-end;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.goodbox .goods .info .infobot .deleteprice{
+  color: #999999;
+  font-size: 16rpx;
+  margin-left: 10rpx;
+  padding-bottom: 6rpx;
+  text-decoration-line: line-through;
+}
+
+.goodbox .goods .info .infobot .buy{
+  width: 120rpx;
+  height: 38rpx;
+  background: #2D5DF6;
+  font-size: 24rpx;
+  color: #fff;
+  line-height: 38rpx;
+  text-align: center;
+  border-radius: 20rpx;
+}
+
+.container .botbanner{
+  width: 94%;
+  height: 198rpx;
+  margin: 30rpx 3% 0;
+}
+
+/* 小闹钟弹框 */
+.container .alarm{
+  position: fixed;
+  width: 98rpx;
+  height: 108rpx;
+  right: 0;
+  bottom: 300rpx;
+}
+
+.container .alarm image{ 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.container .alarm .second{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 100;
+  top: 30rpx;
+  left: 20rpx;
+  text-align: center;
+}
+
+.container .alarm .taskcomplete{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 100;
+  top: 20rpx;
+  left: 25rpx;
+  font-size: 20rpx;
+  color: #FACA01;
+}
+/* 小闹钟弹框结束 */

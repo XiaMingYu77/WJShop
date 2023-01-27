@@ -1,0 +1,51 @@
+<!--pages/mycenter-extend//aboutus/aboutus.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      关于我们
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="logobox" style="margin-top:{{height+40}}px"> 
+    <view class="logo">
+      <image src="https://shop.we-time.net/images/icons/logo.png"></image>
+    </view>
+    <view class="name">通用商城</view>
+    <view class="edition">版本 1.5.10</view>
+  </view>
+
+  <view class="contentbox">
+    <view bindtap="showmodal" data-current="{{second.Content}}" data-title="{{'商城简介'}}">
+      <view>关于我们</view>
+      <image src="../../../static/iconfont/right.png"></image>
+    </view>
+    <!-- <view>
+      <view>给我评分</view>
+      <image src="../../../static/iconfont/right.png"></image>
+    </view> -->
+    <view bindtap="touseragreement" data-current="{{third.Content}}" data-title="{{'隐私政策'}}">
+      <view>隐私政策</view>
+      <image src="../../../static/iconfont/right.png"></image>
+    </view>
+  </view>
+
+  <view class="copyright">
+    <view>通用商城 版权所有</view>
+    <view>Copyright©2019-2021</view>
+  </view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips">{{title}}</view>
+    <scroll-view scroll-y >
+      <view class="content">
+        <rich-text nodes="{{content}}"></rich-text>
+      </view>
+    </scroll-view>
+    <view class="btn" bindtap="hide">
+      知道了
+    </view>
+  </tui-modal1>
+</view>

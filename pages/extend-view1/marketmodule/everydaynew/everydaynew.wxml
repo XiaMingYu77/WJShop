@@ -1,0 +1,41 @@
+<!-- 每日上新 -->
+<view class="page container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      每日上新
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="title" style="margin-top:{{height+10}}px">
+    <view class="newgood">
+      <image src="../../../../static/iconfont/orange.png"></image>
+      <view>今日新品</view>
+    </view>
+    <view>每天10点半更新</view>
+  </view>
+
+  <view class="goodbox">
+    <block wx:for="{{goodlist}}" wx:key="index">
+      <view class="goods" data-id="{{item.id}}" catchtap="togoodsdetail">
+        <image src="{{item.img}}" mode="aspectFit"></image>
+        <view class="goodsname">
+          {{item.name}}
+        </view>
+        <view class="goodsbot">
+          <view>
+            <view>新品专享价</view>
+            <view class="price">
+              <text style="font-weight:600;font-size:20rpx;padding-bottom:7rpx;">￥</text>
+              <text style="font-weight:600;font-size:40rpx">{{item.markprice}}</text>
+            </view>
+          </view>
+          <view>立即抢</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <image class="botbanner" bindtap="botbannerclick" src="{{info.imgs.Value}}" data-id="{{info.imgs.ID}}" data-key="{{info.imgs.Key}}"></image>
+</view>

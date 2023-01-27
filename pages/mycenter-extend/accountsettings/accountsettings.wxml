@@ -1,0 +1,54 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      账户设置
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="content" style="margin-top:{{height+10}}px">
+    <view class="phone" style="border-bottom:1rpx solid #EEEEEE" bindtap="tonicknameinfo">
+      <view>昵称信息</view>
+      <view class="gray">
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+
+    <!-- <view class="phone message">
+      <view>消息推送</view>
+      <view class="gray">
+        去设置
+        <image src="../../../static/logo/right.png"></image>
+      </view>
+    </view>
+
+    <view class="phone system">
+      <view>系统权限</view>
+      <view class="gray">
+        去设置
+        <image src="../../../static/logo/right.png"></image>
+      </view>
+    </view> -->
+
+    <view class="phone address" bindtap="toaddress">
+      <view>我的收货地址</view>
+      <view class="gray">
+        去设置
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <button class="logout" bindtap="quitlogin">退出登录</button>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hide" custom="{{true}}" class="clickaddress">
+    <view class="tips">确认退出登录吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hide">取消</button>
+      <button class="addaddress" bindtap="confirm">确认</button>
+    </view>
+    <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+</view>

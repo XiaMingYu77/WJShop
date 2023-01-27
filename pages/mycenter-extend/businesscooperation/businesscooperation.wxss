@@ -1,0 +1,115 @@
+/* pages/mycenter-extend//businesscooperation/businesscooperation.wxss */
+page{
+}
+
+.container{
+
+} 
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .title{
+  width: 94%;
+  height: 66rpx;
+  line-height: 66rpx;
+  margin: 0 3%;
+  color: #333;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  text-align: left;
+}
+
+.container .contentbox{
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+  padding-top: 0;
+}
+
+.container .content{
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 10rpx 0rpx;
+  box-sizing: border-box;
+  border-top: 1rpx solid #EEEEEE;
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.container .content view{
+  margin: 10rpx 0;
+}
+
+.container .content view text{
+  color: #2D5DF6;
+}

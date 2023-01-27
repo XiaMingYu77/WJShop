@@ -1,0 +1,260 @@
+<!--pages/mycenter-extend//applyrefundetail/applyrefundetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;">
+      退款售后详情
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 正在处理 -->
+  <view class="refundstatus" style="margin-top:{{height+10}}px" wx:if="{{status==1}}">
+    <view class="shopattitude">
+      <view>商家
+        <text style="color:#2D5DF6">正在处理</text> 您的
+        <text wx:if="{{info.GoodsRejected=='0'}}">退款(无需退货)</text>
+        <text wx:if="{{info.GoodsRejected=='1'}}">退货退款</text>
+        <text wx:if="{{info.GoodsRejected=='2'}}">换货</text>申请
+      </view>
+      <view class="time">剩余
+        <tui-countdown time="{{time}}" scale="{{true}}" color="#E64048" bcolor="transparent" isColon="{{false}}" isColon="{{false}}" days="{{true}}"></tui-countdown>
+      </view>
+    </view>
+    <view class="step" wx:if="{{info.GoodsRejected=='1'}}">
+      <view>退货步骤</view>
+      <view>1.寄回商品，并记录快递单号，发货后及时与商家协商。</view>
+      <view>2.商家收货且确认商品无误后，退还您的付款金额。 </view>
+    </view>
+    <view class="step" wx:if="{{info.GoodsRejected=='2'}}">
+      <view>换货步骤</view>
+      <view>1.寄回商品，并记录快递单号，发货后及时与商家协商。</view>
+      <view>2.商家收货且确认商品无误后，将按原地址给您邮寄换货商品。</view>
+    </view>
+    <view class="tips" wx:if="{{info.GoodsRejected=='0'}}">
+      <view>若商家同意:
+        <text style="color:#999">退款金额将原路返回您的账户</text>
+      </view>
+      <view>若商家拒绝:
+        <text style="color:#999">您将有3天时间<text style="color:#2D5DF6">修改申请</text>或<text style="color:#2D5DF6">申请商城介入</text></text>
+      </view>
+      <view>若商家未处理:
+        <text style="color:#999">系统默认达成退款申请，退款金额将原路返回您的账户</text>
+      </view>
+    </view>
+    <view class="tips" wx:if="{{info.GoodsRejected=='1'}}">
+      <view>若商家同意:
+        <text style="color:#999">请按照客服给出的退货地址退货，并请记录退货运单号</text>
+      </view>
+      <view>若商家拒绝:
+        <text style="color:#999">您将有3天时间<text style="color:#2D5DF6">修改申请</text>或<text style="color:#2D5DF6">申请商城介入</text></text>
+      </view>
+      <view>若商家未处理:
+        <text style="color:#999">退货申请已达成，请按照客服给出的退货地址退货，并请记录退货运单号</text>
+      </view>
+    </view>
+    <view class="tips" wx:if="{{info.GoodsRejected=='2'}}">
+      <view>若商家同意:
+        <text style="color:#999">请按照客服给出的退货地址退货，并请记录退货运单号</text>
+      </view>
+      <view>若商家拒绝:
+        <text style="color:#999">您可以在3天内<text style="color:#2D5DF6">修改申请</text>或<text style="color:#2D5DF6">申请商城介入</text></text>
+      </view>
+      <view>若商家未处理:
+        <text style="color:#999">若线上库存充足，则默认达成换货申请，请按照客服给出的退货地址退货，并请记录退货运单号；若线上库存不足或商品已下架，则换货申请失败。</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 成功 -->
+  <view class="refundstatus" style="margin-top:{{height+10}}px" wx:if="{{status==2}}">
+    <view class="shopattitude">
+      <view wx:if="{{info.GoodsRejected!='2'}}">
+        退款
+        <text style="color:#2D5DF6">成功</text>! 您支付的￥{{info.RefundAmount}}已返还到您账户
+      </view>
+      <view wx:if="{{info.GoodsRejected=='2'}}">
+        换货
+        <text style="color:#2D5DF6">成功</text>!
+      </view>
+    </view>
+  </view>
+
+  <!-- 商家拒绝 -->
+  <view class="refundstatus" style="margin-top:{{height+10}}px" wx:if="{{status==3}}">
+    <view class="shopattitude">
+      <view>商家
+        <text style="color:#E64048">拒绝</text>了您的申请,请及时处理</view>
+      <view>例如:与商家协商补发货</view>
+      <!-- <view>剩余</view> -->
+    </view>
+    <view class="shoprefuse">
+      <view>拒绝原因:
+        <text style="color:#666666">{{info.ProcessingMethod}}</text>
+      </view>
+    </view>
+    <view class="tips" style="font-size:24rpx">
+      <view>您可以:
+        <text style="color:#999"><text style="color:#2D5DF6">修改申请</text>或<text style="color:#2D5DF6">申请商城介入</text></text>
+      </view>
+    </view>
+  </view>
+
+  <view class="refundstatus" style="margin-top:{{height+10}}px" wx:if="{{status==4}}">
+    <view class="shopattitude">
+      <view>商家
+        <text style="color:#2D5DF6">同意</text>您的
+        <text wx:if="{{info.GoodsRejected=='0'}}">退款(无需退货)</text>
+        <text wx:if="{{info.GoodsRejected=='1'}}">退货退款</text>
+        <text wx:if="{{info.GoodsRejected=='2'}}">换货</text>申请,请及时发货
+      </view>
+      <!-- <view>剩余</view> -->
+    </view>
+    <view class="step" wx:if="{{info.GoodsRejected=='1'}}">
+      <view>退货步骤</view>
+      <view>1.寄回商品，并记录快递单号，发货后及时与商家协商。</view>
+      <view>2.商家收货且确认商品无误后，退还您的付款金额。 </view>
+    </view>
+    <view class="step" wx:if="{{info.GoodsRejected=='2'}}">
+      <view>换货步骤</view>
+      <view>1.寄回商品，并记录快递单号，发货后及时与商家协商。</view>
+      <view>2.商家收货且确认商品无误后，将按原地址给您邮寄换货商品。</view>
+    </view>
+    <view class="address">
+      <view>
+        <view>退货地址: {{info.ReplacementAddress}}</view>
+        <view class="copy" bindtap="copy" data-current="{{info.ReplacementAddress+' '+info.ReplacementContact+' '+info.ReplacementContactInformation}}">复制</view>
+      </view>
+      <view>收货人: {{info.ReplacementContact}}</view>
+      <view>联系电话: {{info.ReplacementContactInformation}}</view>
+    </view>
+  </view>
+
+  <view class="refundstatus" style="margin-top:{{height+10}}px" wx:if="{{status==5}}">
+    <view class="shopattitude">
+      <view>您
+        <text style="color:#2D5DF6">已发货</text>,商家处理中</view>
+      <!-- <view>剩余</view> -->
+    </view>
+    <view class="step" wx:if="{{info.GoodsRejected=='1'}}">
+      <view>退货步骤</view>
+      <view>1.寄回商品，并记录快递单号，发货后及时与商家协商。</view>
+      <view>2.商家收货且确认商品无误后，退还您的付款金额。 </view>
+    </view>
+    <view class="step" wx:if="{{info.GoodsRejected=='2'}}">
+      <view>换货步骤</view>
+      <view>1.寄回商品，并记录快递单号，发货后及时与商家协商。</view>
+      <view>2.商家收货且确认商品无误后，将按原地址给您邮寄换货商品。</view>
+    </view>
+  </view>
+
+  <view class="refundstatus" style="margin-top:{{height+10}}px" wx:if="{{status==6}}">
+    <view class="shopattitude">
+      <view>商家
+        <text style="color:#2D5DF6">已发货</text>,请您注意查收,并且及时与商家保持联系
+      </view>
+      <view class="time">剩余
+        <tui-countdown time="{{time3}}" scale="{{true}}" color="#E64048" bcolor="transparent" isColon="{{false}}" isColon="{{false}}" days="{{true}}"></tui-countdown>
+      </view>
+    </view>
+    <view class="step">
+      <view>换货步骤</view>
+      <view>1.寄回商品，并记录快递单号，发货后及时与商家协商。</view>
+      <view>2.商家收货且确认商品无误后，将按原地址给您邮寄换货商品。</view>
+    </view>
+  </view>
+
+  <view class="logisticinfo" wx:if="{{status==5}}">
+    <view>快递单号: {{info.TrackingNumber}}</view>
+    <view bindtap="tochecklogistic" data-status="{{status}}">查看物流 <image src="../../../static/iconfont/whitearrow.png"></image></view>
+  </view>
+
+  <view class="logisticinfo" wx:if="{{status==6}}">
+    <view>快递单号: {{info.ReplacementLogisticsFirm}}</view>
+    <view bindtap="tochecklogistic" data-status="{{status}}">查看物流 <image src="../../../static/iconfont/whitearrow.png"></image></view>
+  </view>
+
+  <view class="orderdetail">
+    <view class="shop">
+      <view>店铺名称:
+        <text class="color">商城自营店</text>
+      </view>
+      <view bindtap="tocustomerservice">
+        <image src="../../../static/iconfont/bluekefu.png"></image>
+      </view>
+    </view>
+    <view class="reason">
+      <view>售后类型:
+        <text class="color" wx:if="{{info.GoodsRejected=='0'}}">退款(无需退货)</text>
+        <text class="color" wx:if="{{info.GoodsRejected=='1'}}">退货退款</text>
+        <text class="color" wx:if="{{info.GoodsRejected=='2'}}">换货</text>
+      </view>
+      <view>
+        <text wx:if="{{info.GoodsRejected!='2'}}">退款金额:</text>
+        <!-- <text wx:if="{{info.GoodsRejected=='2'}}">换货金额:</text> -->
+        <text style="color:#E64048" wx:if="{{info.GoodsRejected!='2'}}">￥{{info.RefundAmount}}</text>
+      </view>
+      <view>
+        <text>申请原因:</text>
+        <text class="color">{{info.DrawbackCauseName}}</text>
+      </view>
+      <view>
+        <text>申请说明:</text>
+        <text class="color">{{info.Drawbackexplain}}</text>
+      </view>
+      <view>商品名称:
+        <text class="color">{{info.ProductName}}</text>
+      </view>
+      <view>商品规格:
+        <text class="color" wx:if="{{info.GoodsRejected!='2'}}">{{info.GoodRule}}</text>
+        <text class="color" wx:if="{{info.GoodsRejected=='2'}}">{{info.NewGoodRule}}</text>
+      </view>
+    </view>
+    <view class="imgs" wx:if="{{info.UploadingUrl.length!=0}}">
+        <block wx:for="{{info.UploadingUrl}}" wx:key="index">
+          <image wx:if="{{item!=' '}}" class="{{(index+1)%3==0?'last':''}}" src="{{item}}" data-idx="{{index}}" bindtap="handleImagePreview" mode="aspectFit"></image>
+        </block>
+    </view>
+    <view class="ordernum">
+      <view>订单编号:
+        <text style="color:#999999">{{info.OrdersNo}}</text>
+        <text class="copy" bindtap="copy" data-current="{{info.OrdersNo}}">复制</text>
+      </view>
+      <view>下单时间:
+        <text style="color:#999999">{{info.OrderTime}}</text>
+      </view>
+      <view wx:if="{{status=='6'&&info.GoodsRejected=='2'}}">物流单号:
+        <text style="color:#999999">{{info.ReplacementLogisticsFirm}}</text>
+        <text class="copy" bindtap="copy" data-current="{{info.ReplacementLogisticsFirm}}">复制</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bot" wx:if="{{status=='1'||status=='3'}}">
+    <view class="chexiao" bindtap="change" data-orderid="{{info.OrderId}}" data-price="{{info.RefundAmount}}" data-chargebackid="{{info.ChargebackId}}">修改申请</view>
+    <view class="write" bindtap="showmodal">
+      撤销申请
+    </view>
+  </view>
+
+  <view wx:if="{{status=='4'}}" bindtap="tofillinnum" data-current="{{info.ChargebackId}}" class="writenum">
+    我已发货,填写快递单号
+  </view>
+
+  <view wx:if="{{status=='6'}}" bindtap="confirmreceipt" data-current="{{info.ChargebackId}}" class="writenum">
+    确认收货
+  </view>
+
+  <tui-modal1 show="{{modal}}" bind:cancel="hidemodal" custom="{{true}}" class="clickaddress">
+    <view class="title">提示</view>
+    <view class="tips">您确定要撤销申请吗?</view>
+    <view class="btn">
+      <button class="cancel" bindtap="hidemodal">取消</button>
+      <button class="addaddress" bindtap="revoke" data-current="{{info.ChargebackId}}">确认</button>
+    </view>
+    <!-- <image src="../../../static/iconfont/close.png" class="close" bindtap="hide"></image> -->
+  </tui-modal1>
+
+
+</view>

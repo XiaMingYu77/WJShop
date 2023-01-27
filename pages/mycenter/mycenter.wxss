@@ -1,0 +1,624 @@
+page {
+  background: #fff;
+  color: #333;
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  /* background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%); */
+  background: #fff;
+  overflow: hidden;
+  color: #333333;
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  font-weight: 400;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.header {
+  height: 440rpx;
+  background-image: url(https://shop.we-time.net/images/icons/centerheadbg.png);
+  background-size: 100% 100%;
+}
+
+.mybg-box {
+  display: flex;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  padding-top:32rpx;
+  /* height: 472rpx; */
+}
+
+.mybg-box .myimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mybg-box .myimg image {
+  width: 90rpx;
+  height: 90rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+
+.mybg-box .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 600rpx;
+}
+
+.mybg-box .info-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mybg-box .info-top .personinfo {
+  display: flex;
+  align-items: center;
+}
+
+.mybg-box .info-top .name {
+  font-size: 28rpx;
+  color: #fff;
+  margin-right: 20rpx;
+  font-weight: 400;
+}
+
+.mybg-box .info-top .member {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 122rpx;
+  height: 28rpx;
+  background: #f8e2b0;
+  border-radius: 14px;
+  font-size: 18rpx;
+  color: #5c3819;
+}
+
+.mybg-box .info-top .member1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 122rpx;
+  height: 28rpx;
+  border-radius: 14px;
+  font-size: 18rpx;
+  color: #fff;
+  border: 1rpx solid #fff;
+  background: transparent;
+  margin-bottom: 1rpx
+}
+
+.mybg-box .info-top .member image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-right: 5rpx;
+  /* margin-top: 3rpx; */
+}
+
+.mybg-box .info-bot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+
+.mybg-box .info-bot .code {
+  display: flex;
+  align-items: center;
+  /* border-radius: 30rpx; */
+  width: 244rpx;
+  font-size: 20rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.mybg-box .info-bot .code .num {
+  width: 122rpx;
+  text-align: center;
+  background: #2d5df6;
+  border-radius: 19px 0px 0px 19px;
+  color: #fff;
+  padding: 8rpx 0;
+}
+
+.mybg-box .info-bot .code .copy {
+  width: 122rpx;
+  text-align: center;
+  background: #fff;
+  border-radius: 0 19px 19px 0;
+  color: #2d5df6;
+  padding: 6rpx 0;
+}
+
+.mybg-box .info-top image {
+  width: 17rpx;
+  height: 15rpx;
+}
+
+.mybg-box .headoffice {
+  width: 80rpx;
+  height: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #2d5df6;
+  font-size: 16rpx;
+  padding: 0 7rpx;
+  border-radius: 20rpx;
+}
+
+.mybg-box .headoffice image {
+  width: 8rpx;
+  height: 14rpx;
+  margin-left: 10rpx;
+}
+
+.mybg-box .activevalue {
+  width: 106rpx;
+  /* height: 30rpx; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  color: #2D5DF6;
+  font-size: 24rpx;
+  padding: 2rpx 7rpx;
+  border-radius: 20rpx;
+}
+
+.mybg-box .activevalue image {
+  width: 18rpx;
+  height: 18rpx;
+  margin-left: 5rpx;
+}
+
+/* 个人中心卡片 */
+
+.center-content {
+  position: relative;
+  width: 94%;
+  margin: 0 3%;
+  height: 268rpx;
+  background-image: url(https://shop.we-time.net/images/icons/centercontentbg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin-top: 15rpx;
+  padding: 24rpx 0 22rpx 32rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+}
+
+.center-content .estimatedprofit {
+  color: #794f28;
+  font-size: 36rpx;
+  font-weight: 400;
+}
+
+.center-content .estimatedprofit .money {
+  color: #f47579;
+}
+
+.profit{
+  display: flex;
+}
+
+.profit view{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profit view:first-child{
+  color: #fff;
+  background: #4972F7;
+  margin-right: 20rpx;
+}
+
+.profit image{
+  width: 26rpx;
+  height: 26rpx;
+  margin-left: 10rpx;
+}
+
+.center-content .cashout {
+  width: 156rpx;
+  /* height: 36rpx; */
+  background: rgba(248, 226, 176, 1);
+  border-radius: 100rpx;
+  color: #5c3819;
+  font-size: 24rpx;
+  text-align: center;
+  font-weight: 400;
+  margin-top: 12rpx;
+  margin-bottom: 22rpx;
+  padding: 2rpx 0 5rpx;
+}
+
+.center-content .cashout image {
+  width: 10rpx;
+  height: 18rpx;
+}
+
+.center-content .active {
+  color: #333;
+  font-size: 24rpx;
+}
+
+.center-content .active .line {
+  width: 380rpx;
+  height: 12rpx;
+  background: rgb(248, 226, 176);
+  margin-top: 10rpx;
+  border-radius: 10rpx;
+}
+
+.center-content .active .line .blueline {
+  position: relative;
+  height: 100%;
+  background: #2d5df6;
+  border-radius: 10rpx;
+}
+
+.center-content .active .line .dot {
+  position: absolute;
+  width: 18rpx;
+  height: 18rpx;
+  top: -6rpx;
+  background: #fff;
+  border: 4rpx solid #2d5df6;
+  border-radius: 50%;
+}
+
+.center-content .active .num {
+  width: 380rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #5c3819;
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+
+.center-content .positionbox {
+  position: absolute;
+  top: 34rpx;
+  right: 0;
+  font-size: 24rpx;
+  color: #2d5df6;
+}
+
+.center-content .positionbox image {
+  width: 46rpx;
+  height: 46rpx;
+  margin-right: 10rpx;
+}
+
+.center-content .positionbox .img {
+  display: flex;
+  align-items: center;
+}
+
+.center-content .positionbox>view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 180rpx;
+  height: 80rpx;
+  background: #fff;
+  border-radius: 40rpx 0 0 40rpx;
+}
+
+.center-content  .assistant {
+  margin-top: 20rpx;
+}
+
+.center-content .positionbox .text {
+  font-size: 20rpx;
+  color: #333;
+}
+
+/* 个人中心卡片结束 */
+
+/* 我的订单 */
+
+.container .myorder {
+  width: 94%;
+  margin: 0 3%;
+  margin-top: 20rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+
+.container .myorder .ordertitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.container .myorder .ordertitle>view:last-child{
+  font-size: 24rpx;
+  color: #999;
+}
+
+.container .myorder .ordertitle image{
+  width: 10rpx;
+  height: 18rpx;
+}
+
+.container .myorder .order {
+  display: flex;
+  justify-content: space-between;
+  padding: 22rpx 28rpx 26rpx 28rpx;
+  text-align: center;
+  color: #999;
+  font-size: 20rpx;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+  margin-top: 4rpx;
+}
+
+.container .myorder .order image {
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.container .myorder .order .icon {
+  position: relative;
+}
+
+.container .myorder .order .icon .num {
+  width: 26rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  position: absolute;
+  right: -6rpx;
+  top: 0;
+  background: #f47579;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 22rpx;
+  text-align: center;
+  visibility: hidden;
+}
+
+.container .myorder .order .icon .show {
+  visibility: visible;
+}
+
+/* 我的订单结束 */
+
+/* 我的会员 我的推广订单 */
+
+.container .center-mid {
+  width: 94%;
+  margin: 0 3%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.container .center-mid>view {
+  width: 346rpx;
+  height: 152rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .center-mid .text1 {
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 400;
+}
+
+.container .center-mid .text2 {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.container .center-mid .text3 {
+  font-size: 20rpx;
+  color: #2d5df6;
+}
+
+.container .center-mid image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 40rpx;
+}
+
+/* 我的会员 我的推广订单结束 */
+
+/* 其他内容 */
+
+.container .othercontent {
+  width: 94%;
+  margin: 0 3%;
+  margin-top: 22rpx;
+}
+
+.container .othercontent .title {
+  color: #333;
+  font-size: 30rpx;
+  font-weight: 400;
+  margin-bottom: 10rpx;
+}
+
+.container .othercontent .content {
+  width: 100%;
+  padding: 28rpx 30rpx;
+  box-sizing: border-box;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+  margin-top: 4rpx;
+}
+
+.container .othercontent .content>view {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: #999;
+  font-size: 22rpx;
+}
+
+.container .othercontent .content .content-top>view{
+  width: 88rpx;
+}
+
+.container .othercontent .content image {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.container .othercontent .content .content-bot {
+  margin-top: 22rpx;
+}
+
+.container .othercontent .content .content-bot>view{
+  width: 88rpx;
+}
+
+/* 弹框 */
+
+.container .clickaddress {
+  position: relative;
+}
+
+.container .clickaddress .jz {
+  width: 72rpx;
+  height: 72rpx;
+  padding-left: 220rpx;
+}
+
+.container .clickaddress .tips {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 311rpx; */
+  margin: 40rpx auto 0;
+  font-size: 36rpx;
+  font-weight: 400;
+  color: #333;
+}
+
+.container .clickaddress .tips image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 10rpx;
+  border-radius: 10rpx;
+}
+
+.container .clickaddress .content {
+  width: 440rpx;
+  margin: 0 auto;
+  font-size: 30rpx;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 21rpx;
+  margin-bottom: 60rpx;
+  color: #333;
+}
+
+.container .clickaddress .btn {
+  display: flex;
+  margin-top: 30rpx;
+  height: 60rpx;
+}
+
+.container .clickaddress .btn .cancel {
+  width: 50%;
+  background: #fff;
+  color: #666;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 0 0 0 10rpx;
+  border-top: 1rpx solid #F5F5F5;
+}
+
+.container .clickaddress .btn .addaddress {
+  width: 50%;
+  color: #fff;
+  background: #2d5df6;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  border-radius: 0 0 10rpx 0;
+}
+
+.container .clickaddress .close {
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
+}
+
+/* 弹框结束 */
+
+.botbanner{
+  width: 94%;
+  height: 128rpx;
+  margin: 20rpx auto;
+}

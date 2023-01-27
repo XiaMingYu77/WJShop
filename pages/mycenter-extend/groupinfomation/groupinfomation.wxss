@@ -1,0 +1,42 @@
+/* pages/mycenter-extend//groupinfomation/groupinfomation.wxss */
+
+page {
+  background: rgb(240, 242, 245);
+}
+
+.container .tips {
+  padding: 20rpx;
+  font-size: 20rpx;
+  color: #999;
+}
+
+.container .group {
+  width: 94%;
+  margin: 0 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  padding: 20rpx;
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.container .group .applyassistant {
+  color: #e60000;
+}
+
+.container .group .groupnum {
+  font-size: 20rpx;
+  color: #616161;
+  margin-top: 20rpx;
+}
+
+.applyassistant image {
+  width: 10rpx;
+  height: 18rpx;
+  margin-left: 10rpx;
+}

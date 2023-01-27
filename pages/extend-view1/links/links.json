@@ -1,0 +1,16 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "通用商城",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon",
+    "tui-countdown": "../../../components/countdown/countdown",
+    "tui-modal1": "../../../components/modal1/modal1",
+    "tui-bottom-popup": "../../../components/bottom-popup/bottom-popup",
+    "tui-modal": "../../../components/modal/modal",
+    "tui-button": "../../../components/button/button",
+    "tui-numberbox": "../../../components/numberbox/numberbox"
+  }
+}

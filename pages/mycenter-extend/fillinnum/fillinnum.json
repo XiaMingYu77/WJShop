@@ -1,0 +1,8 @@
+{ 
+  "navigationBarTitleText": "填写快递单号",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-icon": "../../../components/icon/icon",
+    "tui-modal1": "../../../components/modal1/modal1"
+  }
+}

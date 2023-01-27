@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "收获地址",
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-button":"../../../../components/extend/button/button",
+    "tui-list-cell": "../../../../components/list-cell/list-cell",
+    "tui-icon": "../../../../components/icon/icon"
+  }
+}

@@ -1,0 +1,30 @@
+<!--pages/mycenter-extend//feedbackrecord/feedbackrecord.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      反馈纪录
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="record" style="margin-top:{{height+10}}px">
+    <block wx:for="{{record}}" wx:key="Guid">
+      <view class="list" bindtap="torecorddetail" data-id="{{item.Guid}}">
+        <view>
+          <view class="content">{{item.FeedContent}}</view>
+          <view>{{item.FeedTime}}</view>
+        </view>
+        <view wx:if="{{item.FeedStatus==0}}">
+          等待解决
+          <image src="../../../static/center/blackarrow.png" mode="aspectFit"></image>
+        </view>
+        <view wx:if="{{item.FeedStatus==1}}" style="color:#2D5DF6">
+          已回复
+          <image src="../../../static/center/bluearrow.png" mode="aspectFit"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,20 @@
+<!--pages/mycenter-extend//groupinfomation/groupinfomation.wxml-->
+<view class="container">
+  <view class="tips">*建微信群推广可提升收益,最多可创建10个群</view>
+  <block wx:for="{{list}}" wx:key="index">
+    <view class="group">
+      <view>
+        <view>系统提供-群名称:{{item.F_WX_CHATNAME}}</view>
+        <view class="groupnum">群编号:{{item.F_WX_Number}}</view>
+      </view>
+      <view class="applyassistant" style="display:flex">
+        <view wx:if="{{item.F_STATUS=='0'}}" bindtap="applyassistant" data-current="{{item}}">申请助理</view>
+        <view wx:if="{{item.F_STATUS=='1'}}" bindtap="deleteassistant" data-current="{{item.F_GUID}}">删除助理</view>
+        <view wx:if="{{item.F_STATUS=='2'}}">机器人助理</view>
+        <view>
+          <image src="../../../static/logo/right.png"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

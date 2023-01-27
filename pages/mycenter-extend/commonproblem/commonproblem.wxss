@@ -1,0 +1,116 @@
+/* pages/mycenter-extend//commonproblem/commonproblem.wxss */
+page{
+  /* background: #E8E8E9; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-badge {
+  background: #e41f19 !important;
+  position: absolute;
+  right: -4px;
+}
+
+.tui-icon-ml {
+  margin-left: 20rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+.container .problem{
+  width: 94%;
+  /* height: 339rpx; */
+  margin: 0 3%;
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top: -60rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #666;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .problem>view{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-top: 1rpx solid #EEEEEE;
+  /* box-sizing: border-box; */
+}
+
+.container .problem .first{
+  border: none;
+}
+
+.container .problem image{
+  width: 10rpx;
+  height: 18rpx;
+}
+
+.container .customer{
+  position: fixed;
+  bottom: 180rpx;
+  width: 94%;
+  height: 76rpx;
+  line-height: 71rpx;
+  margin: 0 3%;
+  border-radius: 10rpx;
+  background: #2D5DF6;
+  color: #fff;
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  font-weight: 400;
+}

@@ -1,0 +1,71 @@
+<!--pages/extend-view1//totalprofitdetail/totalprofitdetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我的推广收益详情
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="tabs" style="top:{{height}}px;">
+    <view class="tab">
+      <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+    </view>
+    <view class="slider {{selected==1?'left1':''}} {{selected==2?'left2':''}} {{selected==3?'left3':''}}"></view>
+  </view>
+
+  <view class="profit-top" style="margin-top:{{height+40}}px;">
+    <view wx:if="{{selected==2}}" class="time">
+      <picker mode="date" class="picker" end="{{date2}}" value="{{date1}}" bindchange="bindDateChange">
+        <view class="picker">
+          <text>{{date1}}</text>
+        </view>
+      </picker>
+      <!-- <image wx:if="{{date!='请选择开始时间'}}" src="../../../static/logo/bot.png" bindtap="showtime1"></image> -->
+      <text class="zhi">至</text>
+      <picker mode="date" class="picker" start="{{date1}}" value="{{date2}}" bindchange="bindDateChange1">
+        <view class="picker">
+          <text>{{date2}}</text>
+        </view>
+      </picker>
+      <!-- <image wx:if="{{date1!='请选择结束时间'}}" src="../../../static/logo/bot.png" bindtap="showtime2"></image> -->
+    </view>
+    <view class="order">
+      <view>
+        <view>订单量</view>
+        <view class="color">{{list.count}}</view>
+      </view>
+      <view>
+        <view>推广收益</view>
+        <view class="color">{{list.IncomeNumber}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="table">
+    <view class="title">
+      <text class="dot"></text> 预估收益 (单位: 元)
+      <!-- <view>2020</view> -->
+    </view>
+    <scroll-view scroll-x>
+      <canvas canvas-id="lineCanvas" class="canvas"></canvas>
+    </scroll-view>
+  </view>
+
+  <view class="date">
+    <view class="title">
+      <view>日期</view>
+      <view>订单量</view>
+      <view>日预估总收益</view>
+    </view>
+    <scroll-view scroll-y>
+      <view class="data" wx:for="{{list.Income}}" wx:key="index">
+        <view>{{item.datetime}}</view>
+        <view>{{item.count}}</view>
+        <view class="money">￥{{item.Money}}</view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

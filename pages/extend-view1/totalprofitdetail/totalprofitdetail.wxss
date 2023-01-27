@@ -1,0 +1,225 @@
+/* pages/extend-view1//totalprofitdetail/totalprofitdetail.wxss */
+
+page {
+  /* background: #e8e8e9; */
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: linear-gradient(166deg, rgba(48, 96, 247, 1) 0%, rgba(45, 193, 246, 1) 100%);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-header-box .back1 {
+  width: 32rpx;
+  height: 44rpx;
+  margin-top: 10rpx;
+}
+
+.tui-icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 16px;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+/* tab栏 */
+
+.tabs {
+  width: 100%;
+  height: 70rpx;
+  position: fixed;
+  top: 0;
+  background: #fff;
+  color: #333333;
+  overflow: hidden;
+  font-size: 28rpx;
+  padding: 12rpx;
+  box-sizing: border-box;
+}
+
+.tab {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.tab view {
+  margin-bottom: 10rpx;
+}
+
+.tab .select {
+  /* font-size: 34rpx; */
+  color: #2D5DF6;
+}
+
+.slider {
+  height: 5rpx;
+  width: 40rpx;
+  background: #2D5DF6;
+  position: absolute;
+  left: 106rpx;
+}
+
+.tabs .left1 {
+  left: 350rpx;
+}
+
+.tabs .left2 {
+  left: 598rpx;
+}
+
+/* tab栏切换 */
+
+.container .profit-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background: #F2F2F2;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.container .profit-top  image{
+  width: 10rpx;
+  height: 18rpx;
+}
+
+.container .profit-top .time{
+  display: flex;
+}
+
+.container .profit-top .time .zhi{
+  margin: 0 10rpx;
+}
+
+.container .profit-top .time .picker{
+  background: #fff;
+  color: #666;
+  padding: 0 10rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  line-height: 38rpx;
+}
+
+/* .container .red {
+  background: #e80202;
+  height: 30rpx;
+} */
+
+.container .table {
+  width: 94%;
+  margin: 0 3%;
+  /* height: 500rpx; */
+  background: #fff;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.table .title{
+  display: flex;
+  align-items: center;
+  color:#666666;
+  font-size: 20rpx;
+  margin: 20rpx 0 10rpx 20rpx;
+}
+
+.dot{
+  width: 6rpx;
+  height: 6rpx;
+  display: inline-block;
+  background: #7cb5ec;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.container .date {
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  padding: 10rpx 20rpx;
+  box-sizing: border-box;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.container .date .title{
+  display: flex;
+  justify-content: space-around;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333;
+}
+
+.container .date .title view{
+  width: 100%;
+  text-align: center;
+}
+
+.container .date .data{
+  display: flex;
+  justify-content: space-around;
+  font-size: 24rpx;
+  margin-bottom: 18rpx;
+  color: #666;
+}
+
+.container .date .data .money{
+  color: #D54E4E; 
+}
+
+.container .date .data view{
+  width: 100%;
+  text-align: center;
+}
+
+.container .date scroll-view{
+  margin-top: 20rpx;
+  height: 400rpx;
+}
+
+.canvas {
+  width: 760rpx;
+  height: 400rpx;
+}

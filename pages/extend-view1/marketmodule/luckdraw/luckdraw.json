@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "抽奖",
+  "usingComponents": {
+    "tui-modal": "../../../../components/modal1/modal1"
+  }
+}

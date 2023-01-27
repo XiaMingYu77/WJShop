@@ -1,0 +1,117 @@
+/* pages/mycenter-extend//groupassistant1/groupassistant1.wxss */
+
+page {
+  background: #fff;
+}
+
+.container .top .toptext {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+  font-size: 20rpx;
+  padding-bottom: 10rpx;
+  color: #999999;
+}
+
+.container .top .topline {
+  width: 94%;
+  margin: 0 3%;
+  display: flex;
+  align-items: center;
+  /* padding: 0 30rpx; */
+  box-sizing: border-box;
+  background: rgba(244, 244, 244, 1);
+  border-radius: 14rpx;
+}
+
+.container .top .topline image {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.container .top .topline .line {
+  width: 325rpx;
+  height: 4rpx;
+  background: #858585;
+}
+
+.container .top .topline .line1{
+  background:#F4F4F4;
+}
+
+.container .top .topline .dot {
+  width: 16rpx;
+  height: 16rpx;
+  background: #D8D8D8;
+  border-radius: 50%;
+}
+
+.container .top .topline .color {
+  background: #2D5DF6;
+}
+
+.container .addassistant {
+  width: 94%;
+  margin: 0 3%;
+  background: #fff;
+  padding: 20rpx;
+  font-size: 24rpx;
+  font-weight: 400;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  border-radius: 10rpx;
+  box-shadow: 0rpx 4rpx 8rpx 0rpx rgba(0, 0, 0, 0.12);
+}
+
+.container .addassistant .wx {
+  padding-left: 15rpx;
+  margin-top: 5rpx;
+  margin-bottom: 27rpx;
+}
+
+.container .addassistant .copy {
+  width: 501rpx;
+  height: 67rpx;
+  line-height: 67rpx;
+  background: #2D5DF6;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 24rpx;
+  font-weight: 400;
+}
+
+.container .addassistant .img1 {
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.container .addassistant .img1 image {
+  width: 610rpx;
+  height: 304rpx;
+}
+
+.container .addassistant .second{
+  margin:20rpx 0;
+}
+
+.container .addassistant .tips{
+  padding-left:10rpx;
+  font-size: 20rpx;
+  box-sizing: border-box;
+}
+
+.bold{
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-bottom: 15rpx;
+  margin-top:20rpx;
+}
+
+.red{
+  color: #2D5DF6;
+}
+
+.gray{
+  color: #8A8A8A;
+}

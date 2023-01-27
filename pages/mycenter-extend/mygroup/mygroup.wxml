@@ -1,0 +1,45 @@
+<!--pages/mycenter-extend//mygroup/mygroup.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我的群
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- <view class="grouptop" >
+    <view>建群微信推广可提升收益,最多可创建10个群</view>
+  </view> -->
+
+  <view class="groupbox" style="margin-top:{{height+10}}px;">
+    <view class="groupbigbox">
+      <block wx:for="{{list}}" wx:key="index">
+        <view class="group">
+          <view>
+            <view>
+              <text wx:if="{{item.F_STATUS=='0'}}">系统提供一个群:</text>{{item.F_WX_CHATNAME}}</view>
+            <view style="color:#666666;margin-top:6rpx;">群编号:{{item.F_WX_Number}}
+              <text class="start" wx:if="{{item.F_STATUS=='1'}}">已开通助理</text>
+            </view>
+          </view>
+          <view class="applyassistant" style="display:flex">
+            <view wx:if="{{item.F_STATUS=='0'}}" bindtap="applyassistant" data-current="{{item}}">申请助理</view>
+            <view wx:if="{{item.F_STATUS=='1'}}" bindtap="closeassistant" data-current="{{item.F_GUID}}">取消助理</view>
+            <view wx:if="{{item.F_STATUS=='2'}}" bindtap="toassistant">机器人助理</view>
+            <view>
+              <image src="../../../static/iconfont/bluearrow.png"></image>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="tips">
+      <view>建推广群赚更多收益,最多可创建10个群。</view>
+      <image class="profit" src="https://shop.we-time.net/images/icons/tuiguangzongshouyixiangqing.png" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <view class="creategroup" bindtap="creategroup">新增一个群</view>
+</view>

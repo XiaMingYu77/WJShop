@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="tui-header-box" style="height:100vh;">
+    <!-- <view class="tui-header" style="padding-top:{{top}}px;">
+      登录
+    </view> -->
+    <!-- <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view> -->
+    <image class="bg" src="{{flag?img1:img2}}" mode="aspectFill"></image>
+    <view class="{{flag?'box1':'box2'}}">
+      <view class="invitebox" wx:if="{{!flag}}">
+        <view class="invitetext">请输入邀请码</view>
+        <view class="invitenum">
+          <input placeholder="输入邀请码(选填)" value="{{invitenum}}" bindinput="invitenumchange"></input>
+          <image src="../../static/center/close.png" bindtap="clear"></image>
+        </view>
+      </view>
+      <button wx:if="{{flag}}" class="submit submit1" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信登录</button>
+      <button wx:if="{{!flag}}" class="submit" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="background:#2D5DF6">手机号一键登录</button>
+      <view class="nologin" bindtap="nologin">暂不登录</view>
+      <view class="{{flag==true?'tips':'tips1'}}">
+        登录即视为您已阅读并同意
+        <text class="{{flag==true?'cls':'cls1'}}" bindtap="touseragreement" data-current="6">用户协议</text>和
+        <text class="{{flag==true?'cls':'cls1'}}" bindtap="touseragreement" data-current="8">隐私协议</text>
+      </view>
+    </view>
+  </view>
+</view>

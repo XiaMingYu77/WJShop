@@ -1,0 +1,150 @@
+page {
+  /* color: #333;
+  background: #e8e8e9; */
+}
+
+.container {
+  padding: 0 30rpx 30rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.tui-searchbox {
+  padding: 30rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.tui-search-input {
+  width: 100%;
+  height: 66rpx;
+  border-radius: 35rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  border: 1rpx solid rgba(45, 93, 246, 1);
+}
+
+.tui-input {
+  flex: 1;
+  color: #333;
+  padding: 0 16rpx;
+  font-size: 28rpx;
+}
+
+.tui-input-plholder {
+  font-size: 28rpx;
+  color: #b2b2b2;
+}
+
+.tui-cancle {
+  color: #888;
+  font-size: 28rpx;
+  padding-left: 30rpx;
+  flex-shrink: 0;
+}
+
+.tui-history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 0;
+}
+
+.tui-icon-delete {
+  padding: 10rpx;
+}
+
+.tui-search-title {
+  font-size: 32rpx;
+  /* font-weight: bold; */
+  color: #333;
+  font-weight: bold;
+}
+
+.tui-search-title image {
+  width: 23rpx;
+  height: 23rpx;
+  vertical-align: -5rpx;
+  margin-right: 10rpx;
+}
+
+.x {
+  width: 20rpx;
+  height: 20rpx;
+}
+
+/* .tui-search-title1{
+  display: flex;
+  justify-content: space-between;
+}
+
+.tui-search-title1 view{
+  display: flex;
+} */
+
+.tui-hot-header {
+  /* padding: 30rpx 0; */
+  margin: 80rpx 0 30rpx;
+}
+
+.tui-tag {
+  display: inline-block;
+  margin-bottom: 20rpx;
+  margin-right: 20rpx;
+  font-size: 26rpx !important;
+}
+
+/* 提交弹框 */
+
+.container .modal {
+  position: relative;
+}
+
+.container .modal .title {
+  font-size: 28rpx;
+  font-weight: bold;
+  text-align: center;
+}
+
+.container .modal .content {
+  margin-top: 20rpx;
+  color: #6f6f6f;
+  text-align: center;
+}
+
+.container .modal .btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25rpx;
+  font-size: 30rpx;
+}
+
+.container .modal .btn .cancle {
+  width: 155rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: 1rpx solid #828181;
+  border-radius: 35rpx;
+  color: #828181;
+}
+
+.container .modal .btn .submit {
+  width: 155rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #ea0104;
+  border-radius: 35rpx;
+  color: #fff;
+}
+
+.container .modal .x {
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+}

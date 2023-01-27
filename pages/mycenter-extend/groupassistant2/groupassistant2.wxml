@@ -1,0 +1,55 @@
+<!--pages/mycenter-extend//groupassistant1/groupassistant1.wxml-->
+<view class="container">
+  <view class="top">
+    <view class="toptext">
+      <view style="text-align:center;color:#2D5DF6">
+        <view>第一步</view>
+        <view>修改微信群名称</view>
+      </view>
+      <view style="text-align:center;color:#2D5DF6">
+        <view>第二步</view>
+        <view>选择你的群人数</view>
+      </view>
+      <view style="text-align:right">
+        <view>第三步</view>
+        <view>去添加助理</view>
+      </view>
+    </view>
+    <view class="topline">
+      <view>
+        <image src="../../../static/iconfont/gou.png"></image>
+      </view>
+      <view class="line color"></view>
+      <view>
+        <image src="../../../static/iconfont/gou.png"></image>
+      </view>
+      <view class="line line1"></view>
+      <view class="dot"></view>
+    </view>
+  </view>
+
+  <view class="xianyong">
+    <view class="title">先用模式</view>
+    <view class="groupnum">
+      <view class="groupnum-left">我的群人数＜50 </view>
+      <view class="groupnum-right" bindtap="toapplyassistant">点这里申请助理</view>
+    </view>
+    <view class="tips">
+      微信群人数小于50人就可以申请先用模式助理。
+      <view>开通后5天内需要将群人数拉够五十人,逾够50人助理会自动关闭。</view>
+    </view>
+  </view>
+
+  <view class="xianyong">
+    <view class="title">正式模式</view>
+    <view class="groupnum">
+      <view class="groupnum-left">我的群人数＞＝50 </view>
+      <view class="groupnum-right" bindtap="toapplyassistant">点这里申请助理</view>
+    </view>
+    <view class="tips">
+      微信群人数大于等于50人就可以申请助理。
+    </view>
+  </view>
+
+  <view class="back" bindtap="back">上一步</view>
+</view>

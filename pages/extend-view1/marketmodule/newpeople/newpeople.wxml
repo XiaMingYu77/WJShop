@@ -1,0 +1,54 @@
+<!-- 新人福利 -->
+<view class="container">
+  <!-- <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      新人福利
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view> -->
+
+  <view class="rule" bindtap="showrule">规则</view>
+
+  <view class="goodbox">
+    <view class="title">首单立返90%</view>
+    <view class="refresh" bindtap="refresh">
+      <image src="../../../../static/iconfont/refresh.png"></image>
+      换一批
+    </view>
+    <!-- <view class="bg"></view> -->
+    <view class="goods">
+      <block wx:for="{{goodlist}}" wx:key="index">
+        <view class="content" catchtap="togoodsdetail" data-id="{{item.id}}">
+          <image src="{{item.img}}" mode="aspectFit"></image>
+          <view class="goodname">{{item.name}}</view>
+          <view class="price">可返现
+            <text style="font-size:20rpx;">￥</text>
+            <text style="font-weight:500">{{fn.tofixed(item.markprice*0.9)}}</text>
+          </view>
+          <view class="buy" >立即下单</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <image class="invite" bindtap="tochoujiang" src="https://shop.we-time.net/images/icons/Invitefriends.png" mode="aspectFit"></image>
+
+  <tui-modal show="{{rulemodal}}" bind:cancel="hide" custom="{{true}}" class="modal">
+    <image src="../../../../static/iconfont/close.png" bindtap="hide"></image>
+    <view class="title">活动规则</view>
+    <view style="padding:0 10rpx 20rpx">
+      <rich-text nodes="{{rule.Content}}"></rich-text>
+    </view>
+  </tui-modal>
+
+</view>
+
+<wxs module="fn">
+  module.exports = {
+    tofixed: function(num) {
+      return num.toFixed(2)
+    }
+  }
+</wxs>

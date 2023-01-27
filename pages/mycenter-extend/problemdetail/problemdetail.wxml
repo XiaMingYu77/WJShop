@@ -1,0 +1,33 @@
+<!--pages/mycenter-extend//problemdetail/problemdetail.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      {{problemdetail.Subjects}}
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="content" style="margin-top:{{height+10}}px">
+    <view class="contain">
+      <rich-text nodes="{{problemdetail.Content}}"></rich-text>
+    </view>
+    <view class="content-bot">
+      <view class="problem">以上方案是否解决了你的问题</view>
+      <view class="btn">
+        <view class="isok" bindtap="isok">
+          <image src="../../../static/iconfont/zan1.png"></image>
+          已解决
+        </view>
+        <view class="notok" bindtap="tofeedback">
+          <image src="../../../static/iconfont/zan2.png"></image>
+          未解决
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <button class="customer" bindtap="tocustomerservice">咨询客服</button>
+
+</view>

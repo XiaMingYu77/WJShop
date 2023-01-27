@@ -1,0 +1,155 @@
+<!--pages/mycenter-extend//extendorder/extendorder.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      我购买的返现详情
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <!-- 当没有订单的时候 -->
+  <view wx-if="{{current!==0}}">
+    <view class="top" style="top:{{height}}px;">
+      <view class="content">
+        下单时间
+        <view class="pickerbox">
+          <picker mode="date" class="picker" end="{{date1}}" value="{{date}}" bindchange="bindDateChange">
+            <view class="picker">
+              <text>{{date}}</text>
+            </view>
+          </picker>
+          <!-- <image wx:if="{{date=='开始时间'}}" src="../../../static/iconfont/bot.png" bindtap="showtime1"></image> -->
+        </view>
+        <text class="zhi">至</text>
+        <view class="pickerbox">
+          <picker mode="date" class="picker" start="{{date}}" value="{{date1}}" bindchange="bindDateChange1">
+            <view class="picker">
+              <text>{{date1}}</text>
+            </view>
+          </picker>
+          <!-- <image wx:if="{{date1=='结束时间'}}" src="../../../static/iconfont/bot.png" bindtap="showtime2"></image> -->
+        </view>
+      </view>
+    </view>
+
+
+    <!-- <view class="tabs">
+      <view class="tab">
+        <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+      </view>
+      <view class="slider {{selected==1?'left1':''}} {{selected==2?'left2':''}} {{selected==3?'left3':''}}"></view> -->
+    <!-- <view class="red1" wx-if="{{!flag}}"></view> -->
+    <!-- </view> -->
+
+    <view class="box" style="margin-top:{{height}}px;">
+      <view class="goods" wx:for="{{list}}" wx:key="index">
+        <view class="goods-mid" wx:for="{{item.OrderProduct}}" wx:key="index">
+          <view>
+            <image src="{{item.ThumbnailImg}}" mode="aspectFit"></image>
+          </view>
+          <view>
+            <view class="name">
+              {{item.ProductName}}
+            </view>
+            <view>{{item.ProductSpecs}}</view>
+            <view class="count">数量:X{{item.Quantity}}</view>
+            <view class="money">
+              <view>购买价格:
+                <text class="price">￥{{item.SubPrice}}</text> </view>
+              <!-- <view>预估返现收益:
+                <text class="price">￥{{item.MemMoney}}</text> 
+              </view> -->
+            </view>
+          </view>
+        </view>
+        <view class="goods-top">
+          <view>订单号: {{item.OrderNo}}</view>
+          <view class="time">
+            <view>下单:{{item.OrderTime}}</view>
+            <view wx:if="{{item.IsaffirmTime}}">完成时间:{{item.IsaffirmTime}}</view>
+          </view>
+          <view class="state">
+            <!-- <view wx:if="{{item.Status=='5'||item.Status=='6'}}">状态: 无效-取消</view> -->
+            <view wx:if="{{item.Status=='2'}}">状态: <text style="color:#2D5DF6">已付款</text></view>
+            <view wx:if="{{item.Status=='3'}}">状态: <text style="color:#2D5DF6">已发货</text></view>
+            <view wx:if="{{item.Status=='4'}}">状态: <text style="color:#2D5DF6">已完成</text></view>
+            <view>预估返现收益:
+              <text class="price">￥{{item.Allmoney}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="goods-bot">
+          <!-- <text bindtap="cancle">什么是无效-取消??</text> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="none" wx-if="{{flag}}">
+    <image src="../../../static/iconfont/nodata.png"></image>
+    <view>暂无更多数据</view>
+  </view>
+
+
+
+  <!--底部选择层-->
+  <!-- <tui-bottom-popup show="{{popupShow}}" tui-popup-class="tui-popup" bind:close="hidePopup">
+    <view class="title">什么是无效-取消?</view>
+    <view>该订单已取消,根据商城推广规则,取消订单不会产生推广收益</view>
+  </tui-bottom-popup> -->
+  <tui-modal1 show="{{popupShow}}" bind:cancel="hidePopup" custom="{{true}}" class="showtext">
+    <view class="title">什么是无效-取消</view>
+    <view class="text">
+      <view class="text1">预估收益是根据用户下单时间预估统计的推广效果数据，并非实际结算收益。</view>
+      <view class="text2">订单取消或者退换货后对应收益会相应扣除，实际收益以订单完成为准</view>
+    </view>
+    <view class="know" bindtap="hidePopup">我知道了</view>
+  </tui-modal1>
+  <!--底部选择层-->
+
+  <!-- 选择时间 -->
+  <!-- <tui-modal show="{{modal1}}" bind:cancel="hidetime1" custom="{{true}}" class="clicktime">
+    <view class="time">
+      <picker-view style="width: 100%; height: 70rpx;margin-top:20rpx;" value="{{value}}" bindchange="bindChange" class="pick">
+        <picker-view-column>
+          <view wx:for="{{years}}" wx:key="index" style="line-height: 50rpx">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{months}}" wx:key="index" style="line-height: 50rpx">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" wx:key="index" style="line-height: 50rpx">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+    <view class="btn">
+      <button class="cancle" bindtap="hidetime1">取消</button>
+      <button class="submit">确定</button>
+    </view>
+    <image class="x" src="../../../static/logo/guanbi.png" bindtap="hidetime1"></image>
+  </tui-modal> -->
+  <!-- 选择时间结束 -->
+
+  <!-- <tui-modal show="{{modal2}}" bind:cancel="hidetime2" custom="{{true}}" class="clicktime">
+    <view class="time">
+      <picker-view style="width: 100%; height: 70rpx;margin-top:20rpx;" value="{{value}}" bindchange="bindChange" class="pick">
+        <picker-view-column>
+          <view wx:for="{{years}}" wx:key="index" style="line-height: 50rpx">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{months}}" wx:key="index" style="line-height: 50rpx">{{item}}月</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{days}}" wx:key="index" style="line-height: 50rpx">{{item}}日</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+    <view class="btn">
+      <button class="cancle" bindtap="hidetime2">取消</button>
+      <button class="submit">确定</button>
+    </view>
+    <image class="x" src="../../../static/logo/guanbi.png" bindtap="hidetime2"></image>
+  </tui-modal> -->
+
+</view>

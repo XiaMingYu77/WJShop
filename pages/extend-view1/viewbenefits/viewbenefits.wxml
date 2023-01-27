@@ -1,0 +1,14 @@
+<!--pages/extend-view1//viewbenefits/viewbenefits.wxml-->
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;">
+      开通会员
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#333" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+ <image style="margin-top:{{height+10}}px" src="{{list.DocumenPhote}}"></image>
+ <view class="zhijie" bindtap="topchaoji">去邀请(可在我的会员中查看）</view>
+ <!-- <view class="zhijie zhijie1" wx:if="{{group!='1'}}">已成为超级会员</view> -->
+</view>

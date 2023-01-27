@@ -1,0 +1,56 @@
+<!--pages/extend-view//evaluate/evaluate.wxml-->
+<view class="container">
+  <view class="topnav">
+    <view class="title">好评度
+      <text class="num">{{hpd}}%</text>
+    </view>
+    <view class="lable">
+      <view data-current="{{0}}" class="{{current=='0'?'active':''}}" bindtap="chooselable">
+        <!-- <image wx-if="{{current=='0'}}" src="../../../static/logo/gou1.png"></image> -->
+        全部 {{num1}}</view>
+      <view data-current="{{3}}" class=" {{current=='3'?'active':''}}" bindtap="chooselable">
+        <!-- <image wx-if="{{current=='3'}}" src="../../../static/logo/gou1.png"></image> -->
+        好评 {{num2}}</view>
+      <view data-current="{{2}}" class="{{current=='2'?'active':''}}" bindtap="chooselable">
+        <!-- <image wx-if="{{current=='2'}}" src="../../../static/logo/gou1.png"></image> -->
+        中评 {{num3}}</view>
+      <view data-current="{{1}}" class="{{current=='1'?'active':''}}" bindtap="chooselable">
+        <!-- <image wx-if="{{current=='1'}}" src="../../../static/logo/gou1.png"></image> -->
+        差评 {{num4}}</view>
+      <view data-current="{{4}}" class="fourth {{current=='4'?'active':''}}" bindtap="chooselable">
+        <!-- <image wx-if="{{current=='4'}}" src="../../../static/logo/gou1.png"></image> -->
+        有图 {{tpcount}}</view>
+    </view>
+  </view>
+
+
+
+  <view class="box" wx:for="{{evaluate}}" wx:for-item="item" wx:key="index">
+    <view class="name">
+      <view class="name-left">
+        <view>
+          <image src="{{item.MemImg}}" mode="aspectFit"></image>
+        </view>
+        <view>
+          <view>{{item.BuyerName}}</view>
+          <tui-rate current="{{item.ReCommentInt}}" active="rgb(255,218,38)" size="14"></tui-rate>
+        </view>
+      </view>
+      <view class="time">{{item.AddDate}}</view>
+    </view>
+    <view class="content">{{item.Comment}}</view>
+    <!-- <view class="proevaluatebox"> -->
+    <view class="proevaluate-img">
+      <block wx:for="{{item.ProductCommentMedia}}" wx:for-item="item1" wx:key="index">
+        <!-- <image src="{{item.MediaUrl}}"></image> -->
+        <image wx-if="{{item1.ReComment=='0'}}" src="{{item1.MediaUrl}}" data-current="{{item1.MediaUrl}}" data-list="{{item}}" bindtap="previewImage" mode="aspectFit"></image>
+        <video style="width:200rpx;height:200rpx;margin-right:10rpx" id="myvideo" direction="0" wx-if="{{item1.ReComment=='1'}}" objectFit="cover" src="{{item1.MediaUrl}}" controls></video>
+      </block>
+    </view>
+    <!-- </view> -->
+    <view class="norms">
+      <text class="text1">规格</text>
+      <text class="text1">{{[item.ProductSpecs]}}</text>
+    </view>
+  </view>
+</view>

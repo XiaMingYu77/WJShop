@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "账户设置",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-modal1": "../../../components/modal1/modal1",
+    "tui-button": "../../../components/button/button",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

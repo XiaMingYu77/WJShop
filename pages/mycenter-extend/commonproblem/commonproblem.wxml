@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      常见问题
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="problem" style="margin-top:{{height+10}}px">
+    <view class="{{index=='0'?'first':''}}" wx:for="{{problems}}" wx:key="index" data-current="{{item.ID}}" bindtap="toproblemdetail">
+      <view>{{item.Subjects}}</view>
+      <view>
+        <image src="../../../static/iconfont/right.png"></image>
+      </view>
+    </view>
+  </view>
+
+  <button class="customer" bindtap="tocustomerservice">咨询客服</button>
+
+</view>

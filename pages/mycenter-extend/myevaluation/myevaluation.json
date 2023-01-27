@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#E80202",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的评价",
+  "enablePullDownRefresh": true,
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "tui-rate": "../../../components/rate/rate",
+    "tui-icon": "../../../components/icon/icon"
+  }
+}

@@ -1,0 +1,194 @@
+/* pages/extend-view1//billionsubsidies/billionsubsidies.wxss */
+
+page {
+  background: #fff;
+}
+
+.tui-header-box {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9998;
+  background: #fff;
+  box-shadow: 0px 4rpx 12rpx 0px rgba(0, 0, 0, 0.12);
+}
+
+.tui-header {
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 32rpx;
+  font-weight: 500;
+  height: 64rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.tui-header-icon {
+  position: fixed;
+  left: 20rpx;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  height: 64rpx;
+  transform: translateZ(0);
+  z-index: 99999;
+}
+
+.tui-header-box .back {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.tui-icon-back {
+  height: 32px !important;
+  width: 32px !important;
+  display: block !important;
+}
+
+swiper {
+  height: 400rpx;
+  width: 94%;
+  margin: 0 3%;
+  text-align: center;
+  /* line-height: 400rpx; */
+  /* overflow: hidden; */
+}
+
+swiper image{
+  width: 100%;
+  height: 100%;
+  /* border-radius: 10rpx; */
+}
+
+
+.container .title {
+  margin: 26rpx 3% 16rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.goodsbox {
+  width: 94%;
+  margin: 0 3%;
+  box-shadow: 0px 4rpx 8rpx 0px rgba(0, 0, 0, 0.12);
+  border-radius: 10rpx;
+  padding: 14rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.container .goods {
+  display: flex;
+  font-size: 24rpx;
+  color: #333;
+  padding: 20rpx 0;
+  border-top: 1rpx solid #EEEEEE;
+}
+
+.container .goods image {
+  width: 170rpx;
+  height: 170rpx;
+  margin-right: 20rpx;
+}
+
+.container .goods .info{
+  width: 464rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container .goods .info .name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.container .goods .recash{
+  width: 150rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  border: 1rpx solid #2D5DF6;
+  border-radius: 14rpx;
+  font-size: 20rpx;
+  color: #2D5DF6;
+  margin-top: 10rpx;
+  margin-bottom: 1rpx;
+}
+
+.container .goods .recash .text{
+  width: 60rpx;
+  height: 100%;
+  display: inline-block;
+  background: #2D5DF6;
+  color: #fff;
+  border-radius: 14rpx;
+  text-align: center;
+  margin-left: -2rpx;
+  margin-bottom: -1rpx;
+}
+
+.container .goods .buy{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container .goods .buy>view:first-child{
+  font-size: 44rpx;
+  color: #000;
+}
+
+.container .goods .buy>view:last-child{
+  font-size: 24rpx;
+  color: #fff;
+  background: #2D5DF6;
+  padding: 2rpx 10rpx;
+  border-radius: 20rpx;
+}
+
+.container .botbanner{
+  width: 94%;
+  height: 198rpx;
+  margin: 30rpx 3% 0;
+}
+
+/* 小闹钟弹框 */
+.container .alarm{
+  position: fixed;
+  width: 98rpx;
+  height: 108rpx;
+  right: 0;
+  bottom: 300rpx;
+}
+
+.container .alarm image{ 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.container .alarm .second{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 100;
+  top: 30rpx;
+  left: 20rpx;
+  text-align: center;
+}
+
+.container .alarm .taskcomplete{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  z-index: 100;
+  top: 20rpx;
+  left: 25rpx;
+  font-size: 20rpx;
+  color: #FACA01;
+}
+/* 小闹钟弹框结束 */

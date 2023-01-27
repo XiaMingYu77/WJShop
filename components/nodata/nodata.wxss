@@ -1,0 +1,15 @@
+/* components/nodata/nodata.wxss */
+
+.none {
+  text-align: center;
+  font-size: 28rpx;
+  color: #999999;
+  font-weight: 400;
+  margin-top: 380rpx;
+}
+.none image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 20rpx;
+}
+

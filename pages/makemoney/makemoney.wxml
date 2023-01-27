@@ -1,0 +1,148 @@
+<!--顶部选项卡-->
+<view class="makemoney">
+  <view class="tui-header-box" style="height:{{height}}px;">
+    <view class="tui-header" style="padding-top:{{top}}px;opacity:{{opcity}}">
+      赚钱省钱攻略
+    </view>
+    <view class="tui-header-icon" style="margin-top:{{top}}px" wx:if="{{flag}}">
+      <tui-icon name="arrowleft" color="#fff" tui-icon-class="tui-back" bindtap="back"></tui-icon>
+    </view>
+  </view>
+
+  <view class="tui-head {{selected==0?'tui-head1':''}}" style="top:{{height}}px">
+    <view class="tabs" style="top:{{height}}px">
+      <view class="tab">
+        <view wx:for="{{tabs}}" class="{{selected==index?'select':''}}" wx:key="index" data-index="{{index}}" bindtap="change">{{item.name}}</view>
+      </view>
+      <view class="slider {{selected==1?'left1':''}} {{selected==2?'left2':''}} {{selected==3?'left3':''}}"></view>
+    </view>
+  </view>
+  <!-- <view class="red1"></view> -->
+  <view class="botbox {{selected==0?'botbox1':''}} {{selected==2?'botbox2':''}}">
+    <view class="spell_group" style="margin-top:{{height*2}}rpx" wx:if="{{selected!=1}}">
+      {{pt_tex}}
+    </view>
+    <!-- 拼团购页面布局内容 -->
+    <view wx-if="{{selected==0}}">
+      <view class="assembleshop">
+        <swiper indicator-dots="{{indicatorDots}}" previous-margin="40" next-margin="40" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperChange">
+          <block wx:for="{{banner}}" wx:key="index">
+            <swiper-item class="swiper-item">
+              <image src="{{item.DocumenPhote}}" class="{{swiperIndex != index ? 'active' : ''}}" mode="aspectFit"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="dots">
+          <block wx:for="{{banner}}" wx:key="key">
+            <view class="dot {{index == swiperIndex ? 'active' : ''}}"></view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <!-- 新人上手页面布局内容 -->
+    <view wx-if="{{selected==1}}" style="margin-top:{{height*2+20}}rpx;">
+      <!-- <scroll-view scroll-y> -->
+      <view wx:for="{{task}}" class="new_task" style="height:{{item.disabled?'auto':''}}" wx:key="index">
+        <view>
+          <view class="task_one" data-current="{{index}}" bindtap="clicknav">
+            <view class="task_number">
+              <image src="../../static/iconfont/notopen.png" wx:if="{{!item.disabled}}"></image>
+              <image src="../../static/iconfont/open1.png" wx:if="{{item.disabled}}"></image>
+              <text class="text1">{{tasknum[index]}}</text>
+              <view class="dot"></view>
+              <text class="text2">{{item.NewsHinge}}</text>
+              <text class="text3">{{item.Subjects}}</text>
+            </view>
+            <view catchtap="toviewbenefits" wx-if="{{index==0}}">
+              <text class="equity">查看权益</text>
+            </view>
+          </view>
+          <view class="">
+            <view class="content {{item.disabled?'show':'hide'}}" style="height:{{item.disabled?kpheight:'0'}}rpx;margin-bottom:{{item.disabled?'20':'0'}}rpx">
+              <view class="task_two">
+                <rich-text class="task_requirements" nodes="{{item.Content}}"></rich-text>
+              </view>
+              <view class="task_three" wx:if="{{index=='0'}}">
+                <text wx:if="{{info.memstatic=='0'}}" class="task_do2">未升级</text>
+                <text wx:if="{{info.memstatic=='1'}}" class="task_do2">已升级</text>
+              </view>
+              <view class="task_three" wx:if="{{index!='0'}}">
+                <text wx:if="{{index=='1'||index=='2'||index=='3'}}" class="task_do2" data-current="{{item.DocumenPhote}}" bindtap="showimg">获取进群二维码</text>
+                <text wx:if="{{index=='6'}}" class="task_do2" data-current="{{item.DocumenPhote}}" bindtap="showimg">获取公众号二维码</text>
+                <text wx:if="{{item.statics=='2'}}" class="task_do2" bindtap="togroupinformation">自助开通</text>
+                <button wx:if="{{item.statics=='3'}}" open-type="share" class="btn">去邀请</button>
+                <text wx:if="{{item.statics=='4'}}" class="task_do2" data-current="{{item.ContentText}}" bindtap="copytext">复制</text>
+                <text wx:if="{{item.statics=='5'}}" class="task_do2">是否升级超级会员了</text>
+              </view>
+              <view class="task_four">
+                <view>
+                </view>
+                <view bindtap="playvideo" data-current="{{item.Video}}" wx:if="{{!(index=='0'||index=='6'||index=='3')}}">
+                  <image src="../../static/iconfont/video.png"></image>
+                  <text>查看视频教学</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- <view>
+        <block wx:for="{{task}}" wx:key="index">
+          <view class="new_task" data-current="{{index}}" bindtap="clicknav">
+            {{item.Subjects}}
+          </view>
+          <view class="{{item.disabled?'show':'hide'}}">
+            {{item.Content}}
+          </view>
+        </block>
+      </view> -->
+      <!-- </scroll-view> -->
+      <!-- <view class="new_task">
+      <view class="task_one">
+        <text class="task_number"></text>
+        <text class="task_purpose"></text>
+      </view>
+      <view class="task_two">
+        <text style="color:white;font-size: 32rpx;">加强版，学习更多的赚钱经验</text>
+      </view>
+      <view class="task_three">
+        <text class="task_do">已完成</text>
+      </view>
+    </view> -->
+    </view>
+    <!-- 分享素材页面布局内容 -->
+    <view wx-if="{{selected==2}}" class="material">
+      <!-- <scroll-view scroll-y> -->
+      <view wx:for="{{material.list}}" wx:key="index" class="materialbox">
+        <image src="{{item.photo}}" class="logo" mode="aspectFit"></image>
+        <text class="name">{{item.Subjects}}</text>
+        <view class="content">
+          <rich-text nodes="{{item.Content}}"></rich-text>
+        </view>
+        <view class="copy" bindtap="copytext" data-current="{{item.ContentText}}">复制文字</view>
+        <button class="clickimg">#点击图片，生成海报#</button>
+        <image class="img" bindtap="shareimg" data-current="{{item.DocumenPhote}}" src="{{item.DocumenPhote}}" mode="aspectFit"></image>
+      </view>
+      <!-- </scroll-view> -->
+    </view>
+
+    <view class="{{imgflag?'coverbox':''}}">
+      <view class="cover">
+        <!-- <view wx:if="{{cover=='1'}}">
+          <image class="img" src="{{src}}" bindtap="clickposter"></image>
+          <view class="close">
+            <image class="closeimg" bindtap="closeimg" src="../../static/iconfont/close.png"></image>
+          </view>
+          <view class="btn mr" bindtap="keepphoto">保存到手机相册</view>
+          <view class="btn mr" bindtap="clickposter">预览图片长按分享</view>
+        </view> -->
+        <view wx:if="{{cover=='2'}}">
+          <video src="{{video}}" class="video" style="margin-top:{{height+30}}px"></video>
+          <view class="close" style="top:{{height+10}}px"  bindtap="closeimg">
+            <image class="closeimg" src="../../static/iconfont/close.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
