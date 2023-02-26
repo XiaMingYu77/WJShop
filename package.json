@@ -13,7 +13,6 @@
     "cos-wx-sdk-v5": "^0.7.10",
     "echarts": "^4.7.0",
     "tim-js-sdk": "^2.6.3",
-    "tim-wx-sdk": "^2.6.3"
-  },
-  "devDependencies": {}
+    "tim-wx-sdk": "^2.6.3"                                                                           
+  }
 }

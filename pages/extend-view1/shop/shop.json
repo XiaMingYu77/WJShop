@@ -1,8 +1,0 @@
-{
-  "navigationBarBackgroundColor": "#fff",
-  "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "店铺",
-  "usingComponents": {
-    "tui-icon": "../../../components/icon/icon"
-  }
-}

@@ -1,9 +1,0 @@
-{
-  "navigationBarBackgroundColor": "#E80202",
-  "navigationBarTextStyle": "white",
-  "navigationStyle": "custom",
-  "navigationBarTitleText": "活跃值",
-  "usingComponents": {
-    "tui-icon": "../../../../components/icon/icon"
-  }
-}
